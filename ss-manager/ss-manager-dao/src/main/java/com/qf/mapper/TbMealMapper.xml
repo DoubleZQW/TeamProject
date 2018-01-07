@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.mapper.TbMealMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.pojo.TbMeal" >
+    <id column="meal_id" property="mealId" jdbcType="INTEGER" />
+    <result column="meal_name" property="mealName" jdbcType="VARCHAR" />
+    <result column="meal_price" property="mealPrice" jdbcType="DECIMAL" />
+    <result column="meal_num" property="mealNum" jdbcType="INTEGER" />
+    <result column="meal_picture" property="mealPicture" jdbcType="VARCHAR" />
+    <result column="meal_status" property="mealStatus" jdbcType="TINYINT" />
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+    <result column="meal_intro" property="mealIntro" jdbcType="VARCHAR" />
+    <result column="category" property="category" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    meal_id, meal_name, meal_price, meal_num, meal_picture, meal_status, publisher, meal_intro, 
+    category
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbMealExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_meal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_meal
+    where meal_id = #{mealId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_meal
+    where meal_id = #{mealId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qf.pojo.TbMealExample" >
+    delete from tb_meal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qf.pojo.TbMeal" >
+    insert into tb_meal (meal_id, meal_name, meal_price, 
+      meal_num, meal_picture, meal_status, 
+      publisher, meal_intro, category
+      )
+    values (#{mealId,jdbcType=INTEGER}, #{mealName,jdbcType=VARCHAR}, #{mealPrice,jdbcType=DECIMAL}, 
+      #{mealNum,jdbcType=INTEGER}, #{mealPicture,jdbcType=VARCHAR}, #{mealStatus,jdbcType=TINYINT}, 
+      #{publisher,jdbcType=VARCHAR}, #{mealIntro,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.pojo.TbMeal" >
+    insert into tb_meal
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mealId != null" >
+        meal_id,
+      </if>
+      <if test="mealName != null" >
+        meal_name,
+      </if>
+      <if test="mealPrice != null" >
+        meal_price,
+      </if>
+      <if test="mealNum != null" >
+        meal_num,
+      </if>
+      <if test="mealPicture != null" >
+        meal_picture,
+      </if>
+      <if test="mealStatus != null" >
+        meal_status,
+      </if>
+      <if test="publisher != null" >
+        publisher,
+      </if>
+      <if test="mealIntro != null" >
+        meal_intro,
+      </if>
+      <if test="category != null" >
+        category,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mealId != null" >
+        #{mealId,jdbcType=INTEGER},
+      </if>
+      <if test="mealName != null" >
+        #{mealName,jdbcType=VARCHAR},
+      </if>
+      <if test="mealPrice != null" >
+        #{mealPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="mealNum != null" >
+        #{mealNum,jdbcType=INTEGER},
+      </if>
+      <if test="mealPicture != null" >
+        #{mealPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="mealStatus != null" >
+        #{mealStatus,jdbcType=TINYINT},
+      </if>
+      <if test="publisher != null" >
+        #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="mealIntro != null" >
+        #{mealIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        #{category,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qf.pojo.TbMealExample" resultType="java.lang.Integer" >
+    select count(*) from tb_meal
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_meal
+    <set >
+      <if test="record.mealId != null" >
+        meal_id = #{record.mealId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mealName != null" >
+        meal_name = #{record.mealName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mealPrice != null" >
+        meal_price = #{record.mealPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="record.mealNum != null" >
+        meal_num = #{record.mealNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mealPicture != null" >
+        meal_picture = #{record.mealPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mealStatus != null" >
+        meal_status = #{record.mealStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.publisher != null" >
+        publisher = #{record.publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mealIntro != null" >
+        meal_intro = #{record.mealIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="record.category != null" >
+        category = #{record.category,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_meal
+    set meal_id = #{record.mealId,jdbcType=INTEGER},
+      meal_name = #{record.mealName,jdbcType=VARCHAR},
+      meal_price = #{record.mealPrice,jdbcType=DECIMAL},
+      meal_num = #{record.mealNum,jdbcType=INTEGER},
+      meal_picture = #{record.mealPicture,jdbcType=VARCHAR},
+      meal_status = #{record.mealStatus,jdbcType=TINYINT},
+      publisher = #{record.publisher,jdbcType=VARCHAR},
+      meal_intro = #{record.mealIntro,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbMeal" >
+    update tb_meal
+    <set >
+      <if test="mealName != null" >
+        meal_name = #{mealName,jdbcType=VARCHAR},
+      </if>
+      <if test="mealPrice != null" >
+        meal_price = #{mealPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="mealNum != null" >
+        meal_num = #{mealNum,jdbcType=INTEGER},
+      </if>
+      <if test="mealPicture != null" >
+        meal_picture = #{mealPicture,jdbcType=VARCHAR},
+      </if>
+      <if test="mealStatus != null" >
+        meal_status = #{mealStatus,jdbcType=TINYINT},
+      </if>
+      <if test="publisher != null" >
+        publisher = #{publisher,jdbcType=VARCHAR},
+      </if>
+      <if test="mealIntro != null" >
+        meal_intro = #{mealIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null" >
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where meal_id = #{mealId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbMeal" >
+    update tb_meal
+    set meal_name = #{mealName,jdbcType=VARCHAR},
+      meal_price = #{mealPrice,jdbcType=DECIMAL},
+      meal_num = #{mealNum,jdbcType=INTEGER},
+      meal_picture = #{mealPicture,jdbcType=VARCHAR},
+      meal_status = #{mealStatus,jdbcType=TINYINT},
+      publisher = #{publisher,jdbcType=VARCHAR},
+      meal_intro = #{mealIntro,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR}
+    where meal_id = #{mealId,jdbcType=INTEGER}
+  </update>
+</mapper>

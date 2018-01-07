@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.mapper.TbOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.pojo.TbOrder" >
+    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="payment" property="payment" jdbcType="DECIMAL" />
+    <result column="payment_type" property="paymentType" jdbcType="TINYINT" />
+    <result column="order_free" property="orderFree" jdbcType="DECIMAL" />
+    <result column="order_status" property="orderStatus" jdbcType="TINYINT" />
+    <result column="order_created" property="orderCreated" jdbcType="TIMESTAMP" />
+    <result column="order_finished" property="orderFinished" jdbcType="TIMESTAMP" />
+    <result column="order_message" property="orderMessage" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_id, payment, payment_type, order_free, order_status, order_created, order_finished, 
+    order_message
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_order
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.qf.pojo.TbOrderExample" >
+    delete from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.qf.pojo.TbOrder" >
+    insert into tb_order (order_id, payment, payment_type, 
+      order_free, order_status, order_created, 
+      order_finished, order_message)
+    values (#{orderId,jdbcType=VARCHAR}, #{payment,jdbcType=DECIMAL}, #{paymentType,jdbcType=TINYINT}, 
+      #{orderFree,jdbcType=DECIMAL}, #{orderStatus,jdbcType=TINYINT}, #{orderCreated,jdbcType=TIMESTAMP}, 
+      #{orderFinished,jdbcType=TIMESTAMP}, #{orderMessage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.qf.pojo.TbOrder" >
+    insert into tb_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="payment != null" >
+        payment,
+      </if>
+      <if test="paymentType != null" >
+        payment_type,
+      </if>
+      <if test="orderFree != null" >
+        order_free,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+      <if test="orderCreated != null" >
+        order_created,
+      </if>
+      <if test="orderFinished != null" >
+        order_finished,
+      </if>
+      <if test="orderMessage != null" >
+        order_message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="payment != null" >
+        #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=TINYINT},
+      </if>
+      <if test="orderFree != null" >
+        #{orderFree,jdbcType=DECIMAL},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="orderCreated != null" >
+        #{orderCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderFinished != null" >
+        #{orderFinished,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderMessage != null" >
+        #{orderMessage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.qf.pojo.TbOrderExample" resultType="java.lang.Integer" >
+    select count(*) from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_order
+    <set >
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payment != null" >
+        payment = #{record.payment,jdbcType=DECIMAL},
+      </if>
+      <if test="record.paymentType != null" >
+        payment_type = #{record.paymentType,jdbcType=TINYINT},
+      </if>
+      <if test="record.orderFree != null" >
+        order_free = #{record.orderFree,jdbcType=DECIMAL},
+      </if>
+      <if test="record.orderStatus != null" >
+        order_status = #{record.orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.orderCreated != null" >
+        order_created = #{record.orderCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderFinished != null" >
+        order_finished = #{record.orderFinished,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.orderMessage != null" >
+        order_message = #{record.orderMessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_order
+    set order_id = #{record.orderId,jdbcType=VARCHAR},
+      payment = #{record.payment,jdbcType=DECIMAL},
+      payment_type = #{record.paymentType,jdbcType=TINYINT},
+      order_free = #{record.orderFree,jdbcType=DECIMAL},
+      order_status = #{record.orderStatus,jdbcType=TINYINT},
+      order_created = #{record.orderCreated,jdbcType=TIMESTAMP},
+      order_finished = #{record.orderFinished,jdbcType=TIMESTAMP},
+      order_message = #{record.orderMessage,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbOrder" >
+    update tb_order
+    <set >
+      <if test="payment != null" >
+        payment = #{payment,jdbcType=DECIMAL},
+      </if>
+      <if test="paymentType != null" >
+        payment_type = #{paymentType,jdbcType=TINYINT},
+      </if>
+      <if test="orderFree != null" >
+        order_free = #{orderFree,jdbcType=DECIMAL},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=TINYINT},
+      </if>
+      <if test="orderCreated != null" >
+        order_created = #{orderCreated,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderFinished != null" >
+        order_finished = #{orderFinished,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderMessage != null" >
+        order_message = #{orderMessage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbOrder" >
+    update tb_order
+    set payment = #{payment,jdbcType=DECIMAL},
+      payment_type = #{paymentType,jdbcType=TINYINT},
+      order_free = #{orderFree,jdbcType=DECIMAL},
+      order_status = #{orderStatus,jdbcType=TINYINT},
+      order_created = #{orderCreated,jdbcType=TIMESTAMP},
+      order_finished = #{orderFinished,jdbcType=TIMESTAMP},
+      order_message = #{orderMessage,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=VARCHAR}
+  </update>
+</mapper>
