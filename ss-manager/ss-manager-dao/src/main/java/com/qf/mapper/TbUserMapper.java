@@ -18,7 +18,7 @@ public interface TbUserMapper {
 
     List<TbUser> selectByExample(TbUserExample example);
 
-    TbUser selectByPrimaryKey(Integer userId);
+    TbUser selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") TbUser record, @Param("example") TbUserExample example);
 

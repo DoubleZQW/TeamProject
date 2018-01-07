@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--1 读取数据库配置文件-->
-    <context:property-placeholder location="classpath:db.properties"/>
+    <context:property-placeholder location="classpath:db-test.properties"/>
     <!--2 创建数据库连接池-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
         <!--基本属性-->
@@ -25,7 +25,7 @@
         <!--注入数据源-->
         <property name="dataSource" ref="dataSource"/>
         <!--注入mybatis的主配置文件-->
-        <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>
+        <property name="configLocation" value="classpath:mybatis/mybatis-config-test.xml"/>
 
         <!--自动扫描dao里面的所有的Mapper.xml-->
         <!--**麻烦改下**-->

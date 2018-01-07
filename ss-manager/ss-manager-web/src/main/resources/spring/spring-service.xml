@@ -13,13 +13,13 @@
     <!--1 扫描SERVICE层下注解类,可以扫描到base-package的当前包以及子包的所有注解类-->
 
     <!--** 麻烦改下**-->
-    <context:component-scan base-package="*"/>
+    <context:component-scan base-package="com.qf.service.impl"/>
     <!--2 事务管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--注入数据源属性-->
 
         <!--连接的是spring-dao中数据库的bean的id-->
-        <!--<property name="dataSource" ref="dataSource"/>-->
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <!--3 设置基于注解的声明式事务tx-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
