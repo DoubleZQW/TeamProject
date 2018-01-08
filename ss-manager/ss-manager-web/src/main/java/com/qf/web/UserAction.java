@@ -2,9 +2,12 @@ package com.qf.web;
 
 import com.qf.pojo.TbUser;
 import com.qf.service.UserService;
+import com.qf.vo.ResultMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class UserAction {
@@ -22,9 +25,12 @@ public class UserAction {
         return userService.getById(id);
     }
 
-    @RequestMapping(value = "user/query",method = RequestMethod.GET)
-    public String query(){
-        return "user-query";
+    @ResponseBody
+    @RequestMapping(value = "/user/query", method = RequestMethod.POST)
+    public ResultMessage findAll() {
+        ResultMessage rm = new ResultMessage();
+	    List<TbUser> users = userService.findAll();
+	    rm.setData(users);
+        return rm;
     }
-
 }

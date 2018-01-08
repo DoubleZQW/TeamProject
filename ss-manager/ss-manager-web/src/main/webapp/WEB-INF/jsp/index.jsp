@@ -6,12 +6,17 @@
 		<!-- Required Stylesheets -->
 		<link href="resources/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
 		<link href="resources/css/commons.css" rel="stylesheet">
+		<%-- bootstrap-table --%>
+		<link href="resources/bootstrap-table/bootstrap-table.css" rel="stylesheet">
 
 		<!-- Required Javascript -->
 		<script src="resources/jQuery/jquery-3.2.1.js"></script>
 		<script src="resources/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-		<%--<script src="../bootstrap-closable-tab/bootstrap-closable-tab.js"></script>--%>
+		<%-- bootstrap-closable-tab.js --%>
 		<script src="resources/bootstrap-closable-tab/closable-tab-div.js"></script>
+		<%-- bootstrap-table --%>
+		<link href="resources/bootstrap-table/bootstrap-table.js" rel="stylesheet">
+		<link href="resources/bootstrap-table/bootstrap-table-zh-CN.js" rel="stylesheet">
 
 		<%--toPage算法--%>
 		<script src="toPage.js"></script>
@@ -20,13 +25,13 @@
 
 	<body>
 		<div class="container">
-			<div class="col-md-12 text-center" style="padding-bottom: 20px">
+			<div class="col-xs-12 text-center">
 				<h1><em style="color: cornflowerblue">后台管理系统</em></h1>
 				<h4><em style="color: gray">Version: 0.1-beta</em></h4>
 			</div>
 
-			<%--<div class="col-md-2" style="border: solid dodgerblue; border-radius: 10px; padding: 20px; margin: 20px">--%>
-			<div class="col-md-2">
+			<%--<div class="col-xs-2" style="border: solid dodgerblue; border-radius: 10px; padding: 20px; margin: 20px">--%>
+			<div class="col-xs-2 well">
 				<div class="text-center">
 					<label>管理菜单</label>
 				</div>
@@ -40,7 +45,6 @@
 							</button>
 							<ul class="dropdown-menu">
 								<li><a href="javascript:closableTab.addTab({id: 'editUser',name: '查询用户',url: 'user-query',closable: true});">查询</a></li>
-								<li><a href="javascript:closableTab.addTab({id: 'addUser',name: '添加用户',url: 'user-add',closable: true});">添加</a></li>
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
@@ -72,11 +76,13 @@
 
 			</div>
 
-			<div class="col-md-10">
+			<div class="col-xs-10">
 				<!-- 高级选项卡主体 -->
 				<ul class="nav nav-tabs" role="tablist"></ul>
-				<%-- 高级选项卡内容 --%>
-				<div class="tab-content" style="height: 80%;width:100%;overflow-y: auto;"></div>
+				<div class="col-xs-12 well">
+					<%-- 高级选项卡内容 --%>
+					<div class="tab-content" style="height: 80%;width:100%;overflow-y: auto;"></div>
+				</div>
 			</div>
 
 		</div>

@@ -6,7 +6,7 @@
 		<script type="text/javascript">
 			//绑定查询按钮的的点击事件,让其使用AJAX提交并返回给表格
 			$(function(){
-				$(".cust_list_submit").on("click",function(){
+				$(".cust_list_submit").on("click",function() {
 					$.ajax({
 						url:"user/query",
 						type:"POST",
@@ -19,9 +19,11 @@
 								function(i, user) {
 									$("#listData").append(
 										"<tr>"+
-											"<td style='min-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.id +"</td>"+
-											"<td style='max-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.name +"</td>"+
-											"<td style='max-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.age +"</td>"+
+											"<td style='min-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.userId +"</td>"+
+											"<td style='max-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.userName +"</td>"+
+											"<td style='max-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.userPhone +"</td>"+
+											"<td style='max-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.userEmail +"</td>"+
+											"<td style='max-width: 100px;word-break: break-all;word-wrap: break-word'>"+ user.userOthername +"</td>"+
 											"<td>"+
 												"<div class='btn-group'>"+
 													"<button type='button' class='btn btn-info btn-xs'>修改</button>"+
@@ -59,15 +61,16 @@
 		<%--</script>--%>
 
 		<%--上方查询条件--%>
-		<div class="col-md-12 column well">
-			<div class="col-md-6 column">
+		<div class="col-xs-12 column">
+			<br>
+			<div class="col-xs-6 column">
 				<div class="form-group">
 					<label for="cust_name">用户名</label>
 					<input type="text" class="form-control" id="cust_name" name="cust_name"/>
 				</div>
 			</div>
 
-			<div class="col-md-6 column">
+			<div class="col-xs-6 column">
 				<div class="form-group">
 					<label for="cust_level">用户类型</label>
 					<select class="form-control" name="cust_level" id="cust_level">
@@ -81,9 +84,9 @@
 
 		<%--搜索按钮--%>
 		<div class="row clearfix">
-			<div class="col-md-4 column">
+			<div class="col-xs-4 column">
 			</div>
-			<div class="col-md-4 column">
+			<div class="col-xs-4 column">
 				<div class="btn-group btn-group-justified" role="group">
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-info cust_list_submit">查询</button>
@@ -126,12 +129,14 @@
 			</div>
 
 			<!-- Table -->
-			<table class="table">
+			<table class="table table-view">
 				<thead>
 					<tr>
 						<th class="th th-primary" style="min-width: 60px">编号</th>
 						<th>用户名</th>
-						<th>年龄</th>
+						<th>手机号</th>
+						<th>E-Mail</th>
+						<th>身份</th>
 						<th style="text-align: center;min-width: 100px">操作</th>
 					</tr>
 				</thead>
@@ -146,5 +151,12 @@
 				<jsp:include page="page.jsp" flush="true" />
 			</div>
 		</div>
+
+		<script type="text/javascript">
+			//页面加载后自动展示数据表格
+			$(function(){
+				$('.cust_list_submit').click();
+			});
+		</script>
 	</body>
 </html>

@@ -11,7 +11,7 @@
 
 		<%--该页面为纯jQuery/JS代码,没有固定的HTML--%>
 
-		<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-3.2.1.min.js"></script>
+			<script src="resources/jQuery/jquery-3.2.1.js"></script>
 		<script type="text/javascript">
 			//分页按钮的点击事件,让其更改currentIndex后再执行查询按钮的点击事件(见list-index.jsp的jQuery代码)
 			function toPage(currentIndex){
