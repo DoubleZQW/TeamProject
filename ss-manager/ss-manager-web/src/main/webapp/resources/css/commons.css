@@ -1,0 +1,20 @@
+/* 美化选项卡外观 */
+.nav-tabs li a{
+	line-height:2;
+	font-weight: bold;
+	background: #dddddd;
+}
+.nav-tabs .active a{
+	border-top: solid 4px #3498db !important;
+}
+
+/* 选项卡间实体化效果 */
+.nav-tabs li a{
+	line-height:2;
+	border:1px #ddd solid;
+	margin-right: 2px;
+	color: #999;
+}
+/*.nav-tabs{*/
+	/*background: #fafafa;*/
+/*}*/

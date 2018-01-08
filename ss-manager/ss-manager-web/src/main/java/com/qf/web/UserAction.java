@@ -19,10 +19,12 @@ public class UserAction {
     @ResponseBody
     @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
     public TbUser findById(@PathVariable("id") Integer id){
-        System.out.println(id);
-        TbUser user=userService.getById(id);
-        System.out.println(id);
-        System.out.println(user.getUserEmail());
-        return user;
+        return userService.getById(id);
     }
+
+    @RequestMapping(value = "user/query",method = RequestMethod.GET)
+    public String query(){
+        return "user-query";
+    }
+
 }
