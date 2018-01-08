@@ -21,7 +21,7 @@ public class UserAction {
      */
     @ResponseBody
     @RequestMapping(value = "/user/{id}",method = RequestMethod.GET)
-    public TbUser findById(@PathVariable("id") Integer id){
+    public TbUser findById(@PathVariable("id") Long id){
         return userService.getById(id);
     }
 

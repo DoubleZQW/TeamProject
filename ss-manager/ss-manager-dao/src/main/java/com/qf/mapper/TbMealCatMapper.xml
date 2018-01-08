@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qf.mapper.TbCommentMapper" >
-  <resultMap id="BaseResultMap" type="com.qf.pojo.TbComment" >
-    <id column="comment_id" property="commentId" jdbcType="BIGINT" />
-    <result column="o_id" property="oId" jdbcType="INTEGER" />
-    <result column="com_score" property="comScore" jdbcType="INTEGER" />
-    <result column="com_content" property="comContent" jdbcType="VARCHAR" />
-    <result column="com_time" property="comTime" jdbcType="TIMESTAMP" />
+<mapper namespace="com.qf.mapper.TbMealCatMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.pojo.TbMealCat" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,15 +64,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    comment_id, o_id, com_score, com_content, com_time
+    id, cat_name
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbCommentExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbMealCatExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_comment
+    from tb_meal_cat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,85 +83,56 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tb_comment
-    where comment_id = #{commentId,jdbcType=BIGINT}
+    from tb_meal_cat
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_comment
-    where comment_id = #{commentId,jdbcType=BIGINT}
+    delete from tb_meal_cat
+    where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qf.pojo.TbCommentExample" >
-    delete from tb_comment
+  <delete id="deleteByExample" parameterType="com.qf.pojo.TbMealCatExample" >
+    delete from tb_meal_cat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qf.pojo.TbComment" >
-    insert into tb_comment (comment_id, o_id, com_score, 
-      com_content, com_time)
-    values (#{commentId,jdbcType=BIGINT}, #{oId,jdbcType=INTEGER}, #{comScore,jdbcType=INTEGER}, 
-      #{comContent,jdbcType=VARCHAR}, #{comTime,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.qf.pojo.TbMealCat" >
+    insert into tb_meal_cat (id, cat_name)
+    values (#{id,jdbcType=BIGINT}, #{catName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qf.pojo.TbComment" >
-    insert into tb_comment
+  <insert id="insertSelective" parameterType="com.qf.pojo.TbMealCat" >
+    insert into tb_meal_cat
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="commentId != null" >
-        comment_id,
+      <if test="id != null" >
+        id,
       </if>
-      <if test="oId != null" >
-        o_id,
-      </if>
-      <if test="comScore != null" >
-        com_score,
-      </if>
-      <if test="comContent != null" >
-        com_content,
-      </if>
-      <if test="comTime != null" >
-        com_time,
+      <if test="catName != null" >
+        cat_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="commentId != null" >
-        #{commentId,jdbcType=BIGINT},
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
       </if>
-      <if test="oId != null" >
-        #{oId,jdbcType=INTEGER},
-      </if>
-      <if test="comScore != null" >
-        #{comScore,jdbcType=INTEGER},
-      </if>
-      <if test="comContent != null" >
-        #{comContent,jdbcType=VARCHAR},
-      </if>
-      <if test="comTime != null" >
-        #{comTime,jdbcType=TIMESTAMP},
+      <if test="catName != null" >
+        #{catName,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qf.pojo.TbCommentExample" resultType="java.lang.Integer" >
-    select count(*) from tb_comment
+  <select id="countByExample" parameterType="com.qf.pojo.TbMealCatExample" resultType="java.lang.Integer" >
+    select count(*) from tb_meal_cat
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_comment
+    update tb_meal_cat
     <set >
-      <if test="record.commentId != null" >
-        comment_id = #{record.commentId,jdbcType=BIGINT},
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.oId != null" >
-        o_id = #{record.oId,jdbcType=INTEGER},
-      </if>
-      <if test="record.comScore != null" >
-        com_score = #{record.comScore,jdbcType=INTEGER},
-      </if>
-      <if test="record.comContent != null" >
-        com_content = #{record.comContent,jdbcType=VARCHAR},
-      </if>
-      <if test="record.comTime != null" >
-        com_time = #{record.comTime,jdbcType=TIMESTAMP},
+      <if test="record.catName != null" >
+        cat_name = #{record.catName,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -172,40 +140,25 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_comment
-    set comment_id = #{record.commentId,jdbcType=BIGINT},
-      o_id = #{record.oId,jdbcType=INTEGER},
-      com_score = #{record.comScore,jdbcType=INTEGER},
-      com_content = #{record.comContent,jdbcType=VARCHAR},
-      com_time = #{record.comTime,jdbcType=TIMESTAMP}
+    update tb_meal_cat
+    set id = #{record.id,jdbcType=BIGINT},
+      cat_name = #{record.catName,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbComment" >
-    update tb_comment
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbMealCat" >
+    update tb_meal_cat
     <set >
-      <if test="oId != null" >
-        o_id = #{oId,jdbcType=INTEGER},
-      </if>
-      <if test="comScore != null" >
-        com_score = #{comScore,jdbcType=INTEGER},
-      </if>
-      <if test="comContent != null" >
-        com_content = #{comContent,jdbcType=VARCHAR},
-      </if>
-      <if test="comTime != null" >
-        com_time = #{comTime,jdbcType=TIMESTAMP},
+      <if test="catName != null" >
+        cat_name = #{catName,jdbcType=VARCHAR},
       </if>
     </set>
-    where comment_id = #{commentId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbComment" >
-    update tb_comment
-    set o_id = #{oId,jdbcType=INTEGER},
-      com_score = #{comScore,jdbcType=INTEGER},
-      com_content = #{comContent,jdbcType=VARCHAR},
-      com_time = #{comTime,jdbcType=TIMESTAMP}
-    where comment_id = #{commentId,jdbcType=BIGINT}
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbMealCat" >
+    update tb_meal_cat
+    set cat_name = #{catName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

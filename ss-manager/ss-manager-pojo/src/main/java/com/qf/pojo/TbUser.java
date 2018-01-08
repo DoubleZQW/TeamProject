@@ -1,7 +1,9 @@
 package com.qf.pojo;
 
+import java.util.Date;
+
 public class TbUser {
-    private Integer userId;
+    private Long userId;
 
     private String userName;
 
@@ -9,15 +11,27 @@ public class TbUser {
 
     private String userPhone;
 
-    private String userOthername;
-
     private String userEmail;
 
-    public Integer getUserId() {
+    private String userOthername;
+
+    private Byte userLevel;
+
+    private Integer addrId;
+
+    private Date created;
+
+    private Byte userStatus;
+
+    private Byte userSex;
+
+    private Date updated;
+
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -45,6 +59,14 @@ public class TbUser {
         this.userPhone = userPhone == null ? null : userPhone.trim();
     }
 
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail == null ? null : userEmail.trim();
+    }
+
     public String getUserOthername() {
         return userOthername;
     }
@@ -53,11 +75,51 @@ public class TbUser {
         this.userOthername = userOthername == null ? null : userOthername.trim();
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public Byte getUserLevel() {
+        return userLevel;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail == null ? null : userEmail.trim();
+    public void setUserLevel(Byte userLevel) {
+        this.userLevel = userLevel;
+    }
+
+    public Integer getAddrId() {
+        return addrId;
+    }
+
+    public void setAddrId(Integer addrId) {
+        this.addrId = addrId;
+    }
+
+    public Date getCreated() {
+        return created;
+    }
+
+    public void setCreated(Date created) {
+        this.created = created;
+    }
+
+    public Byte getUserStatus() {
+        return userStatus;
+    }
+
+    public void setUserStatus(Byte userStatus) {
+        this.userStatus = userStatus;
+    }
+
+    public Byte getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(Byte userSex) {
+        this.userSex = userSex;
+    }
+
+    public Date getUpdated() {
+        return updated;
+    }
+
+    public void setUpdated(Date updated) {
+        this.updated = updated;
     }
 }

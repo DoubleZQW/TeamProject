@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qf.mapper.TbMealOrderMapper" >
-  <resultMap id="BaseResultMap" type="com.qf.pojo.TbMealOrder" >
+<mapper namespace="com.qf.mapper.TbAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.pojo.TbAddress" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="meal_id" property="mealId" jdbcType="INTEGER" />
-    <result column="order_id" property="orderId" jdbcType="INTEGER" />
-    <result column="amount" property="amount" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.qf.pojo.TbAddress" extends="BaseResultMap" >
+    <result column="addr_name" property="addrName" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,15 +66,20 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, meal_id, order_id, amount
+    id
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbMealOrderExample" >
+  <sql id="Blob_Column_List" >
+    addr_name
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.qf.pojo.TbAddressExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_meal_order
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_address
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -82,115 +87,108 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tb_meal_order
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_address
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_meal_order
+    delete from tb_address
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qf.pojo.TbMealOrderExample" >
-    delete from tb_meal_order
+  <delete id="deleteByExample" parameterType="com.qf.pojo.TbAddressExample" >
+    delete from tb_address
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qf.pojo.TbMealOrder" >
-    insert into tb_meal_order (id, meal_id, order_id, 
-      amount)
-    values (#{id,jdbcType=BIGINT}, #{mealId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
-      #{amount,jdbcType=INTEGER})
+  <insert id="insert" parameterType="com.qf.pojo.TbAddress" >
+    insert into tb_address (id, addr_name)
+    values (#{id,jdbcType=BIGINT}, #{addrName,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.qf.pojo.TbMealOrder" >
-    insert into tb_meal_order
+  <insert id="insertSelective" parameterType="com.qf.pojo.TbAddress" >
+    insert into tb_address
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="mealId != null" >
-        meal_id,
-      </if>
-      <if test="orderId != null" >
-        order_id,
-      </if>
-      <if test="amount != null" >
-        amount,
+      <if test="addrName != null" >
+        addr_name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="mealId != null" >
-        #{mealId,jdbcType=INTEGER},
-      </if>
-      <if test="orderId != null" >
-        #{orderId,jdbcType=INTEGER},
-      </if>
-      <if test="amount != null" >
-        #{amount,jdbcType=INTEGER},
+      <if test="addrName != null" >
+        #{addrName,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qf.pojo.TbMealOrderExample" resultType="java.lang.Integer" >
-    select count(*) from tb_meal_order
+  <select id="countByExample" parameterType="com.qf.pojo.TbAddressExample" resultType="java.lang.Integer" >
+    select count(*) from tb_address
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_meal_order
+    update tb_address
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.mealId != null" >
-        meal_id = #{record.mealId,jdbcType=INTEGER},
-      </if>
-      <if test="record.orderId != null" >
-        order_id = #{record.orderId,jdbcType=INTEGER},
-      </if>
-      <if test="record.amount != null" >
-        amount = #{record.amount,jdbcType=INTEGER},
+      <if test="record.addrName != null" >
+        addr_name = #{record.addrName,jdbcType=LONGVARCHAR},
       </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_address
+    set id = #{record.id,jdbcType=BIGINT},
+      addr_name = #{record.addrName,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_meal_order
-    set id = #{record.id,jdbcType=BIGINT},
-      meal_id = #{record.mealId,jdbcType=INTEGER},
-      order_id = #{record.orderId,jdbcType=INTEGER},
-      amount = #{record.amount,jdbcType=INTEGER}
+    update tb_address
+    set id = #{record.id,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbMealOrder" >
-    update tb_meal_order
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbAddress" >
+    update tb_address
     <set >
-      <if test="mealId != null" >
-        meal_id = #{mealId,jdbcType=INTEGER},
-      </if>
-      <if test="orderId != null" >
-        order_id = #{orderId,jdbcType=INTEGER},
-      </if>
-      <if test="amount != null" >
-        amount = #{amount,jdbcType=INTEGER},
+      <if test="addrName != null" >
+        addr_name = #{addrName,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbMealOrder" >
-    update tb_meal_order
-    set meal_id = #{mealId,jdbcType=INTEGER},
-      order_id = #{orderId,jdbcType=INTEGER},
-      amount = #{amount,jdbcType=INTEGER}
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.qf.pojo.TbAddress" >
+    update tb_address
+    set addr_name = #{addrName,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

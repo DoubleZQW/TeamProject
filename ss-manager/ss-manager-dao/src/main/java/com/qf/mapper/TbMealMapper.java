@@ -10,7 +10,7 @@ public interface TbMealMapper {
 
     int deleteByExample(TbMealExample example);
 
-    int deleteByPrimaryKey(Integer mealId);
+    int deleteByPrimaryKey(Long mealId);
 
     int insert(TbMeal record);
 
@@ -18,7 +18,7 @@ public interface TbMealMapper {
 
     List<TbMeal> selectByExample(TbMealExample example);
 
-    TbMeal selectByPrimaryKey(Integer mealId);
+    TbMeal selectByPrimaryKey(Long mealId);
 
     int updateByExampleSelective(@Param("record") TbMeal record, @Param("example") TbMealExample example);
 

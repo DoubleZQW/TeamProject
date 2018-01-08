@@ -1,16 +1,15 @@
 package com.qf.pojo;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
 public class TbOrder {
-    private String orderId;
+    private Long orderId;
 
-    private BigDecimal payment;
+    private Integer payment;
 
     private Byte paymentType;
 
-    private BigDecimal orderFree;
+    private Integer orderFree;
 
     private Byte orderStatus;
 
@@ -20,19 +19,19 @@ public class TbOrder {
 
     private String orderMessage;
 
-    public String getOrderId() {
+    public Long getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId == null ? null : orderId.trim();
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
-    public BigDecimal getPayment() {
+    public Integer getPayment() {
         return payment;
     }
 
-    public void setPayment(BigDecimal payment) {
+    public void setPayment(Integer payment) {
         this.payment = payment;
     }
 
@@ -44,11 +43,11 @@ public class TbOrder {
         this.paymentType = paymentType;
     }
 
-    public BigDecimal getOrderFree() {
+    public Integer getOrderFree() {
         return orderFree;
     }
 
-    public void setOrderFree(BigDecimal orderFree) {
+    public void setOrderFree(Integer orderFree) {
         this.orderFree = orderFree;
     }
 

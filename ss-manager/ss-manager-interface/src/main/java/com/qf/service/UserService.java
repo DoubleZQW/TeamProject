@@ -5,7 +5,7 @@ import com.qf.pojo.TbUser;
 import java.util.List;
 
 public interface UserService {
-    TbUser getById(Integer id);
+    TbUser getById(Long id);
 
     List<TbUser> findAll();
 }

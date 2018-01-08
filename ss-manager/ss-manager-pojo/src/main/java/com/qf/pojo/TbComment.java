@@ -3,7 +3,7 @@ package com.qf.pojo;
 import java.util.Date;
 
 public class TbComment {
-    private Integer commentId;
+    private Long commentId;
 
     private Integer oId;
 
@@ -13,11 +13,11 @@ public class TbComment {
 
     private Date comTime;
 
-    public Integer getCommentId() {
+    public Long getCommentId() {
         return commentId;
     }
 
-    public void setCommentId(Integer commentId) {
+    public void setCommentId(Long commentId) {
         this.commentId = commentId;
     }
 

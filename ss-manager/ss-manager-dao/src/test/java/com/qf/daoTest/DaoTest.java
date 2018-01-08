@@ -16,7 +16,7 @@ public class DaoTest {
 
     @Test
     public void run(){
-       TbUser user=userMapper.selectByPrimaryKey(543210);
+       TbUser user=userMapper.selectByPrimaryKey(543210L);
         System.out.println(user.getUserEmail());
     }
 }

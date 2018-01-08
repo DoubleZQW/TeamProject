@@ -2,14 +2,16 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.mapper.TbOrderMapper" >
   <resultMap id="BaseResultMap" type="com.qf.pojo.TbOrder" >
-    <id column="order_id" property="orderId" jdbcType="VARCHAR" />
-    <result column="payment" property="payment" jdbcType="DECIMAL" />
+    <id column="order_id" property="orderId" jdbcType="BIGINT" />
+    <result column="payment" property="payment" jdbcType="INTEGER" />
     <result column="payment_type" property="paymentType" jdbcType="TINYINT" />
-    <result column="order_free" property="orderFree" jdbcType="DECIMAL" />
+    <result column="order_free" property="orderFree" jdbcType="INTEGER" />
     <result column="order_status" property="orderStatus" jdbcType="TINYINT" />
     <result column="order_created" property="orderCreated" jdbcType="TIMESTAMP" />
     <result column="order_finished" property="orderFinished" jdbcType="TIMESTAMP" />
-    <result column="order_message" property="orderMessage" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.qf.pojo.TbOrder" extends="BaseResultMap" >
+    <result column="order_message" property="orderMessage" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,9 +72,27 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    order_id, payment, payment_type, order_free, order_status, order_created, order_finished, 
+    order_id, payment, payment_type, order_free, order_status, order_created, order_finished
+  </sql>
+  <sql id="Blob_Column_List" >
     order_message
   </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.qf.pojo.TbOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbOrderExample" >
     select
     <if test="distinct" >
@@ -87,15 +107,17 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from tb_order
-    where order_id = #{orderId,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
     delete from tb_order
-    where order_id = #{orderId,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.qf.pojo.TbOrderExample" >
     delete from tb_order
@@ -107,9 +129,9 @@
     insert into tb_order (order_id, payment, payment_type, 
       order_free, order_status, order_created, 
       order_finished, order_message)
-    values (#{orderId,jdbcType=VARCHAR}, #{payment,jdbcType=DECIMAL}, #{paymentType,jdbcType=TINYINT}, 
-      #{orderFree,jdbcType=DECIMAL}, #{orderStatus,jdbcType=TINYINT}, #{orderCreated,jdbcType=TIMESTAMP}, 
-      #{orderFinished,jdbcType=TIMESTAMP}, #{orderMessage,jdbcType=VARCHAR})
+    values (#{orderId,jdbcType=BIGINT}, #{payment,jdbcType=INTEGER}, #{paymentType,jdbcType=TINYINT}, 
+      #{orderFree,jdbcType=INTEGER}, #{orderStatus,jdbcType=TINYINT}, #{orderCreated,jdbcType=TIMESTAMP}, 
+      #{orderFinished,jdbcType=TIMESTAMP}, #{orderMessage,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qf.pojo.TbOrder" >
     insert into tb_order
@@ -141,16 +163,16 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="orderId != null" >
-        #{orderId,jdbcType=VARCHAR},
+        #{orderId,jdbcType=BIGINT},
       </if>
       <if test="payment != null" >
-        #{payment,jdbcType=DECIMAL},
+        #{payment,jdbcType=INTEGER},
       </if>
       <if test="paymentType != null" >
         #{paymentType,jdbcType=TINYINT},
       </if>
       <if test="orderFree != null" >
-        #{orderFree,jdbcType=DECIMAL},
+        #{orderFree,jdbcType=INTEGER},
       </if>
       <if test="orderStatus != null" >
         #{orderStatus,jdbcType=TINYINT},
@@ -162,7 +184,7 @@
         #{orderFinished,jdbcType=TIMESTAMP},
       </if>
       <if test="orderMessage != null" >
-        #{orderMessage,jdbcType=VARCHAR},
+        #{orderMessage,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -176,16 +198,16 @@
     update tb_order
     <set >
       <if test="record.orderId != null" >
-        order_id = #{record.orderId,jdbcType=VARCHAR},
+        order_id = #{record.orderId,jdbcType=BIGINT},
       </if>
       <if test="record.payment != null" >
-        payment = #{record.payment,jdbcType=DECIMAL},
+        payment = #{record.payment,jdbcType=INTEGER},
       </if>
       <if test="record.paymentType != null" >
         payment_type = #{record.paymentType,jdbcType=TINYINT},
       </if>
       <if test="record.orderFree != null" >
-        order_free = #{record.orderFree,jdbcType=DECIMAL},
+        order_free = #{record.orderFree,jdbcType=INTEGER},
       </if>
       <if test="record.orderStatus != null" >
         order_status = #{record.orderStatus,jdbcType=TINYINT},
@@ -197,23 +219,36 @@
         order_finished = #{record.orderFinished,jdbcType=TIMESTAMP},
       </if>
       <if test="record.orderMessage != null" >
-        order_message = #{record.orderMessage,jdbcType=VARCHAR},
+        order_message = #{record.orderMessage,jdbcType=LONGVARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByExample" parameterType="map" >
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
     update tb_order
-    set order_id = #{record.orderId,jdbcType=VARCHAR},
-      payment = #{record.payment,jdbcType=DECIMAL},
+    set order_id = #{record.orderId,jdbcType=BIGINT},
+      payment = #{record.payment,jdbcType=INTEGER},
       payment_type = #{record.paymentType,jdbcType=TINYINT},
-      order_free = #{record.orderFree,jdbcType=DECIMAL},
+      order_free = #{record.orderFree,jdbcType=INTEGER},
       order_status = #{record.orderStatus,jdbcType=TINYINT},
       order_created = #{record.orderCreated,jdbcType=TIMESTAMP},
       order_finished = #{record.orderFinished,jdbcType=TIMESTAMP},
-      order_message = #{record.orderMessage,jdbcType=VARCHAR}
+      order_message = #{record.orderMessage,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_order
+    set order_id = #{record.orderId,jdbcType=BIGINT},
+      payment = #{record.payment,jdbcType=INTEGER},
+      payment_type = #{record.paymentType,jdbcType=TINYINT},
+      order_free = #{record.orderFree,jdbcType=INTEGER},
+      order_status = #{record.orderStatus,jdbcType=TINYINT},
+      order_created = #{record.orderCreated,jdbcType=TIMESTAMP},
+      order_finished = #{record.orderFinished,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -222,13 +257,13 @@
     update tb_order
     <set >
       <if test="payment != null" >
-        payment = #{payment,jdbcType=DECIMAL},
+        payment = #{payment,jdbcType=INTEGER},
       </if>
       <if test="paymentType != null" >
         payment_type = #{paymentType,jdbcType=TINYINT},
       </if>
       <if test="orderFree != null" >
-        order_free = #{orderFree,jdbcType=DECIMAL},
+        order_free = #{orderFree,jdbcType=INTEGER},
       </if>
       <if test="orderStatus != null" >
         order_status = #{orderStatus,jdbcType=TINYINT},
@@ -240,20 +275,30 @@
         order_finished = #{orderFinished,jdbcType=TIMESTAMP},
       </if>
       <if test="orderMessage != null" >
-        order_message = #{orderMessage,jdbcType=VARCHAR},
+        order_message = #{orderMessage,jdbcType=LONGVARCHAR},
       </if>
     </set>
-    where order_id = #{orderId,jdbcType=VARCHAR}
+    where order_id = #{orderId,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbOrder" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.qf.pojo.TbOrder" >
     update tb_order
-    set payment = #{payment,jdbcType=DECIMAL},
+    set payment = #{payment,jdbcType=INTEGER},
       payment_type = #{paymentType,jdbcType=TINYINT},
-      order_free = #{orderFree,jdbcType=DECIMAL},
+      order_free = #{orderFree,jdbcType=INTEGER},
       order_status = #{orderStatus,jdbcType=TINYINT},
       order_created = #{orderCreated,jdbcType=TIMESTAMP},
       order_finished = #{orderFinished,jdbcType=TIMESTAMP},
-      order_message = #{orderMessage,jdbcType=VARCHAR}
-    where order_id = #{orderId,jdbcType=VARCHAR}
+      order_message = #{orderMessage,jdbcType=LONGVARCHAR}
+    where order_id = #{orderId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbOrder" >
+    update tb_order
+    set payment = #{payment,jdbcType=INTEGER},
+      payment_type = #{paymentType,jdbcType=TINYINT},
+      order_free = #{orderFree,jdbcType=INTEGER},
+      order_status = #{orderStatus,jdbcType=TINYINT},
+      order_created = #{orderCreated,jdbcType=TIMESTAMP},
+      order_finished = #{orderFinished,jdbcType=TIMESTAMP}
+    where order_id = #{orderId,jdbcType=BIGINT}
   </update>
 </mapper>

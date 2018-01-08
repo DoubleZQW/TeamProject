@@ -1,7 +1,7 @@
 package com.qf.pojo;
 
 public class TbMealOrder {
-    private String id;
+    private Long id;
 
     private Integer mealId;
 
@@ -9,12 +9,12 @@ public class TbMealOrder {
 
     private Integer amount;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getMealId() {

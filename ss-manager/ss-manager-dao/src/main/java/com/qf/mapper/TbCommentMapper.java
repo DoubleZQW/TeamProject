@@ -10,7 +10,7 @@ public interface TbCommentMapper {
 
     int deleteByExample(TbCommentExample example);
 
-    int deleteByPrimaryKey(Integer commentId);
+    int deleteByPrimaryKey(Long commentId);
 
     int insert(TbComment record);
 
@@ -18,7 +18,7 @@ public interface TbCommentMapper {
 
     List<TbComment> selectByExample(TbCommentExample example);
 
-    TbComment selectByPrimaryKey(Integer commentId);
+    TbComment selectByPrimaryKey(Long commentId);
 
     int updateByExampleSelective(@Param("record") TbComment record, @Param("example") TbCommentExample example);
 

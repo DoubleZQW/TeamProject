@@ -1,13 +1,13 @@
 package com.qf.pojo;
 
-import java.math.BigDecimal;
+import java.util.Date;
 
 public class TbMeal {
-    private Integer mealId;
+    private Long mealId;
 
     private String mealName;
 
-    private BigDecimal mealPrice;
+    private Integer mealPrice;
 
     private Integer mealNum;
 
@@ -21,11 +21,17 @@ public class TbMeal {
 
     private String category;
 
-    public Integer getMealId() {
+    private Date createTme;
+
+    private Date updatTime;
+
+    private Long catId;
+
+    public Long getMealId() {
         return mealId;
     }
 
-    public void setMealId(Integer mealId) {
+    public void setMealId(Long mealId) {
         this.mealId = mealId;
     }
 
@@ -37,11 +43,11 @@ public class TbMeal {
         this.mealName = mealName == null ? null : mealName.trim();
     }
 
-    public BigDecimal getMealPrice() {
+    public Integer getMealPrice() {
         return mealPrice;
     }
 
-    public void setMealPrice(BigDecimal mealPrice) {
+    public void setMealPrice(Integer mealPrice) {
         this.mealPrice = mealPrice;
     }
 
@@ -91,5 +97,29 @@ public class TbMeal {
 
     public void setCategory(String category) {
         this.category = category == null ? null : category.trim();
+    }
+
+    public Date getCreateTme() {
+        return createTme;
+    }
+
+    public void setCreateTme(Date createTme) {
+        this.createTme = createTme;
+    }
+
+    public Date getUpdatTime() {
+        return updatTime;
+    }
+
+    public void setUpdatTime(Date updatTime) {
+        this.updatTime = updatTime;
+    }
+
+    public Long getCatId() {
+        return catId;
+    }
+
+    public void setCatId(Long catId) {
+        this.catId = catId;
     }
 }

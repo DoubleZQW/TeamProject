@@ -10,7 +10,7 @@ public interface TbMealOrderMapper {
 
     int deleteByExample(TbMealOrderExample example);
 
-    int deleteByPrimaryKey(String id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(TbMealOrder record);
 
@@ -18,7 +18,7 @@ public interface TbMealOrderMapper {
 
     List<TbMealOrder> selectByExample(TbMealOrderExample example);
 
-    TbMealOrder selectByPrimaryKey(String id);
+    TbMealOrder selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") TbMealOrder record, @Param("example") TbMealOrderExample example);
 
