@@ -4,8 +4,6 @@
 		<title>Title</title>
 	</head>
 	<body>
-		<%--<h2><em style="color: gray">查询用户...</em></h2>--%>
-
 		<%--上方查询条件--%>
 		<div class="col-xs-12 column">
 			<div class="col-xs-6 column">
@@ -58,7 +56,6 @@
 			<div id="toolbar">&emsp;
 				<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="void(0);">
 					<span class="glyphicon glyphicon-remove"></span>
-					<%--<i class="icon iconfont">&#xe612;</i>--%>
 					删除
 				</a>
 			</div>
@@ -160,26 +157,6 @@
 				});
 			</script>
 
-			<%--<table class="table">--%>
-				<%--<thead>--%>
-					<%--<tr>--%>
-						<%--<th class="th th-primary" style="min-width: 60px">编号</th>--%>
-						<%--<th>用户名</th>--%>
-						<%--<th>手机号</th>--%>
-						<%--<th>E-Mail</th>--%>
-						<%--<th>身份</th>--%>
-						<%--<th style="text-align: center;min-width: 100px">操作</th>--%>
-					<%--</tr>--%>
-				<%--</thead>--%>
-				<%--<tbody id="listData">--%>
-					<%--&lt;%&ndash; 已用jQuery-AJAX生成,见"list-index.jsp" &ndash;%&gt;--%>
-				<%--</tbody>--%>
-			<%--</table>--%>
-
-			<%--Panel Footer--%>
-			<div  id="listPage" class="panel-footer" style="text-align: center">
-				<jsp:include page="page.jsp" flush="true" />
-			</div>
 		</div>
 	</body>
 </html>

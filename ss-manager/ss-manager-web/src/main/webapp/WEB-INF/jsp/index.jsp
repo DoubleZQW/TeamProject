@@ -53,10 +53,9 @@
 								商品管理 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="#">添加</a></li>
-								<li><a href="#">修改</a></li>
+								<li><a href="item-query">查询</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="#">删除</a></li>
+								<li><a href="item-add">添加</a></li>
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
