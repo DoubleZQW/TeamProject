@@ -10,16 +10,20 @@
 		<link href="resources/bootstrap-table/bootstrap-table.css" rel="stylesheet">
 
 		<!-- Required Javascript -->
-		<script src="resources/jQuery/jquery-3.2.1.js"></script>
+		<script src="resources/jquery/jquery-3.2.1.js"></script>
 		<script src="resources/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
 		<%-- bootstrap-closable-tab.js --%>
 		<script src="resources/bootstrap-closable-tab/closable-tab-div.js"></script>
 		<%-- bootstrap-table --%>
-		<link href="resources/bootstrap-table/bootstrap-table.js" rel="stylesheet">
-		<link href="resources/bootstrap-table/bootstrap-table-zh-CN.js" rel="stylesheet">
+		<script src="resources/bootstrap-table/bootstrap-table.js" rel="stylesheet"></script>
+		<script src="resources/bootstrap-table/bootstrap-table-zh-CN.js" rel="stylesheet"></script>
+		<%-- moment.js --%>
+		<script src="resources/moment/moment.js" rel="stylesheet"></script>
+		<script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
+
 
 		<%--toPage算法--%>
-		<script src="toPage.js"></script>
+		<script src="resources/js/toPage.js"></script>
 
 	</head>
 
@@ -77,6 +81,7 @@
 			</div>
 
 			<div class="col-xs-10">
+
 				<!-- 高级选项卡主体 -->
 				<ul class="nav nav-tabs" role="tablist"></ul>
 				<div class="col-xs-12 well">
@@ -84,7 +89,6 @@
 					<div class="tab-content" style="height: 80%;width:100%;overflow-y: auto;"></div>
 				</div>
 			</div>
-
 		</div>
 
 		<script type="text/javascript">
