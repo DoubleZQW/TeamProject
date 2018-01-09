@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qf.mapper.TbMealsMapper" >
+    <sql id="Base_Column_List">
+   m.meal_id as mid,m.meal_name as mealname, format(m.meal_price/100,2) as mprice, m.meal_picture as picture ,m.meal_status as mstatus,
+    m.publisher  ,m.meal_intro as mintro ,m.category ,m.create_tme as ctime ,m.updat_time as uptime,
+    c.cat_name as cname
+    </sql>
+    <sql id="Where_Clause">
+        m.mstatus !=3
+        <if test="tbquery !=null and tbquery.mealname!=null and tbquery.mealname!= ''">
+            and  m.mealname like '%${tbquery.mealname}'
+        </if>
+        <if test="tbquery !=null and tbquery.publisher !=null and tbquery.publisher != '' ">
+              and m.publisher like '%${tbquery.publisher}'
+        </if>
+    </sql>
+    <select id="listItemsByPage" resultType="com.qf.mapper.TbMealsMapper">
+        select
+        <include refid="Base_Column_List"/>
+           from  TbMeal as m  LEFT JOIN  TbMealCat as c
+           ON m.meal_id =c.id
+        <choose>
+            <when test="order != null and order.sort != null and order.order != null">
+                <foreach collection="order.orderParams" open="order by " close="" separator="," item="item">
+                    i.${item}
+                </foreach>
+            </when>
+            <otherwise>
+                order by i.id desc
+            </otherwise>
+        </choose>
+           limit#{page.offset},#{page.rows}
+    </select>
+    <select id="ListCondition" resultType="_long">
+        select
+        count(*)
+        from tb_Meal
+        <include refid="Where_Clause"/>
+    </select>
+
+
+</mapper>
