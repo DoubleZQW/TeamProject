@@ -21,10 +21,6 @@
 		<script src="resources/moment/moment.js" rel="stylesheet"></script>
 		<script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
 
-
-		<%--toPage算法--%>
-		<script src="resources/js/toPage.js"></script>
-
 	</head>
 
 	<body>
