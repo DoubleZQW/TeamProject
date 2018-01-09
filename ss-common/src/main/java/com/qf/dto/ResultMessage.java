@@ -1,4 +1,4 @@
-package com.qf.vo;
+package com.qf.dto;
 
 public class ResultMessage {
 	private Boolean bool;

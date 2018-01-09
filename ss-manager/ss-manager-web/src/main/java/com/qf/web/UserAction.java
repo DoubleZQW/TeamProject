@@ -1,10 +1,9 @@
 package com.qf.web;
 
+import com.qf.dto.Order;
 import com.qf.dto.Page;
-import com.qf.dto.Sort;
 import com.qf.pojo.TbUser;
 import com.qf.service.UserService;
-import com.qf.vo.ResultMessage;
 import com.qf.vo.UserVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +29,7 @@ public class UserAction {
 
     @ResponseBody
     @RequestMapping(value = "/user/query", method = RequestMethod.GET)
-    public UserVo findAll(TbUser user, Page page, Sort sort) {
+    public UserVo findAll(TbUser user, Page page, Order order) {
 
         UserVo userVo = new UserVo();
 

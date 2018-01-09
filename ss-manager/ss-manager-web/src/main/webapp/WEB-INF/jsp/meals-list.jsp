@@ -18,7 +18,7 @@
 
 
     $('#tab').bootstrapTable({
-           url:'/meals',
+           url:'meal/query',
           method:'get',
          striped:true,
           pagination: true,

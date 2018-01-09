@@ -1,4 +1,4 @@
-package com.qf.vo;
+package com.qf.dto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,15 @@ import java.util.List;
 public class Order {
     private String sort;
     private String order;
+
+    public Order(String sort, String order) {
+        this.sort = sort;
+        this.order = order;
+    }
+
+    public Order() {
+    }
+
     public List<String> getOrderParams() {
         List<String> list = new ArrayList<String>();
         String[] sorts = sort.split(",");

@@ -1,4 +1,4 @@
-package com.qf.vo;
+package com.qf.dto;
 
 import java.util.List;
 

@@ -2,8 +2,10 @@ package com.qf.vo;
 
 import com.qf.pojo.TbMeal;
 
-public class Custome extends TbMeal {
+public class TbMealCustom extends TbMeal {
+//    商品状态
     private  Byte  mstatus;
+//    商品类别名
     private String catname;
 
     public Byte getMstatus() {

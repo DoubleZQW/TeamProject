@@ -53,7 +53,7 @@
 								商品管理 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="item-query">查询</a></li>
+								<li><a href="javascript:closableTab.addTab({id: 'queryMeals',name: '查询商品',url: 'meals-list',closable: true});">查询</a></li>
 								<li role="separator" class="divider"></li>
 								<li><a href="item-add">添加</a></li>
 							</ul>

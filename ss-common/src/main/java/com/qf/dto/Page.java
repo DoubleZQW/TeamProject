@@ -1,38 +1,34 @@
 package com.qf.dto;
 
 public class Page {
-	private Integer page;
-	private Integer rows;
 
-	public Page() {
-	}
+    private int page;
+    private int rows;
 
-	public Page(Integer page, Integer rows) {
-		this.page = page;
-		this.rows = rows;
-	}
+    public Page() {
+    }
 
-	public Integer getPage() {
-		return page;
-	}
+    public Page(int page, int rows) {
+        this.page = page;
+        this.rows = rows;
+    }
 
-	public void setPage(Integer page) {
-		this.page = page;
-	}
+    public int getOffset(){
+        return (page-1)*rows;
+    }
+    public int getPage() {
+        return page;
+    }
 
-	public Integer getRows() {
-		return rows;
-	}
+    public void setPage(int page) {
+        this.page = page;
+    }
 
-	public void setRows(Integer rows) {
-		this.rows = rows;
-	}
+    public int getRows() {
+        return rows;
+    }
 
-	@Override
-	public String toString() {
-		return "Page{" +
-				"page=" + page +
-				", rows=" + rows +
-				'}';
-	}
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
 }
