@@ -20,6 +20,8 @@
 		<%-- moment.js --%>
 		<script src="resources/moment/moment.js" rel="stylesheet"></script>
 		<script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
+		<script src="resources/sweet-alert/sweetalert.min.js" rel="stylesheet"></script>
+		<%--<script src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>--%>
 
 	</head>
 
@@ -44,7 +46,7 @@
 								用户管理 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:closableTab.addTab({id: 'editUser',name: '查询用户',url: 'user-query',closable: true});">查询</a></li>
+								<li><a href="javascript:closableTab.addTab({id: 'queryUser',name: '查询用户',url: 'user-query',closable: true});">查询</a></li>
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
@@ -86,6 +88,8 @@
 			</div>
 		</div>
 
+		<button class="btn btn-success" onclick="testSA();">testSA</button>
+
 		<script type="text/javascript">
 			var defaultTab={
 				id: 'welcome',
@@ -93,8 +97,12 @@
 				url: 'welcome.jsp',
 				closable: false
 			};
-
+			$("#btn_add").click(function () {
+				$("#myModalLabel").text("新增");
+				$('#myModal').modal();
+			});
 			$(closableTab.addTab(defaultTab));
+
 		</script>
 
 	</body>

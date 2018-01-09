@@ -19,6 +19,6 @@
 	/*background: #fafafa;*/
 /*}*/
 /*修复查询结果数据表格的按钮对齐*/
-html body div.container div.col-xs-10 div.col-xs-12.well div.tab-content div#tab_container_editUser.tab-pane.active div.panel.panel-default div.bootstrap-table div.fixed-table-toolbar div.columns.columns-right.btn-group.pull-right div.keep-open.btn-group button.btn.btn-default.dropdown-toggle {
+html body div.container div.col-xs-10 div.col-xs-12.well div.tab-content div#tab_container_queryUser.tab-pane.active div.panel.panel-default div.bootstrap-table div.fixed-table-toolbar div.columns.columns-right.btn-group.pull-right div.keep-open.btn-group button.btn.btn-default.dropdown-toggle {
 	height: 28px;
 }
