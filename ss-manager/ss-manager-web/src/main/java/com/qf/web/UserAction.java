@@ -2,9 +2,14 @@ package com.qf.web;
 
 import com.qf.dto.Order;
 import com.qf.dto.Page;
+import com.qf.dto.Sort;
 import com.qf.pojo.TbUser;
 import com.qf.service.UserService;
-import com.qf.vo.UserVo;
+import com.qf.vo.PageVo;
+
+
+import com.qf.vo.TbUserCustom;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,13 +34,17 @@ public class UserAction {
 
     @ResponseBody
     @RequestMapping(value = "/user/query", method = RequestMethod.GET)
-    public UserVo findAll(TbUser user, Page page, Order order) {
+    public PageVo<TbUserCustom> listUserByPage(TbUserCustom user, Page page, Sort sort) {
+        PageVo<TbUserCustom> pageVo = new PageVo<TbUserCustom>();
+        pageVo = userService.listUserByPage(user,page,sort);
+        return pageVo;
+    }
 
-        UserVo userVo = new UserVo();
-
-	    List<TbUser> users = userService.findAll();
-	    userVo.setTotal((double) users.size());
-	    userVo.setRows(users);
-        return userVo;
+    @ResponseBody
+    @RequestMapping(value = "user/remove", method = RequestMethod.POST)
+    public int removeUserByIds(@RequestParam("ids[]")List ids) {
+        int i=0;
+        i = userService.deleteUserByIds(ids);
+        return i;
     }
 }

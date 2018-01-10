@@ -9,17 +9,17 @@
 			<div class="col-xs-6 column">
 				<div class="form-group">
 					<label for="user_name">用户名</label>
-					<input type="text" class="form-control" id="user_name" name="user_name"/>
+					<input type="text" class="form-control" id="user_name" name="userName"/>
 				</div>
 			</div>
 
 			<div class="col-xs-6 column">
 				<div class="form-group">
 					<label for="user_level">用户类型</label>
-					<select class="form-control" name="user_level" id="user_level">
-						<option value="">-请选择-</option>
-						<option value="">普通</option>
-						<option value="">管理员</option>
+					<select class="form-control" id="user_level" name="userLevel" >
+						<option value="9">-请选择-</option>
+						<option value="1">普通用户</option>
+						<option value="0">管理员</option>
 					</select>
 				</div>
 			</div>
@@ -54,7 +54,7 @@
 			</div>
 
 			<div id="toolbar">&emsp;
-				<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="void(0);">
+				<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="userRemove()">
 					<span class="glyphicon glyphicon-remove"></span>
 					删除
 				</a>
@@ -75,13 +75,13 @@
 					pagination: true,
 					showPaginationSwitch: true,
 					//可供选择的每页的行数（*）
-					pageList: [1, 10, 25, 50, 100],
+					pageList: [1, 5, 10, 25, 50, 100],
 					//每页大小
 					pageSize: 5,
 					paginationLoop: false,
 					//是否启用排序
 					sortable: true,
-					sortName: 'id',
+					sortName: 'user_id',
 					//排序方式
 					sortOrder: "asc",
 					idField: 'id',
@@ -109,12 +109,15 @@
 					//查询参数,每次调用是会带上这个参数，可自定义
 					queryParams: function (params) {
 						var userName = $('#user_name').val();
+						var userLevel= $('#user_level').val();
 						return {
 							rows: this.pageSize,
 							page: this.pageNumber,
 							sort: this.sortName,
 							order: this.sortOrder,
-							userName: userName
+							userName: userName,
+                            userLevel:userLevel
+
 						};
 					},
 					// queryParams : function(params) {
@@ -136,12 +139,52 @@
 					columns:[{checkbox: true, align: true},
 						{field:'userId',title:'编号',sortable: true,width: 20},
 						{field:'userName',title:'用户名',sortable: true,width: 150},
-						{field:'userStatus',title:'状态',sortable: true,width: 50},
+                        {field:'userLevel',title:'权限',sortable: true,width: 50,
+                            formatter: function(value, row, index) {
+                                switch (value) {
+                                    case 1 :
+                                        return "用户";
+                                        break;
+                                    case 0:
+                                        return "管理员";
+                                        break;
+                                    default:
+                                        return "未知";
+                                        break;
+                                }
+                            }},
+						{field:'userStatus',title:'状态',sortable: true,width: 50,
+                            formatter: function(value, row, index) {
+                                switch (value) {
+                                    case 1 :
+                                        return "存在";
+                                        break;
+									case 0:
+                                        return "删除";//删除的在查询时已经被排除了
+                                        break;
+                                    default:
+                                        return "未知";
+                                        break;
+                                }
+                            }},
 						{field:'userPhone',title:'手机号',sortable: true,visible: false},
-						{field:'userSex',title:'性别',sortable: true,visible: false},
+						{field:'userSex',title:'性别',sortable: true,visible: false,
+                            formatter: function(value, row, index) {
+                                switch (value) {
+                                    case 1 :
+                                        return "男";
+                                        break;
+                                    case 0:
+                                        return "女";
+                                        break;
+                                    default:
+                                        return "未知";
+                                        break;
+                                }
+                            }},
 						{field:'userEmail',title:'电子邮件',sortable: true,visible: false},
 						{field:'userOthername',title:'昵称',sortable: true,width: 100},
-						{field:'addrId',title:'地址',sortable: true,visible: false},
+						{field:'address',title:'地址',sortable: true,visible: false},
 						{field:'created',title:'注册时间',sortable: true,visible: false,
 							formatter: function(value, row, index) {
 								return  moment(value).format("YYYY-MM-DD HH:mm:SS");
@@ -155,6 +198,36 @@
 				$('.cust_list_submit').click(function() {
 					$('#bstab').bootstrapTable('refresh')
 				});
+
+                function userRemove() {
+                    var selections= $('#bstab').bootstrapTable('getSelections');
+                    if (selections.length == 0) {
+                        //客户没有选择记录
+                        alert('请至少选中一条记录！');
+                        return;
+                    }
+                    var msg = "您真的确定要删除吗？";
+                    if (confirm(msg) == true) {
+                        var ids = [];
+                        //遍历选中的记录，将记录的id存放到js数组中
+                        for (var i = 0; i < selections.length; i++) {
+                            ids.push(selections[i].userId);
+                        }
+                        //alert(ids);
+                        $.ajax({
+                            url: "user/remove",
+                            type: "post",
+                            data: {'ids[]': ids},
+							datatype:'json',
+                            success: function (data) {
+                                //alert('成功后的刷新');
+                                //重新加载数据
+                                $('#bstab').bootstrapTable('refresh');
+                            }
+                        });
+                    }
+                }
+
 			</script>
 
 		</div>
