@@ -33,7 +33,7 @@
     <div class="col-xs-4 column">
         <div class="btn-group btn-group-justified" role="group">
             <div class="btn-group" role="group">
-                <button type="button" class="btn btn-info cust_list_submit" onclick="init();">查询</button>
+                <button type="button" class="btn btn-info meal-list-submit" onclick="init();">查询</button>
             </div>
             <div class="btn-group" role="group">
                 <button class="btn btn-warning" onclick="location.reload();return false;">重置</button>
@@ -54,7 +54,7 @@
         </h4>
     </div>
 
-    <div id="toolbar">&emsp;
+    <div id="meal-list-toolbar">&emsp;
         <a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="void(0);">
             <span class="glyphicon glyphicon-remove"></span>
             删除
@@ -63,9 +63,9 @@
 
     <!-- Table -->
     <%-- bootstrap-table演示 --%>
-    <table id="bstab"></table>
+    <table id="meal-list-tab"></table>
     <script type="text/javascript">
-        $("#bstab").bootstrapTable({
+        $("#meal-list-tab").bootstrapTable({
             //请求方法
             method: 'get',
             //是否显示行间隔色
@@ -88,7 +88,7 @@
             idField: 'meal_id',
             height: 400,
             //工具栏
-            toolbar: '#toolbar',
+            toolbar: '#meal-list-toolbar',
             toolbarAlign: 'left',
             //点击行时选中
             clickToSelect: true,
@@ -148,10 +148,10 @@
                         return  moment(value).format("YYYY-MM-DD HH:mm:SS");
                     }}]
         });
-        /*//注册查询按钮的点击事件
-        $('.cust_list_submit').click(function() {
-            $('#bstab').bootstrapTable('refresh')
-        });*/
+        //注册查询按钮的点击事件
+        $('.meal-list-submit').click(function() {
+            $('#meal-list-tab').bootstrapTable('refresh')
+        });
     </script>
 
 </div>
