@@ -9,14 +9,14 @@
 			<div class="col-xs-6 column">
 				<div class="form-group">
 					<label for="user_name">用户名</label>
-					<input type="text" class="form-control" id="user_name" name="userName"/>
+					<input id="user_name" name="user_name" type="text" class="form-control"/>
 				</div>
 			</div>
 
 			<div class="col-xs-6 column">
 				<div class="form-group">
 					<label for="user_level">用户类型</label>
-					<select class="form-control" id="user_level" name="userLevel" >
+					<select class="form-control" id="user_level" name="user_level" >
 						<option value="9">-请选择-</option>
 						<option value="1">普通用户</option>
 						<option value="0">管理员</option>
@@ -32,7 +32,7 @@
 			<div class="col-xs-4 column">
 				<div class="btn-group btn-group-justified" role="group">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-info cust_list_submit" onclick="init();">查询</button>
+						<button type="button" class="btn btn-info user-query-submit" onclick="init();">查询</button>
 					</div>
 					<div class="btn-group" role="group">
 						<button class="btn btn-warning" onclick="location.reload();return false;">重置</button>
@@ -53,7 +53,7 @@
 				</h4>
 			</div>
 
-			<div id="toolbar">&emsp;
+			<div id="user-query-toolbar">&emsp;
 				<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="userRemove()">
 					<span class="glyphicon glyphicon-remove"></span>
 					删除
@@ -62,9 +62,9 @@
 
 			<!-- Table -->
 			<%-- bootstrap-table演示 --%>
-			<table id="bstab"></table>
+			<table id="user-query-tab"></table>
 			<script type="text/javascript">
-				$("#bstab").bootstrapTable({
+				$("#user-query-tab").bootstrapTable({
 					//请求方法
 					method: 'get',
 					//是否显示行间隔色
@@ -87,7 +87,7 @@
 					idField: 'id',
 					height: 400,
 					//工具栏
-					toolbar: '#toolbar',
+					toolbar: '#user-query-toolbar',
 					toolbarAlign: 'left',
 					//点击行时选中
 					clickToSelect: true,
@@ -108,28 +108,13 @@
 					queryParamsType:'limit',
 					//查询参数,每次调用是会带上这个参数，可自定义
 					queryParams: function (params) {
-						var userName = $('#user_name').val();
-						var userLevel= $('#user_level').val();
 						return {
 							rows: this.pageSize,
 							page: this.pageNumber,
 							sort: this.sortName,
-							order: this.sortOrder,
-							userName: userName,
-                            userLevel:userLevel
-
+							order: this.sortOrder
 						};
 					},
-					// queryParams : function(params) {
-					// 	//var subcompany = $('#subcompany option:selected').val();
-					// 	//var name = $('#name').val();
-					// 	return {
-					// 		pageNumber: params.offset+1,
-					// 		pageSize: params.limit
-					// 		//companyId:subcompany,
-					// 		//name:name
-					// 	};
-					// },
 					//分页方式：client客户端分页，server服务端分页（*）
 					sidePagination: "server",
 					//是否显示搜索框
@@ -195,17 +180,41 @@
 						}}]
 				});
 				//注册查询按钮的点击事件
-				$('.cust_list_submit').click(function() {
-					$('#bstab').bootstrapTable('refresh')
+				$('.user-query-submit').click(function() {
+					var userName = $('#user_name').val();
+					var userLevel= $('#user_level').val();
+					$('#user-query-tab').bootstrapTable('refreshOptions',{
+						pageNumber: 1,
+						queryParams: function (params) {
+							return {
+								rows: this.pageSize,
+								page: this.pageNumber,
+								sort: this.sortName,
+								order: this.sortOrder,
+								userName: userName,
+								userLevel: userLevel
+							};}}
+					)
 				});
 
                 function userRemove() {
-                    var selections= $('#bstab').bootstrapTable('getSelections');
-                    if (selections.length == 0) {
-                        //客户没有选择记录
-                        alert('请至少选中一条记录！');
-                        return;
-                    }
+                    var selections= $('#user-query-tab').bootstrapTable('getSelections');
+                    //没有选中任何数据报错
+                    if (selections.length < 1) {swal('请至少选择一条记录!');return;}
+
+					// var ids = [];
+					// var names = [];
+					// //遍历选中的记录，将记录的id存放到js数组中
+					// for (var i = 0; i < selections.length; i++) {
+		             //    ids.push(selections[i].userId);
+		             //    names.push(selections[i].userName);
+					// }
+					// //确定删除?
+					// swal("确定要删除以下"+ selections.length +"位用户?", ""+ names, "warning", {
+					// 	buttons: ['取消','删除!']
+					// });
+					// return;
+
                     var msg = "您真的确定要删除吗？";
                     if (confirm(msg) == true) {
                         var ids = [];
@@ -227,7 +236,6 @@
                         });
                     }
                 }
-
 			</script>
 
 		</div>
