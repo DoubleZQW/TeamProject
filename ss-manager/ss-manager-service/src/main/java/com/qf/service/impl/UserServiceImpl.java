@@ -1,19 +1,18 @@
 package com.qf.service.impl;
 
+import com.qf.dto.Order;
 import com.qf.dto.Page;
-import com.qf.dto.Sort;
+import com.qf.dto.Result;
 import com.qf.mapper.TbUserCustomMapper;
 import com.qf.mapper.TbUserMapper;
 import com.qf.pojo.TbUser;
 import com.qf.pojo.TbUserExample;
 import com.qf.service.UserService;
-import com.qf.vo.PageVo;
 import com.qf.vo.TbUserCustom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -38,22 +37,18 @@ public class UserServiceImpl implements UserService{
         return userMapper.selectByPrimaryKey(id);
     }
 
+//    分页查询用户
     @Override
-    public List<TbUser> findAll() {
-        return userMapper.selectByExample(null);
-    }
-
-    @Override
-    public PageVo<TbUserCustom> listUserByPage(TbUserCustom user, Page page, Sort sort) {
-        PageVo<TbUserCustom> pageVo= new PageVo<TbUserCustom>();
+    public Result<TbUserCustom> listUserByPage(TbUserCustom user, Page page, Order order) {
+        Result<TbUserCustom> result= new Result<TbUserCustom>();
         Map<String,Object> map = new HashMap<String,Object>();
 
         map.put("user",user);
         map.put("page",page);
-        map.put("sort",sort);
+        map.put("order",order);
         //总条数total
         long total = userCustomMapper.countUser(map);
-        pageVo.setTotal(total);
+        result.setTotal(total);
         //按条件分页查询
         List<TbUserCustom> list = userCustomMapper.listUserByPage(map);
 
@@ -85,11 +80,12 @@ public class UserServiceImpl implements UserService{
         }
         pageVo.setRows(list2);*/
 
-        pageVo.setRows(list);
+        result.setRows(list);
 
-        return pageVo;
+        return result;
     }
 
+    //删除用户
     @Override
     public int deleteUserByIds(List ids) {
         int i = 0;

@@ -44,8 +44,8 @@
         LEFT JOIN tb_address a ON u.addr_id = a.id
         <include refid="Where_Clause"/>
         <choose>
-            <when test="sort != null and sort.sort != null and sort.order != null">
-                ORDER BY ${sort.sort}  ${sort.order}
+            <when test="order != null and order.sort != null and order.order != null">
+                ORDER BY ${order.sort}  ${order.order}
             </when>
             <!--<when test="order != null and order.sort != null and order.order != null and order.orderParams != null and order.sort=='cityName' or order.sort=='cityId'">
                 ORDER BY CONVERT(${order.sort} USING gbk) ${order.order}
