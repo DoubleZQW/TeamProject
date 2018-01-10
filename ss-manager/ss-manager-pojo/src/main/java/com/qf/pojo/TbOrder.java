@@ -5,6 +5,10 @@ import java.util.Date;
 public class TbOrder {
     private Long orderId;
 
+    private Long uId;
+
+    private Long mId;
+
     private Integer payment;
 
     private Byte paymentType;
@@ -17,6 +21,10 @@ public class TbOrder {
 
     private Date orderFinished;
 
+    private Integer addrId;
+
+    private Long pId;
+
     private String orderMessage;
 
     public Long getOrderId() {
@@ -25,6 +33,22 @@ public class TbOrder {
 
     public void setOrderId(Long orderId) {
         this.orderId = orderId;
+    }
+
+    public Long getuId() {
+        return uId;
+    }
+
+    public void setuId(Long uId) {
+        this.uId = uId;
+    }
+
+    public Long getmId() {
+        return mId;
+    }
+
+    public void setmId(Long mId) {
+        this.mId = mId;
     }
 
     public Integer getPayment() {
@@ -73,6 +97,22 @@ public class TbOrder {
 
     public void setOrderFinished(Date orderFinished) {
         this.orderFinished = orderFinished;
+    }
+
+    public Integer getAddrId() {
+        return addrId;
+    }
+
+    public void setAddrId(Integer addrId) {
+        this.addrId = addrId;
+    }
+
+    public Long getpId() {
+        return pId;
+    }
+
+    public void setpId(Long pId) {
+        this.pId = pId;
     }
 
     public String getOrderMessage() {

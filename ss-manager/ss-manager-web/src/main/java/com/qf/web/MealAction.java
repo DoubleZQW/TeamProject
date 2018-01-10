@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class MealAction {
@@ -40,6 +43,37 @@ public class MealAction {
           e.printStackTrace();
       }
       return  result;
+    }
+
+    /**
+     * 商品批量删除
+     */
+    @ResponseBody
+    @RequestMapping(value = "/meal/delete",method = RequestMethod.GET)
+    public int deleteMealsByIds(@RequestParam("ids[]") List<Long> ids){
+        int i=0;
+        try {
+            i=mealService.batchUpdate(ids);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 商品更新
+     */
+    @RequestMapping(value = "/meal/update",method = RequestMethod.POST)
+    public int updateMealById(TbMeal tbMeal){
+        int i=0;
+        try {
+            i=mealService.updateMeal(tbMeal);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
     }
 
 }

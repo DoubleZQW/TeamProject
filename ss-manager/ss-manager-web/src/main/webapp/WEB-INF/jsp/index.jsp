@@ -63,6 +63,18 @@
 						<div class="btn-group" role="group">
 							<button type="button" class="btn btn-success dropdown-toggle"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								订单管理 <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:closableTab.addTab({id: 'queryOrder',name: '查询订单',url: 'order-list',closable: true});">查询</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="javascript:closableTab.addTab({id: 'updateOrder',name: '修改订单',url: 'order-update',closable: true});">修改</a></li>
+							</ul>
+
+						</div>
+						<div class="btn-group" role="group">
+							<button type="button" class="btn dropdown-toggle" style="background-color:#c1e2b3"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								评价管理 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">

@@ -12,8 +12,8 @@
     <sql id="Where_Clause">
         <where>
             m.meal_status !=3
-            <if test="tbquery !=null and tbquery.mealname!=null and tbquery.mealname!= ''">
-                and m.meal_name like '%${tbquery.mealname}%'
+            <if test="tbquery !=null and tbquery.mealName!=null and tbquery.mealName!= ''">
+                and m.meal_name like '%${tbquery.mealName}%'
             </if>
             <if test="tbquery !=null and tbquery.publisher !=null and tbquery.publisher != '' ">
                 and m.publisher like '%${tbquery.publisher}%'
@@ -31,13 +31,14 @@
         <include refid="Where_Clause"/>
         <choose>
             <when test="order != null and order.sort != null and order.order != null">
-                <foreach collection="order.orderParams" open="order by " close=""
+                <!--<foreach collection="order.orderParams" open="order by " close=""
                          separator="," item="item">
                     m.${item}
-                </foreach>
+                </foreach>-->
+                ORDER BY ${order.sort}  ${order.order}
             </when>
             <otherwise>
-                order by m.meal_id desc
+                order by m.meal_id asc
             </otherwise>
         </choose>
         limit #{page.offset},#{page.rows}

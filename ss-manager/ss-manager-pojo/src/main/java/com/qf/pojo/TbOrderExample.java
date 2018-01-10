@@ -165,6 +165,126 @@ public class TbOrderExample {
             return (Criteria) this;
         }
 
+        public Criteria andUIdIsNull() {
+            addCriterion("u_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdIsNotNull() {
+            addCriterion("u_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdEqualTo(Long value) {
+            addCriterion("u_id =", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdNotEqualTo(Long value) {
+            addCriterion("u_id <>", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdGreaterThan(Long value) {
+            addCriterion("u_id >", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("u_id >=", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdLessThan(Long value) {
+            addCriterion("u_id <", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdLessThanOrEqualTo(Long value) {
+            addCriterion("u_id <=", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdIn(List<Long> values) {
+            addCriterion("u_id in", values, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdNotIn(List<Long> values) {
+            addCriterion("u_id not in", values, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdBetween(Long value1, Long value2) {
+            addCriterion("u_id between", value1, value2, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdNotBetween(Long value1, Long value2) {
+            addCriterion("u_id not between", value1, value2, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdIsNull() {
+            addCriterion("m_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdIsNotNull() {
+            addCriterion("m_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdEqualTo(Long value) {
+            addCriterion("m_id =", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdNotEqualTo(Long value) {
+            addCriterion("m_id <>", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdGreaterThan(Long value) {
+            addCriterion("m_id >", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("m_id >=", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdLessThan(Long value) {
+            addCriterion("m_id <", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdLessThanOrEqualTo(Long value) {
+            addCriterion("m_id <=", value, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdIn(List<Long> values) {
+            addCriterion("m_id in", values, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdNotIn(List<Long> values) {
+            addCriterion("m_id not in", values, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdBetween(Long value1, Long value2) {
+            addCriterion("m_id between", value1, value2, "mId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMIdNotBetween(Long value1, Long value2) {
+            addCriterion("m_id not between", value1, value2, "mId");
+            return (Criteria) this;
+        }
+
         public Criteria andPaymentIsNull() {
             addCriterion("payment is null");
             return (Criteria) this;
@@ -522,6 +642,126 @@ public class TbOrderExample {
 
         public Criteria andOrderFinishedNotBetween(Date value1, Date value2) {
             addCriterion("order_finished not between", value1, value2, "orderFinished");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdIsNull() {
+            addCriterion("addr_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdIsNotNull() {
+            addCriterion("addr_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdEqualTo(Integer value) {
+            addCriterion("addr_id =", value, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdNotEqualTo(Integer value) {
+            addCriterion("addr_id <>", value, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdGreaterThan(Integer value) {
+            addCriterion("addr_id >", value, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("addr_id >=", value, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdLessThan(Integer value) {
+            addCriterion("addr_id <", value, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdLessThanOrEqualTo(Integer value) {
+            addCriterion("addr_id <=", value, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdIn(List<Integer> values) {
+            addCriterion("addr_id in", values, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdNotIn(List<Integer> values) {
+            addCriterion("addr_id not in", values, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdBetween(Integer value1, Integer value2) {
+            addCriterion("addr_id between", value1, value2, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAddrIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("addr_id not between", value1, value2, "addrId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdIsNull() {
+            addCriterion("p_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdIsNotNull() {
+            addCriterion("p_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdEqualTo(Long value) {
+            addCriterion("p_id =", value, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdNotEqualTo(Long value) {
+            addCriterion("p_id <>", value, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdGreaterThan(Long value) {
+            addCriterion("p_id >", value, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("p_id >=", value, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdLessThan(Long value) {
+            addCriterion("p_id <", value, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdLessThanOrEqualTo(Long value) {
+            addCriterion("p_id <=", value, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdIn(List<Long> values) {
+            addCriterion("p_id in", values, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdNotIn(List<Long> values) {
+            addCriterion("p_id not in", values, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdBetween(Long value1, Long value2) {
+            addCriterion("p_id between", value1, value2, "pId");
+            return (Criteria) this;
+        }
+
+        public Criteria andPIdNotBetween(Long value1, Long value2) {
+            addCriterion("p_id not between", value1, value2, "pId");
             return (Criteria) this;
         }
     }

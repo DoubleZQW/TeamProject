@@ -103,9 +103,8 @@ public class UserServiceImpl implements UserService{
             u.setUserStatus((byte) 2);
             u.setUpdated(new Date());
 
-            i+=userMapper.updateByExample(u, example);
+            i+=userMapper.updateByExample(u,example);
         }
-
         return i;
     }
 }

@@ -29,7 +29,7 @@
         </where>
     </sql>
 
-    <select id="countUser" resultType="long">
+    <select id="countUser" resultType="_long">
         select count(1)
         from tb_user u
         <include refid="Where_Clause"/>

@@ -1,7 +1,7 @@
 package com.qf.vo;
 
 public class TbMealQuery {
-    private  String mealname;
+    private  String mealName;
     private  String publisher;
     private  Byte status;
 
@@ -13,12 +13,12 @@ public class TbMealQuery {
         this.status = status;
     }
 
-    public String getMealname() {
-        return mealname;
+    public String getMealName() {
+        return mealName;
     }
 
-    public void setMealname(String mealname) {
-        this.mealname = mealname;
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
     }
 
     public String getPublisher() {

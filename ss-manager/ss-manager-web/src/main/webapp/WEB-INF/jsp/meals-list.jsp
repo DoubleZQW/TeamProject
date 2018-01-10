@@ -55,7 +55,7 @@
     </div>
 
     <div id="meal-list-toolbar">&emsp;
-        <a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="void(0);">
+        <a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="deleteMeal()">
             <span class="glyphicon glyphicon-remove"></span>
             删除
         </a>
@@ -152,6 +152,35 @@
         $('.meal-list-submit').click(function() {
             $('#meal-list-tab').bootstrapTable('refresh')
         });
+        function deleteMeal() {
+            var selections= $('#meal-list-tab').bootstrapTable('getSelections');
+            if (selections.length == 0) {
+                //客户没有选择记录
+                alert('请至少选中一条记录！');
+                return;
+            }
+            var msg = "您真的确定要删除吗？";
+            if (confirm(msg) == true) {
+                var ids = [];
+                //遍历选中的记录，将记录的id存放到js数组中
+                for (var i = 0; i < selections.length; i++) {
+                    ids.push(selections[i].mealId);
+                }
+                //alert(ids);
+                $.ajax({
+                    url: "meal/delete",
+                    type: "get",
+                    data: {'ids[]': ids},
+                    datatype:'json',
+                    success: function (data) {
+                        //alert('成功后的刷新');
+                        //重新加载数据
+                        $('#meal-list-tab').bootstrapTable('refresh');
+                    }
+                });
+            }
+        }
+
     </script>
 
 </div>
