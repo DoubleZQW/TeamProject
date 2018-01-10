@@ -49,7 +49,7 @@ public class MealAction {
      * 商品批量删除
      */
     @ResponseBody
-    @RequestMapping(value = "/meal/delete",method = RequestMethod.GET)
+    @RequestMapping(value = "/meal/remove",method = RequestMethod.POST)
     public int deleteMealsByIds(@RequestParam("ids[]") List<Long> ids){
         int i=0;
         try {

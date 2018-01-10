@@ -28,10 +28,11 @@
 	<body>
 		<div class="container">
 			<div class="col-xs-12 text-center">
-				<h1><em style="color: cornflowerblue">后台管理系统</em></h1>
-				<h4><em style="color: gray">Version: 0.1-beta</em></h4>
+				<h2><em style="color: cornflowerblue">后台管理系统</em></h2>
+				<h5><em style="color: gray">Version: 0.1-beta</em></h5>
 			</div>
 
+			<%--<div class="clearfix col-xs-1"></div>--%>
 			<%--<div class="col-xs-2" style="border: solid dodgerblue; border-radius: 10px; padding: 20px; margin: 20px">--%>
 			<div class="col-xs-2 well">
 				<div class="text-center">
@@ -41,7 +42,7 @@
 				<div class="text-center">
 					<div class="btn-group-vertical" role="group">
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-info dropdown-toggle"
+							<button type="button" class="btn dropdown-toggle" style="background-color: #FF6666;color: white"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								用户管理 <span class="caret"></span>
 							</button>
@@ -50,7 +51,7 @@
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-primary dropdown-toggle"
+							<button type="button" class="btn dropdown-toggle" style="background-color: #66CC66;color: white"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								商品管理 <span class="caret"></span>
 							</button>
@@ -61,7 +62,7 @@
 							</ul>
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn btn-success dropdown-toggle"
+							<button type="button" class="btn dropdown-toggle" style="background-color: #0099CC;color: white"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								订单管理 <span class="caret"></span>
 							</button>
@@ -73,9 +74,9 @@
 
 						</div>
 						<div class="btn-group" role="group">
-							<button type="button" class="btn dropdown-toggle" style="background-color:#c1e2b3"
+							<button type="button" class="btn dropdown-toggle" style="background-color: #FFFF66"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								评价管理 <span class="caret"></span>
+								订单管理 <span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
 								<li><a href="#">添加</a></li>
@@ -95,12 +96,11 @@
 				<ul class="nav nav-tabs" role="tablist"></ul>
 				<div class="col-xs-12 well">
 					<%-- 高级选项卡内容 --%>
-					<div class="tab-content" style="height: 80%;width:100%;overflow-y: auto;"></div>
+					<div class="tab-content" style="height: 74%;width:100%;"></div>
 				</div>
 			</div>
-		</div>
 
-		<button class="btn btn-success" onclick="testSA();">testSA</button>
+		</div>
 
 		<script type="text/javascript">
 			var defaultTab={
