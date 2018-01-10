@@ -32,7 +32,7 @@
 			<div class="col-xs-4 column">
 				<div class="btn-group btn-group-justified" role="group">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-info cust_list_submit" onclick="init();">查询</button>
+						<button type="button" class="btn btn-info user-query-submit" onclick="init();">查询</button>
 					</div>
 					<div class="btn-group" role="group">
 						<button class="btn btn-warning" onclick="location.reload();return false;">重置</button>
@@ -53,7 +53,7 @@
 				</h4>
 			</div>
 
-			<div id="toolbar">&emsp;
+			<div id="user-query-toolbar">&emsp;
 				<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="void(0);">
 					<span class="glyphicon glyphicon-remove"></span>
 					删除
@@ -62,9 +62,9 @@
 
 			<!-- Table -->
 			<%-- bootstrap-table演示 --%>
-			<table id="bstab"></table>
+			<table id="user-query-tab"></table>
 			<script type="text/javascript">
-				$("#bstab").bootstrapTable({
+				$("#user-query-tab").bootstrapTable({
 					//请求方法
 					method: 'get',
 					//是否显示行间隔色
@@ -87,7 +87,7 @@
 					idField: 'id',
 					height: 400,
 					//工具栏
-					toolbar: '#toolbar',
+					toolbar: '#user-query-toolbar',
 					toolbarAlign: 'left',
 					//点击行时选中
 					clickToSelect: true,
@@ -152,8 +152,8 @@
 						}}]
 				});
 				//注册查询按钮的点击事件
-				$('.cust_list_submit').click(function() {
-					$('#bstab').bootstrapTable('refresh')
+				$('.user-query-submit').click(function() {
+					$('#user-query-tab').bootstrapTable('refresh')
 				});
 			</script>
 
