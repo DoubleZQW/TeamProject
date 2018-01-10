@@ -10,8 +10,11 @@ import com.qf.pojo.TbUserExample;
 import com.qf.service.UserService;
 import com.qf.vo.TbUserCustom;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,10 +101,11 @@ public class UserServiceImpl implements UserService{
             TbUserExample.Criteria criteria = example.createCriteria();
             criteria.andUserIdEqualTo(id);
             u.setUserStatus((byte) 2);
+            u.setUpdated(new Date());
 
-            userMapper.updateByExample(u, example);
+            i+=userMapper.updateByExample(u, example);
         }
 
-        return 1;
+        return i;
     }
 }
