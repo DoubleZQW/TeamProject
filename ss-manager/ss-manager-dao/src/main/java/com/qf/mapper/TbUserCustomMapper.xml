@@ -22,12 +22,10 @@
             <if test="user != null and user.userName != null and user.userName != '' ">
                 and u.user_name like '%${user.userName}%'
             </if>
-            <!--<if test="user != null and user.userLevel != null and user.userLevel != '' ">
-                and u.user_level = ${user.userLevel}
-            </if>-->
-            <if test="user.userLevel != 9">
+            <if test="user != null and user.userLevel != null and user.userLevel != '' ">
                 and u.user_level = ${user.userLevel}
             </if>
+
         </where>
     </sql>
 

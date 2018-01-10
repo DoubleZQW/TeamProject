@@ -17,9 +17,9 @@
 				<div class="form-group">
 					<label for="user_level">用户类型</label>
 					<select class="form-control" id="user_level" name="user_level" >
-						<option value="9">-请选择-</option>
+						<option value="">-请选择-</option>
 						<option value="1">普通用户</option>
-						<option value="0">管理员</option>
+						<option value="2">管理员</option>
 					</select>
 				</div>
 			</div>
@@ -130,7 +130,7 @@
                                     case 1 :
                                         return "用户";
                                         break;
-                                    case 0:
+                                    case 2:
                                         return "管理员";
                                         break;
                                     default:
