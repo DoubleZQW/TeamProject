@@ -23,12 +23,15 @@ public class MealServiceImpl implements MealService {
 
     private Logger logger= LoggerFactory.getLogger(this.getClass());
 
+//    引入商品扩展类
     @Autowired
     private TbMealsMapper mealDao;
 
+//    引入商品类
     @Autowired
     private TbMealMapper mealMapper;
 
+    //    商品查询分页（包含模糊查询、排序）
     @Override
     public Result<TbMeal> ListMealsByPage(Page page, TbMealQuery tbquery ,Order order) {
       Result<TbMeal> result=new Result<TbMeal>();
@@ -38,12 +41,13 @@ public class MealServiceImpl implements MealService {
            map.put("tbquery",tbquery);
            map.put("order",order);
            //获取总数
-          Long total= mealDao.ListCondition(map);
-           //获得总条数
+          Long total= mealDao.listCondition(map);
+           //获得查询商品集合
            List<TbMeal> list=mealDao.listItemsByPage(map);
            result.setRows(list);
            result.setTotal(total);
        } catch(Exception e){
+           logger.error(e.getMessage(),e);
           e.printStackTrace();
         }
         return result;
@@ -70,6 +74,7 @@ public class MealServiceImpl implements MealService {
         return i;
     }
 
+//   更新商品
     @Override
     public int updateMeal(TbMeal tbMeal) {
         int i=0;

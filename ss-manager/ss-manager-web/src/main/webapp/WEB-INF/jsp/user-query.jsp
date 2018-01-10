@@ -155,7 +155,7 @@
 				$('.cust_list_submit').click(function() {
 					$('#bstab').bootstrapTable('refresh')
 				});
-		n	</script>
+			</script>
 
 		</div>
 	</body>

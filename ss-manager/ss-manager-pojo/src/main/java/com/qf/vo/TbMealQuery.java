@@ -3,13 +3,13 @@ package com.qf.vo;
 public class TbMealQuery {
     private  String mealname;
     private  String publisher;
-    private  int status;
+    private  Byte status;
 
-    public int getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Byte status) {
         this.status = status;
     }
 

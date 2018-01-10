@@ -22,6 +22,13 @@ public class MealAction {
     @Autowired
     private MealService mealService;
 
+    /**
+     * 商品分页
+     * @param page
+     * @param tbquery
+     * @param order
+     * @return
+     */
     @ResponseBody
     @RequestMapping(value="/meal/query",method= RequestMethod.GET)
     public Result<TbMeal> listMealsByPage(Page page, TbMealQuery tbquery, Order order){
