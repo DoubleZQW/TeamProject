@@ -36,7 +36,7 @@
 			<%--<div class="col-xs-2" style="border: solid dodgerblue; border-radius: 10px; padding: 20px; margin: 20px">--%>
 			<div class="col-xs-2 well">
 				<div class="text-center">
-					<label>管理菜单</label>
+					<label><span class="glyphicon glyphicon-tasks"></span> 管理菜单</label>
 				</div>
 
 				<div class="text-center">
@@ -44,45 +44,60 @@
 						<div class="btn-group" role="group">
 							<button type="button" class="btn dropdown-toggle" style="background-color: #FF6666;color: white"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								用户管理 <span class="caret"></span>
+								<span class="glyphicon glyphicon-user"></span> 用户管理
+								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:closableTab.addTab({id: 'queryUser',name: '查询用户',url: 'user-query',closable: true});">查询</a></li>
+								<li><a href="javascript:closableTab.addTab({id: 'queryUser',name: '查询用户',url: 'user-query',closable: true});">
+									<span class="glyphicon glyphicon-search"></span> 查询
+								</a></li>
 							</ul>
 						</div>
+
 						<div class="btn-group" role="group">
 							<button type="button" class="btn dropdown-toggle" style="background-color: #66CC66;color: white"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								商品管理 <span class="caret"></span>
+								<span class="glyphicon glyphicon-leaf"></span> 商品管理
+								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:closableTab.addTab({id: 'queryMeals',name: '查询商品',url: 'meals-list',closable: true});">查询</a></li>
+								<li><a href="javascript:closableTab.addTab({id: 'queryMeals',name: '查询商品',url: 'meals-list',closable: true});">
+									<span class="glyphicon glyphicon-search"></span> 查询
+								</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="item-add">添加</a></li>
+								<li><a href="item-add">
+									<span class="glyphicon glyphicon-plus"></span> 添加
+								</a></li>
 							</ul>
 						</div>
+
 						<div class="btn-group" role="group">
 							<button type="button" class="btn dropdown-toggle" style="background-color: #0099CC;color: white"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								订单管理 <span class="caret"></span>
+								<span class="glyphicon glyphicon-list-alt"></span> 订单管理
+								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="javascript:closableTab.addTab({id: 'queryOrder',name: '查询订单',url: 'order-list',closable: true});">查询</a></li>
+								<li><a href="javascript:closableTab.addTab({id: 'queryOrder',name: '查询订单',url: 'order-list',closable: true});">
+									<span class="glyphicon glyphicon-search"></span> 查询
+								</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="javascript:closableTab.addTab({id: 'updateOrder',name: '修改订单',url: 'order-update',closable: true});">修改</a></li>
+								<li><a href="javascript:closableTab.addTab({id: 'updateOrder',name: '修改订单',url: 'order-update',closable: true});">
+									<span class="glyphicon glyphicon-pencil"></span> 修改
+								</a></li>
 							</ul>
-
 						</div>
+
 						<div class="btn-group" role="group">
 							<button type="button" class="btn dropdown-toggle" style="background-color: #FFFF66"
 									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								订单管理 <span class="caret"></span>
+								<span class="glyphicon glyphicon-thumbs-up"></span> 评价管理
+								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="#">添加</a></li>
-								<li><a href="#">修改</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="#">删除</a></li>
+								<li><a href="#">
+									<span class="glyphicon glyphicon-search"></span> 查询
+								</a></li>
 							</ul>
 						</div>
 					</div>

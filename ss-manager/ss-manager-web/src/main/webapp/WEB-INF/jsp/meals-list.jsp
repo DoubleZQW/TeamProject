@@ -33,10 +33,14 @@
             <div class="col-xs-4 column">
                 <div class="btn-group btn-group-justified" role="group">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-info btn-sm meal-list-submit" onclick="void(0);">查询</button>
+                        <button type="button" class="btn btn-info btn-sm meal-list-submit" onclick="void(0);">
+							<span class="glyphicon glyphicon-search"></span> 查询
+						</button>
                     </div>
                     <div class="btn-group" role="group">
-                        <button class="btn btn-warning btn-sm" onclick="location.reload();return false;">重置</button>
+                        <button class="btn btn-warning btn-sm" onclick="location.reload();return false;">
+							<span class="glyphicon glyphicon-refresh"></span> 重置
+						</button>
                     </div>
                 </div>
             </div>
@@ -52,7 +56,7 @@
 				</h3>
 				<div class="btn-group">
 					<a href="javascript:void(0);" class="btn btn-info btn-xs" onclick="askEdit()">
-						<span class="glyphicon glyphicon-pencil"></span>
+						<span class="glyphicon glyphicon-edit"></span>
 						编辑
 					</a>
 					<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="askRemove()">
@@ -126,8 +130,19 @@
                     columns:[{checkbox: true, align: true},
                         {field:'mealId',title:'编号',sortable: true,width: 20},
                         {field:'mealName',title:'商品名',sortable: true,width: 150},
-                        {field:'mealPrice',title:'商品价格',sortable: true,width: 50},
+                        {field:'mealStatus',title:'上架状态',sortable: true,width: 100,formatter: function(value, row, index) {
+                        	switch (value) {
+								case 1: return "<span class='glyphicon glyphicon-ok-sign'></span> 上架中";
+								case 2: return "<span class='glyphicon  glyphicon-remove-sign'></span> 已下架";
+								case 3: return "<span class='glyphicon  glyphicon-trash'></span> 已删除";
+								default: return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
+	                        }
+							}},
+                        {field:'mealPrice',title:'商品价格',sortable: true,width: 50,formatter: function(value) {
+                        	return "<span class='glyphicon glyphicon-yen'></span> "+ value;
+							}},
                         {field:'mealNum',title:'商品库存',sortable: true,visible: false},
+                        {field:'mealIntro',title:'商品介绍',sortable: true,visible: false},
                         {field:'createTme',title:'添加时间',sortable: true,visible: false,
                             formatter: function(value, row, index) {
                                 return  moment(value).format("YYYY-MM-DD HH:mm:SS");

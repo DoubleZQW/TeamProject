@@ -32,10 +32,14 @@
 			<div class="col-xs-4 column">
 				<div class="btn-group btn-group-justified" role="group">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-info btn-sm user-query-submit" onclick="void(0);">查询</button>
+						<button type="button" class="btn btn-info btn-sm user-query-submit" onclick="void(0);">
+							<span class="glyphicon glyphicon-search"></span> 查询
+						</button>
 					</div>
 					<div class="btn-group" role="group">
-						<button class="btn btn-warning btn-sm" onclick="location.reload();return false;">重置</button>
+						<button class="btn btn-warning btn-sm" onclick="location.reload();return false;">
+							<span class="glyphicon glyphicon-refresh"></span> 重置
+						</button>
 					</div>
 				</div>
 			</div>
@@ -51,7 +55,7 @@
 				</h3>
 				<div class="btn-group">
 					<a href="javascript:void(0);" class="btn btn-info btn-xs" onclick="askEdit()">
-						<span class="glyphicon glyphicon-pencil"></span>
+						<span class="glyphicon glyphicon-edit"></span>
 						编辑
 					</a>
 					<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="askRemove()">
@@ -143,14 +147,12 @@
                             formatter: function(value, row, index) {
                                 switch (value) {
                                     case 1 :
-                                        return "存在";
-                                        break;
+                                        return "<span class='glyphicon glyphicon-ok-sign'></span> 存在";
 									case 0:
-                                        return "删除";//删除的在查询时已经被排除了
-                                        break;
+										//删除的在查询时已经被排除了
+                                        return "<span class='glyphicon glyphicon-remove-sign'></span> 删除";
                                     default:
-                                        return "未知";
-                                        break;
+                                        return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
                                 }
                             }},
 						{field:'userPhone',title:'手机号',sortable: true,visible: false},
