@@ -54,7 +54,7 @@
 					<span class="label label-default"><em>商品查询列表</em></span>
 				</h3>
 				<div class="btn-group">
-					<button class="btn btn-info btn-xs btn-meal-edit" disabled="disabled" onclick="askEdit();">
+					<button class="btn btn-info btn-xs btn-meal-edit" disabled="disabled" onclick="tabToEditMeal();">
 						<span class="glyphicon glyphicon-edit"></span>
 						编辑
 					</button>
@@ -132,24 +132,24 @@
                     columns:[{checkbox: true, align: true},
                         {field:'mealId',title:'编号',sortable: true,width: 20},
                         {field:'mealName',title:'商品名',sortable: true,width: 150},
-                        {field:'mealStatus',title:'上架状态',sortable: true,width: 100,formatter: function(value, row, index) {
+                        {field:'mealStatus',title:'上架状态',sortable: true,width: 70,align: 'center',formatter: function(value, row, index) {
                         	switch (value) {
-								case 1: return "<span class='glyphicon glyphicon-ok-sign'></span> 上架中";
-								case 2: return "<span class='glyphicon  glyphicon-remove-sign'></span> 已下架";
-								case 3: return "<span class='glyphicon  glyphicon-trash'></span> 已删除";
-								default: return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
+								case 1: return "<button class='btn btn-success btn-xs'>上架中</button>";
+								case 2: return "<button class='btn btn-warning btn-xs'>已下架</button>";
+								case 3: return "<button class='btn btn-warning btn-xs'>已删除</button>";
+								default: return "<button class='btn btn-warning btn-xs'>未知</button>";
 	                        }
 							}},
                         {field:'mealPrice',title:'商品价格',sortable: true,width: 50,formatter: function(value) {
-                        	return "<span class='glyphicon glyphicon-yen'></span> "+ value;
+                        	return "<span class='glyphicon glyphicon-yen'></span> "+ value/100;
 							}},
-                        {field:'mealNum',title:'商品库存',sortable: true,visible: false},
+                        {field:'mealNum',title:'商品库存',sortable: true,width: 70,align: 'center',},
                         {field:'mealIntro',title:'商品介绍',sortable: true,visible: false},
-                        {field:'createTme',title:'添加时间',sortable: true,visible: false,
+                        {field:'createTme',title:'添加时间',sortable: true,visible: false,align: 'center',
                             formatter: function(value, row, index) {
                                 return  moment(value).format("YYYY-MM-DD HH:mm:SS");
                             }},
-                        {field:'updatTime',title:'更新时间',sortable: true,
+                        {field:'updatTime',title:'更新时间',sortable: true,align: 'center',
                             formatter: function(value, row, index) {
                                 return  moment(value).format("YYYY-MM-DD HH:mm:SS");
                             }}]
@@ -173,8 +173,6 @@
 						}
 					})
                 })
-				//页面加载后立即查询一次
-					.click();
 
                 //设置各个工具栏按钮的禁用规则
 				function setDisabled() {
@@ -252,25 +250,21 @@
                 }
 
 
-                //给出编辑的确认信息框
-				function askEdit() {
-					var selections = $('#meal-list-tab').bootstrapTable('getSelections');
-					//没有选中任何数据报错
-					if (selections.length < 1) {
-						swal({
-							icon: 'warning',
-							title: "未选中!",
-							text: '我找不到你的选择...',
-							timer: 1500,
-							buttons: false,
-						});
-						return this;
-					}
-					editMeal(selections[0].mealId);
-				}
-				function editMeal(mealId) {
-					swal({title: "攻城狮正在加班设计中..."});
-				}
+                //直接去编辑
+                function tabToEditMeal() {
+	                var mealId = $('#meal-list-tab').bootstrapTable('getSelections')[0].mealId;
+	                //非空检查
+	                if (! mealId) {
+		                swal("数据为空,请刷新!", {timer: 2000});
+		                return;
+	                }
+	                closableTab.addTab({
+		                id: 'editMeal',
+		                name: '编辑商品',
+		                url: 'meal/edit/'+ mealId,
+		                closable: true
+	                });
+                }
 			</script>
         </div>
     </body>

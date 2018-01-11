@@ -130,15 +130,19 @@
 						{field:'orderStatus',title:'订单状态',sortable: true,width: 50,
 							formatter: function(value, row, index) {
 								switch (value) {
-									case 1: return "未付款";
-									case 2: return "已付款";
-									case 3: return "付款成功";
-									case 4: return "交易成功"
+									case 1: return "<span class='glyphicon glyphicon-remove-sign'></span> 已取消";
+									case 2: return "<span class='glyphicon glyphicon-ok-sign'></span> 交易成功";
+									case 3: return "<span class='glyphicon glyphicon-trash'></span> 已删除";
+									default: return "<span class='glyphicon glyphicon-question-sign'></span> 未知"
 								}}},
-						{field:'mealPrice',title:'商品价格',sortable: true,width: 20},
+						{field:'mealPrice',title:'商品价格',sortable: true,width: 20,
+							formatter: function(value) {return "<span class='glyphicon glyphicon-yen'></span>"+ value/100;}
+						},
 						{field:'amount',title:'购买数量',sortable: true,width: 20},
 						//{field:'mealNum',title:'商品库存',sortable: true,width: 20},
-						{field:'payment',title:'实付金额',sortable: true,width: 150,formatter: function(value) {return value/100;}},
+						{field:'payment',title:'实付金额',sortable: true,width: 150,formatter: function(value) {
+							return "<span class='glyphicon glyphicon-yen'></span>"+ value/100;
+						}},
 						{field:'pName',title:'配送员姓名',sortable: true,width: 150,visible: false},
 						{field:'pMobie',title:'配送员电话',sortable: true,width: 150,visible: false},
 						{field:'userName',title:'用户姓名',sortable: true,width: 150},
@@ -175,8 +179,6 @@
 							}
 						})
 					})
-					//页面加载后立即查询一次
-						.click();
 
 					//设置各个工具栏按钮的禁用规则
 					function setDisabled() {
@@ -203,7 +205,7 @@
 						var names = [];
 						//遍历选中的记录，将记录的id存放到js数组中
 						for (var i = 0; i < selections.length; i++) {
-							ids.push(selections[i].mealId);
+							ids.push(selections[i].orderId);
 							names.push(selections[i].mealName);
 						}
 						//确定删除?
@@ -243,7 +245,7 @@
 										buttons: false
 									});
 								//重新加载数据
-								$('.meal-list-submit').click();
+								$('.order-list-submit').click();
 							}
 						});
 					}

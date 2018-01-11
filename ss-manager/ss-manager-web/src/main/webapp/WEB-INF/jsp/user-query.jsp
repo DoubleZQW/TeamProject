@@ -53,7 +53,7 @@
 					<span class="label label-default"><em>用户查询结果</em></span>
 				</h3>
 				<div class="btn-group">
-					<button class="btn btn-info btn-xs btn-user-edit" disabled="disabled" onclick="askEdit();">
+					<button class="btn btn-info btn-xs btn-user-edit" disabled="disabled" onclick="tabToEditUser();">
 						<span class="glyphicon glyphicon-edit"></span>
 						编辑
 					</button>
@@ -134,55 +134,35 @@
                         {field:'userLevel',title:'权限',sortable: true,width: 50,
                             formatter: function(value, row, index) {
                                 switch (value) {
-                                    case 1 :
-                                        return "用户";
-                                        break;
-                                    case 2:
-                                        return "管理员";
-                                        break;
-                                    default:
-                                        return "未知";
-                                        break;
+                                    case 1: return "用户";
+                                    case 2: return "管理员";
+                                    default: return "未知";
                                 }
                             }},
 						{field:'userStatus',title:'状态',sortable: true,width: 50,
                             formatter: function(value, row, index) {
                                 switch (value) {
-                                    case 1 :
-                                        return "<span class='glyphicon glyphicon-ok-sign'></span> 存在";
-									case 0:
-										//删除的在查询时已经被排除了
-                                        return "<span class='glyphicon glyphicon-remove-sign'></span> 删除";
-                                    default:
-                                        return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
+                                    case 1: return "<span class='glyphicon glyphicon-ok-sign'></span> 存在";
+									case 0:  return "<span class='glyphicon glyphicon-remove-sign'></span> 删除";
+                                    default:  return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
                                 }
                             }},
 						{field:'userPhone',title:'手机号',sortable: true,visible: false},
 						{field:'userSex',title:'性别',sortable: true,visible: false,
                             formatter: function(value, row, index) {
                                 switch (value) {
-                                    case 1 :
-                                        return "男";
-                                        break;
-                                    case 0:
-                                        return "女";
-                                        break;
-                                    default:
-                                        return "未知";
-                                        break;
+                                    case 1: return "男";
+                                    case 0: return "女";
+                                    default: return "未知";
                                 }
                             }},
 						{field:'userEmail',title:'电子邮件',sortable: true,visible: false},
 						{field:'userOthername',title:'昵称',sortable: true,width: 100},
 						{field:'address',title:'地址',sortable: true,visible: false},
 						{field:'created',title:'注册时间',sortable: true,visible: false,
-							formatter: function(value, row, index) {
-								return  moment(value).format("YYYY-MM-DD HH:mm:SS");
-							}},
+							formatter: function(value, row, index) {return  moment(value).format("YYYY-MM-DD HH:mm:SS");}},
 						{field:'updated',title:'更新时间',sortable: true,
-						formatter: function(value, row, index) {
-							return  moment(value).format("YYYY-MM-DD HH:mm:SS");
-						}}]
+						formatter: function(value, row, index) {return  moment(value).format("YYYY-MM-DD HH:mm:SS");}}]
 				});
 
 				//注册查询按钮的点击事件
@@ -203,8 +183,6 @@
 						}
 					})
 				})
-				//页面加载后立即查询一次
-					.click();
 
 				//设置各个工具栏按钮的禁用规则
 				function setDisabled() {
@@ -282,33 +260,20 @@
                 }
 
 
-                //给出编辑的确认信息框
-				function askEdit() {
-					var selections = $('#user-query-tab').bootstrapTable('getSelections');
-					//没有选中任何数据报错
-					if (selections.length < 1) {
-						swal({
-							icon: 'warning',
-							title: "未选中!",
-							text: '我找不到你的选择...',
-							timer: 1500,
-							buttons: false,
-						});
-						return this;
+                //直接去编辑
+				function tabToEditUser() {
+					var userId = $('#user-query-tab').bootstrapTable('getSelections')[0].userId;
+					//非空检查
+					if (! userId) {
+						swal("数据为空,请刷新!", {timer: 2000});
+						return;
 					}
-					if (selections.length > 1) {
-						swal({
-							icon: 'warning',
-							title: '无法编辑多个用户!',
-							text: '我只要唯一的选择~',
-							timer: 2500,
-							buttons: false,
-						});
-					}
-					editUser(selections[0].userId);
-				}
-				function editUser(userId) {
-					swal({title: "攻城狮正在加班设计中..."});
+					closableTab.addTab({
+						id: 'editUser',
+						name: '编辑用户',
+						url: 'user/edit/'+ userId,
+						closable: true
+					});
 				}
 			</script>
 
