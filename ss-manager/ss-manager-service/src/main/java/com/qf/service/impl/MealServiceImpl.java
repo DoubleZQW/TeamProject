@@ -1,5 +1,9 @@
 package com.qf.service.impl;
 
+/**
+ * 商品的service的实现层
+ */
+
 import com.qf.mapper.TbMealMapper;
 import com.qf.mapper.TbMealsMapper;
 import com.qf.pojo.TbMeal;

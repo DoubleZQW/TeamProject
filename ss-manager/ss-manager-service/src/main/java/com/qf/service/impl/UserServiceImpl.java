@@ -1,5 +1,9 @@
 package com.qf.service.impl;
 
+/**
+ * 用户的service实现层
+ */
+
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
@@ -10,9 +14,7 @@ import com.qf.pojo.TbUserExample;
 import com.qf.service.UserService;
 import com.qf.vo.TbUserCustom;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -26,6 +28,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private TbUserMapper userMapper;
 
+//    引入dao层扩展
     @Autowired
     private TbUserCustomMapper userCustomMapper;
 
@@ -102,7 +105,6 @@ public class UserServiceImpl implements UserService{
             criteria.andUserIdEqualTo(id);
             u.setUserStatus((byte) 2);
             u.setUpdated(new Date());
-
             i+=userMapper.updateByExample(u,example);
         }
         return i;

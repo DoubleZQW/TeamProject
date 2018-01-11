@@ -16,7 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 @Controller
 public class OrderAction {
@@ -40,6 +43,22 @@ public class OrderAction {
             e.printStackTrace();
         }
         return result;
+    }
+
+    /**
+     * 批量删除订单
+     */
+    @ResponseBody
+    @RequestMapping(value = "/order/delete",method = RequestMethod.GET)
+    public int deleteOrderById(@RequestParam("ids[]") List<Long> ids){
+        int i=0;
+        try {
+            i=orderService.batchUpdate(ids);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
     }
 
 }

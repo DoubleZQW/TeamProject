@@ -1,5 +1,9 @@
 package com.qf.service;
 
+/**
+ * 用户的service层
+ */
+
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;

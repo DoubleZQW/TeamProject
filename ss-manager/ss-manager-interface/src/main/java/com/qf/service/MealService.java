@@ -1,5 +1,9 @@
 package com.qf.service;
 
+/**
+ * 商品的service层
+ */
+
 import com.qf.pojo.TbMeal;
 
 import java.util.List;

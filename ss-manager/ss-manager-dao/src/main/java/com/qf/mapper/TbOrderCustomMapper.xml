@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.mapper.TbOrderCustomMapper" >
+    <sql id="Base_sql">
+        /*order本身的字段*/
+        o.order_id as orderId,format(o.payment/100,2) as payment,o.order_status as orderStatus,
+        o.payment_type as paymentType,o.order_created as orderCreated,o.order_free as orderFree,
+        o.order_finished as orderFinished,o.order_message as orderMessage,
+        /*要关联的字段*/
+        m.meal_name as mealName,m.meal_price as mealPrice,m.meal_picture as mealPicture,
+        m.meal_num as mealNum,mo.amount,
+        a.addr_name as addrName,p.p_name as pName,p.p_mobie as pMobie
+    </sql>
 
+    <sql id="Where_Clause">
+        <where>
+            o.order_status !=4
+            <if test="query !=null and query."></if>
+        </where>
+    </sql>
 </mapper>

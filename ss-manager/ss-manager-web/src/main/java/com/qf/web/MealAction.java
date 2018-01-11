@@ -21,7 +21,7 @@ import java.util.List;
 public class MealAction {
     private Logger logger= LoggerFactory.getLogger(this.getClass());
 
-//    引入Service层
+//    引入meal的Service层
     @Autowired
     private MealService mealService;
 
@@ -75,5 +75,4 @@ public class MealAction {
         }
         return i;
     }
-
 }
