@@ -196,9 +196,7 @@
                     });
                 }
             }
-
         </script>
-
     </div>
 </div>
 </body>

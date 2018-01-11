@@ -26,7 +26,7 @@ public class MealAction {
     private MealService mealService;
 
     /**
-     * 商品分页
+     * 商品分页查询
      * @param page
      * @param tbquery
      * @param order
@@ -53,7 +53,48 @@ public class MealAction {
     public int deleteMealsByIds(@RequestParam("ids[]") List<Long> ids){
         int i=0;
         try {
-            i=mealService.batchUpdate(ids);
+//           创建一个对象，设置商品状态为：3，删除
+            TbMeal tbMeal=new TbMeal();
+            tbMeal.setMealStatus((byte)3);
+            i=mealService.batchUpdateStatus(ids,tbMeal);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 商品批量上架
+     */
+    @ResponseBody
+    @RequestMapping(value = "/meal/shang",method = RequestMethod.POST)
+    public int updateMealsByIds(@RequestParam("ids[]") List<Long> ids){
+        int i=0;
+        try {
+//           创建一个对象，设置商品状态为：1，上架
+            TbMeal tbMeal=new TbMeal();
+            tbMeal.setMealStatus((byte)1);
+            i=mealService.batchUpdateStatus(ids,tbMeal);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 商品批量上架
+     */
+    @ResponseBody
+    @RequestMapping(value = "/meal/xia",method = RequestMethod.POST)
+    public int updateMealsById(@RequestParam("ids[]") List<Long> ids){
+        int i=0;
+        try {
+//           创建一个对象，设置商品状态为：2，下架
+            TbMeal tbMeal=new TbMeal();
+            tbMeal.setMealStatus((byte)2);
+            i=mealService.batchUpdateStatus(ids,tbMeal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();
@@ -64,11 +105,28 @@ public class MealAction {
     /**
      * 商品更新
      */
+    @ResponseBody
     @RequestMapping(value = "/meal/update",method = RequestMethod.POST)
     public int updateMealById(TbMeal tbMeal){
         int i=0;
         try {
             i=mealService.updateMeal(tbMeal);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+    /**
+     * 商品添加
+     */
+    @ResponseBody
+    @RequestMapping(value = "/meal/add",method = RequestMethod.POST)
+    public int addMeals(TbMeal tbMeal){
+        int i=0;
+        try {
+            i=mealService.saveMeals(tbMeal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();

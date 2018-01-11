@@ -19,8 +19,11 @@ public interface MealService {
     Result<TbMeal> ListMealsByPage(Page page, TbMealQuery tbquery, Order order);
 
     //    批量删除
-    int batchUpdate(List<Long> ids);
+    int batchUpdateStatus(List<Long> ids,TbMeal tbMeal);
 
     //    更新
     int updateMeal(TbMeal tbMeal);
+
+//    添加
+    int saveMeals(TbMeal tbMeal);
 }

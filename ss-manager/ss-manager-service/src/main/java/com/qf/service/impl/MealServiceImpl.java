@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,12 +60,9 @@ public class MealServiceImpl implements MealService {
 
     //    批量删除
     @Override
-    public int batchUpdate(List<Long> ids) {
+    public int batchUpdateStatus(List<Long> ids,TbMeal tbMeal) {
         int i=0;
         try {
-//        创建一个对象，设置商品状态为：3,删除
-            TbMeal tbMeal=new TbMeal();
-            tbMeal.setMealStatus((byte)3);
 //            创建更新模版
             TbMealExample example=new TbMealExample();
             TbMealExample.Criteria criteria=example.createCriteria();
@@ -84,6 +82,21 @@ public class MealServiceImpl implements MealService {
         int i=0;
         try {
             i = mealMapper.updateByPrimaryKeySelective(tbMeal);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
+
+//    添加商品
+
+    @Override
+    public int saveMeals(TbMeal tbMeal) {
+        int i=0;
+        try {
+            tbMeal.setCreateTme(new Date());
+            i=mealMapper.insertSelective(tbMeal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();
