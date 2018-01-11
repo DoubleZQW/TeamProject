@@ -18,9 +18,9 @@
                     <label for="meal_status">商品状态</label>
                     <select class="form-control input-sm" name="meal_status" id="meal_status">
                         <option value="">-请选择-</option>
-                        <option value="">上架</option>
-                        <option value="">下架</option>
-                        <option value="">删除</option>
+                        <option value="1">上架</option>
+                        <option value="2">下架</option>
+                        <option value="3">删除</option>
                     </select>
                 </div>
             </div>
@@ -38,7 +38,7 @@
 						</button>
                     </div>
                     <div class="btn-group" role="group">
-                        <button class="btn btn-warning btn-sm" onclick="location.reload();return false;">
+                        <button class="btn btn-warning btn-sm" onclick="reset();">
 							<span class="glyphicon glyphicon-refresh"></span> 重置
 						</button>
                     </div>
@@ -87,10 +87,10 @@
                     paginationLoop: false,
                     //是否启用排序
                     sortable: true,
-                    sortName: 'meal_id',
+                    sortName: 'mealId',
                     //排序方式
                     sortOrder: "asc",
-                    idField: 'meal_id',
+                    idField: 'mealId',
                     height: 500,
                     //工具栏
                     toolbar: '#meal-list-toolbar',
@@ -156,6 +156,7 @@
                 //注册查询按钮的点击事件
                 $('.meal-list-submit').click(function() {
 	                var mealName = $('#meal_name').val();
+	                var mealStatus = $('#meal_status').val();
                     $('#meal-list-tab').bootstrapTable('refreshOptions',{
                     	pageNumber: 1,
 						queryParams: function (params) {
@@ -164,13 +165,21 @@
 								page: this.pageNumber,
 								sort: this.sortName,
 								order: this.sortOrder,
-								mealName: mealName
+								mealName: mealName,
+								status: mealStatus
 							};
 						}
 					})
                 })
 				//页面加载后立即查询一次
 					.click();
+
+                //重置按钮的功能
+                function reset() {
+	                $('#meal_name').val('');
+	                $('#meal_status').val('');
+	                $('.meal-list-submit').click();
+                }
 
                 //删除前的询问
                 function askRemove() {

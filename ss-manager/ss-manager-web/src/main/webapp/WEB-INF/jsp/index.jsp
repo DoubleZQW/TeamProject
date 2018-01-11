@@ -22,6 +22,8 @@
 		<script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
 		<script src="resources/sweet-alert/sweetalert.min.js" rel="stylesheet"></script>
 		<%--<script src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>--%>
+		<%-- Hmodal --%>
+		<script src="resources/hmodal/Hmodal.js"></script>
 
 	</head>
 
@@ -65,7 +67,7 @@
 									<span class="glyphicon glyphicon-search"></span> 查询
 								</a></li>
 								<li role="separator" class="divider"></li>
-								<li><a href="item-add">
+								<li><a href="javascript:closableTab.addTab({id: 'addMeal',name: '添加商品',url: 'meal-add',closable: true});">
 									<span class="glyphicon glyphicon-plus"></span> 添加
 								</a></li>
 							</ul>

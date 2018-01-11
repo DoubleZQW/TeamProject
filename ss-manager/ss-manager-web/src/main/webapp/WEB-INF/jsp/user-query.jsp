@@ -37,7 +37,7 @@
 						</button>
 					</div>
 					<div class="btn-group" role="group">
-						<button class="btn btn-warning btn-sm" onclick="location.reload();return false;">
+						<button class="btn btn-warning btn-sm" onclick="reset();">
 							<span class="glyphicon glyphicon-refresh"></span> 重置
 						</button>
 					</div>
@@ -86,10 +86,10 @@
 					paginationLoop: false,
 					//是否启用排序
 					sortable: true,
-					sortName: 'user_id',
+					sortName: 'userId',
 					//排序方式
 					sortOrder: "asc",
-					idField: 'id',
+					idField: 'userId',
 					height: 500,
 					//工具栏
 					toolbar: '#user-query-toolbar',
@@ -203,6 +203,13 @@
 				})
 				//页面加载后立即查询一次
 					.click();
+
+				//重置按钮的功能
+				function reset() {
+					$('#user_name').val('');
+					$('#user_level').val('');
+					$('.user-query-submit').click();
+				}
 
 				//删除前的询问
                 function askRemove() {
