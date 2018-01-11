@@ -68,8 +68,8 @@ public class MealAction {
      * 商品批量上架
      */
     @ResponseBody
-    @RequestMapping(value = "/meal/shang",method = RequestMethod.POST)
-    public int updateMealsByIds(@RequestParam("ids[]") List<Long> ids){
+    @RequestMapping(value = "/meal/up",method = RequestMethod.POST)
+    public int upMealsByIds(@RequestParam("ids[]") List<Long> ids){
         int i=0;
         try {
 //           创建一个对象，设置商品状态为：1，上架
@@ -87,8 +87,8 @@ public class MealAction {
      * 商品批量上架
      */
     @ResponseBody
-    @RequestMapping(value = "/meal/xia",method = RequestMethod.POST)
-    public int updateMealsById(@RequestParam("ids[]") List<Long> ids){
+    @RequestMapping(value = "/meal/down",method = RequestMethod.POST)
+    public int downMealsByIds(@RequestParam("ids[]") List<Long> ids){
         int i=0;
         try {
 //           创建一个对象，设置商品状态为：2，下架
@@ -107,7 +107,7 @@ public class MealAction {
      */
     @ResponseBody
     @RequestMapping(value = "/meal/update",method = RequestMethod.POST)
-    public int updateMealById(TbMeal tbMeal){
+    public int updateMeal(TbMeal tbMeal){
         int i=0;
         try {
             i=mealService.updateMeal(tbMeal);
