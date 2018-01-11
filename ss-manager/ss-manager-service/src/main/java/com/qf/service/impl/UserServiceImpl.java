@@ -39,7 +39,6 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public TbUser getById(Long id) {
-        System.out.println(id);
         return userMapper.selectByPrimaryKey(id);
     }
 

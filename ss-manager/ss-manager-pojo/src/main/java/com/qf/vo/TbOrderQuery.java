@@ -1,15 +1,15 @@
 package com.qf.vo;
 
 public class TbOrderQuery {
-    private  String mealName;
+    private  Long orderId;
     private  Byte orderStatus;
 
-    public String getMealName() {
-        return mealName;
+    public Long getOrderId() {
+        return orderId;
     }
 
-    public void setMealName(String mealName) {
-        this.mealName = mealName;
+    public void setOrderId(Long orderId) {
+        this.orderId = orderId;
     }
 
     public Byte getOrderStatus() {

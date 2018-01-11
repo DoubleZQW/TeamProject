@@ -103,4 +103,11 @@ public class MealServiceImpl implements MealService {
         }
         return i;
     }
+
+//    根据id查询商品
+
+    @Override
+    public TbMeal findById(long id) {
+        return mealMapper.selectByPrimaryKey(id);
+    }
 }

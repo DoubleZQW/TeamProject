@@ -26,4 +26,6 @@ public interface MealService {
 
 //    添加
     int saveMeals(TbMeal tbMeal);
+
+    TbMeal findById(long id);
 }

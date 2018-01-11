@@ -22,4 +22,5 @@ public interface OrderService {
     //    批量删除
     int batchUpdate(List<Long> ids);
 
+    TbOrder findById(Long id);
 }

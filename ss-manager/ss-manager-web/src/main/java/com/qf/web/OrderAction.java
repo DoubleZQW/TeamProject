@@ -9,17 +9,13 @@ import com.qf.dto.Page;
 import com.qf.dto.Result;
 import com.qf.pojo.TbOrder;
 import com.qf.service.OrderService;
-import com.qf.vo.TbMealQuery;
 import com.qf.vo.TbOrderCustom;
 import com.qf.vo.TbOrderQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -51,7 +47,7 @@ public class OrderAction {
      * 批量删除订单
      */
     @ResponseBody
-    @RequestMapping(value = "/order/delete",method = RequestMethod.GET)
+    @RequestMapping(value = "/order/delete",method = RequestMethod.POST)
     public int deleteOrderById(@RequestParam("ids[]") List<Long> ids){
         int i=0;
         try {
@@ -62,5 +58,15 @@ public class OrderAction {
         }
         return i;
     }
+
+    /**
+     * 根据id查询订单
+     */
+    @ResponseBody
+    @RequestMapping(value = "/order/{orderId}",method = RequestMethod.GET)
+    public TbOrder findOrderById(@PathVariable("id") Long id){
+        return orderService.findById(id);
+    }
+
 
 }

@@ -180,7 +180,7 @@
                     var ids = [];
                     //遍历选中的记录，将记录的id存放到js数组中
                     for (var i = 0; i < selections.length; i++) {
-                        ids.push(selections[i].userId);
+                        ids.push(selections[i].orderId);
                     }
                     //alert(ids);
                     $.ajax({

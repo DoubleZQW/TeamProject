@@ -10,10 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -84,7 +81,7 @@ public class MealAction {
     }
 
     /**
-     * 商品批量上架
+     * 商品批量下架
      */
     @ResponseBody
     @RequestMapping(value = "/meal/down",method = RequestMethod.POST)
@@ -133,4 +130,14 @@ public class MealAction {
         }
         return i;
     }
+
+    /**
+     * 根据id查询商品
+     */
+    @ResponseBody
+    @RequestMapping(value = "/meal/{meaId}",method = RequestMethod.GET)
+    public TbMeal findMealById(@PathVariable("id") long id){
+        return mealService.findById(id);
+    }
+
 }
