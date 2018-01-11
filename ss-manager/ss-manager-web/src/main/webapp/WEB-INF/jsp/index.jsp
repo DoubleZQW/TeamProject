@@ -23,7 +23,7 @@
 		<script src="resources/sweet-alert/sweetalert.min.js" rel="stylesheet"></script>
 		<%--<script src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>--%>
 		<%-- Hmodal --%>
-		<script src="resources/hmodal/Hmodal.js"></script>
+		<%--<script src="resources/hmodal/Hmodal.js"></script>--%>
 
 	</head>
 
@@ -133,6 +133,11 @@
 			$(closableTab.addTab(defaultTab));
 
 		</script>
+
+		<%--<button class="btn btn-info btn-sm">test modal</button>--%>
+		<%--<script type="text/javascript">--%>
+
+		<%--</script>--%>
 
 	</body>
 </html>
