@@ -33,7 +33,7 @@
 			<div class="col-xs-4 column">
 				<div class="btn-group btn-group-justified" role="group">
 					<div class="btn-group" role="group">
-						<button type="button" class="btn btn-info btn-sm cust_list_submit" onclick="void(0);">
+						<button type="button" class="btn btn-info btn-sm order-list-submit" onclick="void(0);">
 							<span class="glyphicon glyphicon-search"></span> 查询
 						</button>
 					</div>

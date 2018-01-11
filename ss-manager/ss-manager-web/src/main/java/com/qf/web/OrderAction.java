@@ -47,7 +47,7 @@ public class OrderAction {
      * 批量删除订单
      */
     @ResponseBody
-    @RequestMapping(value = "/order/delete",method = RequestMethod.POST)
+    @RequestMapping(value = "/order/remove",method = RequestMethod.POST)
     public int deleteOrderById(@RequestParam("ids[]") List<Long> ids){
         int i=0;
         try {

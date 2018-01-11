@@ -16,9 +16,9 @@
 
     <sql id="Where_Clause">
         <where>
-            o.order_status !=4
+            o.order_status !=3
             <if test="query !=null and query.orderId !=null and query.orderId !=''">
-                and m.meal_name like '%${query.orderId}%'
+                and o.order_id like '%${query.orderId}%'
             </if>
             <if test="query !=null and query.orderStatus !=null and query.orderStatus !=''">
                 and o.order_status = #{query.orderStatus}
