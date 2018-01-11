@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.TbComment;
 import com.qf.pojo.TbCommentExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbCommentMapper {
     int countByExample(TbCommentExample example);

@@ -3,10 +3,11 @@
 <mapper namespace="com.qf.mapper.TbCommentMapper" >
   <resultMap id="BaseResultMap" type="com.qf.pojo.TbComment" >
     <id column="comment_id" property="commentId" jdbcType="BIGINT" />
-    <result column="o_id" property="oId" jdbcType="INTEGER" />
+    <result column="o_id" property="oId" jdbcType="BIGINT" />
     <result column="com_score" property="comScore" jdbcType="INTEGER" />
     <result column="com_content" property="comContent" jdbcType="VARCHAR" />
     <result column="com_time" property="comTime" jdbcType="TIMESTAMP" />
+    <result column="u_id" property="uId" jdbcType="BIGINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    comment_id, o_id, com_score, com_content, com_time
+    comment_id, o_id, com_score, com_content, com_time, u_id
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbCommentExample" >
     select
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.qf.pojo.TbComment" >
     insert into tb_comment (comment_id, o_id, com_score, 
-      com_content, com_time)
-    values (#{commentId,jdbcType=BIGINT}, #{oId,jdbcType=INTEGER}, #{comScore,jdbcType=INTEGER}, 
-      #{comContent,jdbcType=VARCHAR}, #{comTime,jdbcType=TIMESTAMP})
+      com_content, com_time, u_id
+      )
+    values (#{commentId,jdbcType=BIGINT}, #{oId,jdbcType=BIGINT}, #{comScore,jdbcType=INTEGER}, 
+      #{comContent,jdbcType=VARCHAR}, #{comTime,jdbcType=TIMESTAMP}, #{uId,jdbcType=BIGINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.qf.pojo.TbComment" >
     insert into tb_comment
@@ -123,13 +126,16 @@
       <if test="comTime != null" >
         com_time,
       </if>
+      <if test="uId != null" >
+        u_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="commentId != null" >
         #{commentId,jdbcType=BIGINT},
       </if>
       <if test="oId != null" >
-        #{oId,jdbcType=INTEGER},
+        #{oId,jdbcType=BIGINT},
       </if>
       <if test="comScore != null" >
         #{comScore,jdbcType=INTEGER},
@@ -139,6 +145,9 @@
       </if>
       <if test="comTime != null" >
         #{comTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="uId != null" >
+        #{uId,jdbcType=BIGINT},
       </if>
     </trim>
   </insert>
@@ -155,7 +164,7 @@
         comment_id = #{record.commentId,jdbcType=BIGINT},
       </if>
       <if test="record.oId != null" >
-        o_id = #{record.oId,jdbcType=INTEGER},
+        o_id = #{record.oId,jdbcType=BIGINT},
       </if>
       <if test="record.comScore != null" >
         com_score = #{record.comScore,jdbcType=INTEGER},
@@ -166,6 +175,9 @@
       <if test="record.comTime != null" >
         com_time = #{record.comTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.uId != null" >
+        u_id = #{record.uId,jdbcType=BIGINT},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -174,10 +186,11 @@
   <update id="updateByExample" parameterType="map" >
     update tb_comment
     set comment_id = #{record.commentId,jdbcType=BIGINT},
-      o_id = #{record.oId,jdbcType=INTEGER},
+      o_id = #{record.oId,jdbcType=BIGINT},
       com_score = #{record.comScore,jdbcType=INTEGER},
       com_content = #{record.comContent,jdbcType=VARCHAR},
-      com_time = #{record.comTime,jdbcType=TIMESTAMP}
+      com_time = #{record.comTime,jdbcType=TIMESTAMP},
+      u_id = #{record.uId,jdbcType=BIGINT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,7 +199,7 @@
     update tb_comment
     <set >
       <if test="oId != null" >
-        o_id = #{oId,jdbcType=INTEGER},
+        o_id = #{oId,jdbcType=BIGINT},
       </if>
       <if test="comScore != null" >
         com_score = #{comScore,jdbcType=INTEGER},
@@ -197,15 +210,19 @@
       <if test="comTime != null" >
         com_time = #{comTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="uId != null" >
+        u_id = #{uId,jdbcType=BIGINT},
+      </if>
     </set>
     where comment_id = #{commentId,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbComment" >
     update tb_comment
-    set o_id = #{oId,jdbcType=INTEGER},
+    set o_id = #{oId,jdbcType=BIGINT},
       com_score = #{comScore,jdbcType=INTEGER},
       com_content = #{comContent,jdbcType=VARCHAR},
-      com_time = #{comTime,jdbcType=TIMESTAMP}
+      com_time = #{comTime,jdbcType=TIMESTAMP},
+      u_id = #{uId,jdbcType=BIGINT}
     where comment_id = #{commentId,jdbcType=BIGINT}
   </update>
 </mapper>

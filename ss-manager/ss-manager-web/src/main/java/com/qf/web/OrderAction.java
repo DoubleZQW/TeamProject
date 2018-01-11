@@ -9,7 +9,9 @@ import com.qf.dto.Page;
 import com.qf.dto.Result;
 import com.qf.pojo.TbOrder;
 import com.qf.service.OrderService;
+import com.qf.vo.TbMealQuery;
 import com.qf.vo.TbOrderCustom;
+import com.qf.vo.TbOrderQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +36,8 @@ public class OrderAction {
      */
     @ResponseBody
     @RequestMapping(value = "/order/query",method = RequestMethod.GET)
-    public Result<TbOrder> findAllOrder(Page page, TbOrderCustom query, Order order){
-        Result<TbOrder> result=null;
+    public Result<TbOrderCustom> findAllOrder(Page page, TbOrderQuery query, Order order){
+        Result<TbOrderCustom> result=null;
         try {
             result=orderService.listOrdersByPage(page,query,order);
         }catch (Exception e){
