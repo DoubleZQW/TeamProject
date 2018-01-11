@@ -8,8 +8,8 @@
 <div class="col-xs-12 column">
     <div class="col-xs-6 column">
         <div class="form-group">
-            <label for="order_id">订单名</label>
-            <input type="text" class="form-control" id="order_id" name="orderId"/>
+            <label for="meal_name">订单查询</label>
+            <input type="text" class="form-control" id="meal_name" name="mealName"/>
         </div>
     </div>
 
@@ -91,20 +91,18 @@
                 showColumns: true,
                 //搜索配置
                 //这个接口需要处理bootstrap table传递的固定参数,并返回特定格式的json数据
-                url: "orderList",
+                url: "order/query",
                 //默认值为 'limit',传给服务端的参数为：limit, offset, search, sort, order Else
                 queryParamsType:'limit',
                 //查询参数,每次调用是会带上这个参数，可自定义
                 queryParams: function (params) {
-                    var userName = $('#user_name').val();
-                    var userLevel= $('#user_level').val();
+                    var mealName= $('#meal_name').val();
                     return {
                         rows: this.pageSize,
                         page: this.pageNumber,
                         sort: this.sortName,
                         order: this.sortOrder,
-
-
+                        mealName:mealName
                     };
                 },
 
@@ -116,8 +114,17 @@
                 strictSearch: true,
                 columns:[{checkbox: true, align: true},
                     {field:'orderId',title:'订单编号',sortable: true,width: 20},
+                    {field:'mealName',title:'商品名称',sortable: true,width: 20},
+                    {field:'mealPrice',title:'商品价格',sortable: true,width: 20},
+                    {field:'amount',title:'商品数量',sortable: true,width: 20},
+                    {field:'mealNum',title:'商品库存',sortable: true,width: 20},
                     {field:'payment',title:'实付金额',sortable: true,width: 150},
-                    {field:'orderStatus',title:'支付类型',sortable: true,width: 50,
+                    {field:'pName',title:'配送员姓名',sortable: true,width: 150},
+                    {field:'pMobie',title:'配送员电话',sortable: true,width: 150},
+                    {field:'userName',title:'用户姓名',sortable: true,width: 150},
+                    {field:'userPhone',title:'用户电话',sortable: true,width: 150},
+                    {field:'addrName',title:'地址',sortable: true,width: 150},
+                    {field:'orderStatus',title:'订单状态',sortable: true,width: 50,
                         formatter: function(value, row, index) {
                             switch (value) {
                                 case 1 :
@@ -147,9 +154,6 @@
                             }
                         }},
                     {field:'orderFree',title:'配送费',sortable: true,visible: false},
-
-
-                    {field:'address',title:'地址',sortable: true,visible: false},
                     {field:'orderCreated',title:'订单创建时间',sortable: true,visible: false,
                         formatter: function(value, row, index) {
                             return  moment(value).format("YYYY-MM-DD HH:mm:SS");

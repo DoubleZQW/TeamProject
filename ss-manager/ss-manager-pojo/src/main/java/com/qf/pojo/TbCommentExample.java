@@ -175,52 +175,52 @@ public class TbCommentExample {
             return (Criteria) this;
         }
 
-        public Criteria andOIdEqualTo(Integer value) {
+        public Criteria andOIdEqualTo(Long value) {
             addCriterion("o_id =", value, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdNotEqualTo(Integer value) {
+        public Criteria andOIdNotEqualTo(Long value) {
             addCriterion("o_id <>", value, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdGreaterThan(Integer value) {
+        public Criteria andOIdGreaterThan(Long value) {
             addCriterion("o_id >", value, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andOIdGreaterThanOrEqualTo(Long value) {
             addCriterion("o_id >=", value, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdLessThan(Integer value) {
+        public Criteria andOIdLessThan(Long value) {
             addCriterion("o_id <", value, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdLessThanOrEqualTo(Integer value) {
+        public Criteria andOIdLessThanOrEqualTo(Long value) {
             addCriterion("o_id <=", value, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdIn(List<Integer> values) {
+        public Criteria andOIdIn(List<Long> values) {
             addCriterion("o_id in", values, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdNotIn(List<Integer> values) {
+        public Criteria andOIdNotIn(List<Long> values) {
             addCriterion("o_id not in", values, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdBetween(Integer value1, Integer value2) {
+        public Criteria andOIdBetween(Long value1, Long value2) {
             addCriterion("o_id between", value1, value2, "oId");
             return (Criteria) this;
         }
 
-        public Criteria andOIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andOIdNotBetween(Long value1, Long value2) {
             addCriterion("o_id not between", value1, value2, "oId");
             return (Criteria) this;
         }
@@ -412,6 +412,66 @@ public class TbCommentExample {
 
         public Criteria andComTimeNotBetween(Date value1, Date value2) {
             addCriterion("com_time not between", value1, value2, "comTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdIsNull() {
+            addCriterion("u_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdIsNotNull() {
+            addCriterion("u_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdEqualTo(Long value) {
+            addCriterion("u_id =", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdNotEqualTo(Long value) {
+            addCriterion("u_id <>", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdGreaterThan(Long value) {
+            addCriterion("u_id >", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdGreaterThanOrEqualTo(Long value) {
+            addCriterion("u_id >=", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdLessThan(Long value) {
+            addCriterion("u_id <", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdLessThanOrEqualTo(Long value) {
+            addCriterion("u_id <=", value, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdIn(List<Long> values) {
+            addCriterion("u_id in", values, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdNotIn(List<Long> values) {
+            addCriterion("u_id not in", values, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdBetween(Long value1, Long value2) {
+            addCriterion("u_id between", value1, value2, "uId");
+            return (Criteria) this;
+        }
+
+        public Criteria andUIdNotBetween(Long value1, Long value2) {
+            addCriterion("u_id not between", value1, value2, "uId");
             return (Criteria) this;
         }
     }

@@ -12,7 +12,9 @@ import com.qf.mapper.TbOrderMapper;
 import com.qf.pojo.TbOrder;
 import com.qf.pojo.TbOrderExample;
 import com.qf.service.OrderService;
+import com.qf.vo.TbMealQuery;
 import com.qf.vo.TbOrderCustom;
+import com.qf.vo.TbOrderQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,8 +37,8 @@ public class OrderServiceImpl implements OrderService{
     private TbOrderCustomMapper orderCustomMapper;
 //    订单分页查询
     @Override
-    public Result<TbOrder> listOrdersByPage(Page page, TbOrderCustom query, Order order) {
-        Result<TbOrder> result=new Result<TbOrder>();
+    public Result<TbOrderCustom> listOrdersByPage(Page page, TbOrderQuery query, Order order) {
+        Result<TbOrderCustom> result=new Result<TbOrderCustom>();
         try {
             Map<String,Object> map=new HashMap<String,Object>();
             map.put("page",page);
@@ -45,7 +47,7 @@ public class OrderServiceImpl implements OrderService{
 //            获取总数
             Long total=orderCustomMapper.listCondition(map);
 //            获取商品集合
-            List<TbOrder> list=orderCustomMapper.listOrdersByPage(map);
+            List<TbOrderCustom> list=orderCustomMapper.listOrdersByPage(map);
             result.setRows(list);
             result.setTotal(total);
         }catch (Exception e){

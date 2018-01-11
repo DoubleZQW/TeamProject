@@ -3,8 +3,8 @@
 <mapper namespace="com.qf.mapper.TbMealOrderMapper" >
   <resultMap id="BaseResultMap" type="com.qf.pojo.TbMealOrder" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="meal_id" property="mealId" jdbcType="INTEGER" />
-    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="meal_id" property="mealId" jdbcType="BIGINT" />
+    <result column="order_id" property="orderId" jdbcType="BIGINT" />
     <result column="amount" property="amount" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -101,7 +101,7 @@
   <insert id="insert" parameterType="com.qf.pojo.TbMealOrder" >
     insert into tb_meal_order (id, meal_id, order_id, 
       amount)
-    values (#{id,jdbcType=BIGINT}, #{mealId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=BIGINT}, #{mealId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, 
       #{amount,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.qf.pojo.TbMealOrder" >
@@ -125,10 +125,10 @@
         #{id,jdbcType=BIGINT},
       </if>
       <if test="mealId != null" >
-        #{mealId,jdbcType=INTEGER},
+        #{mealId,jdbcType=BIGINT},
       </if>
       <if test="orderId != null" >
-        #{orderId,jdbcType=INTEGER},
+        #{orderId,jdbcType=BIGINT},
       </if>
       <if test="amount != null" >
         #{amount,jdbcType=INTEGER},
@@ -148,10 +148,10 @@
         id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.mealId != null" >
-        meal_id = #{record.mealId,jdbcType=INTEGER},
+        meal_id = #{record.mealId,jdbcType=BIGINT},
       </if>
       <if test="record.orderId != null" >
-        order_id = #{record.orderId,jdbcType=INTEGER},
+        order_id = #{record.orderId,jdbcType=BIGINT},
       </if>
       <if test="record.amount != null" >
         amount = #{record.amount,jdbcType=INTEGER},
@@ -164,8 +164,8 @@
   <update id="updateByExample" parameterType="map" >
     update tb_meal_order
     set id = #{record.id,jdbcType=BIGINT},
-      meal_id = #{record.mealId,jdbcType=INTEGER},
-      order_id = #{record.orderId,jdbcType=INTEGER},
+      meal_id = #{record.mealId,jdbcType=BIGINT},
+      order_id = #{record.orderId,jdbcType=BIGINT},
       amount = #{record.amount,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -175,10 +175,10 @@
     update tb_meal_order
     <set >
       <if test="mealId != null" >
-        meal_id = #{mealId,jdbcType=INTEGER},
+        meal_id = #{mealId,jdbcType=BIGINT},
       </if>
       <if test="orderId != null" >
-        order_id = #{orderId,jdbcType=INTEGER},
+        order_id = #{orderId,jdbcType=BIGINT},
       </if>
       <if test="amount != null" >
         amount = #{amount,jdbcType=INTEGER},
@@ -188,8 +188,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbMealOrder" >
     update tb_meal_order
-    set meal_id = #{mealId,jdbcType=INTEGER},
-      order_id = #{orderId,jdbcType=INTEGER},
+    set meal_id = #{mealId,jdbcType=BIGINT},
+      order_id = #{orderId,jdbcType=BIGINT},
       amount = #{amount,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
