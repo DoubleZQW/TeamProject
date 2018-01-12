@@ -98,6 +98,7 @@ public class MealServiceImpl implements MealService {
         int i=0;
         try {
             tbMeal.setCreateTme(new Date());
+            tbMeal.setUpdatTime(tbMeal.getCreateTme());
             i=mealMapper.insertSelective(tbMeal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
