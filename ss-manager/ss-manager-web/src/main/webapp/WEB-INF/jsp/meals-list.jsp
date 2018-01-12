@@ -140,11 +140,11 @@
 								default: return "<button class='btn btn-warning btn-xs'>未知</button>";
 	                        }
 							}},
-                        {field:'mealPrice',title:'商品价格',sortable: true,width: 50,formatter: function(value) {
+                        {field:'mealPrice',title:'价格',sortable: true,width: 80,formatter: function(value) {
                         	return "<span class='glyphicon glyphicon-yen'></span> "+ value/100;
 							}},
-                        {field:'mealNum',title:'商品库存',sortable: true,width: 70,align: 'center',},
-                        {field:'mealIntro',title:'商品介绍',sortable: true,visible: false},
+                        {field:'mealNum',title:'库存',sortable: true,width: 50,align: 'center',},
+                        {field:'mealIntro',title:'介绍',sortable: true,visible: false},
                         {field:'createTme',title:'添加时间',sortable: true,visible: false,align: 'center',
                             formatter: function(value, row, index) {
                                 return  moment(value).format("YYYY-MM-DD HH:mm:SS");
