@@ -66,4 +66,19 @@ public class UserAction {
         }
         return i;
     }
+    /**
+     * 编辑用户
+     */
+    @ResponseBody
+    @RequestMapping(value = "user/update",method = RequestMethod.POST)
+    public int updateUser(TbUser tbUser) {
+        int i = 0;
+        try {
+            i = userService.updateuser( tbUser);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            e.printStackTrace();
+        }
+        return i;
+    }
 }

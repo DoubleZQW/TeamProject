@@ -28,6 +28,9 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private TbUserMapper userMapper;
 
+    /**
+     *
+     */
 //    引入dao层扩展
     @Autowired
     private TbUserCustomMapper userCustomMapper;
@@ -108,5 +111,10 @@ public class UserServiceImpl implements UserService{
             i+=userMapper.updateByExample(u,example);
         }
         return i;
+    }
+
+    @Override
+    public int updateuser(TbUser tbUser) {
+        return 0;
     }
 }
