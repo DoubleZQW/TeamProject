@@ -54,6 +54,10 @@
 					<span class="label label-default"><em>商品查询列表</em></span>
 				</h3>
 				<div class="btn-group">
+					<button class="btn btn-success btn-xs" onclick="closableTab.addTab({id: 'addMeal',name: '添加商品',url: 'meal-add',closable: true});">
+						<span class="glyphicon glyphicon-plus"></span>
+						添加
+					</button>
 					<button class="btn btn-info btn-xs btn-meal-edit" disabled="disabled" onclick="tabToEditMeal();">
 						<span class="glyphicon glyphicon-edit"></span>
 						编辑
