@@ -17,7 +17,7 @@
 				<div class="form-group">
 					<label for="orderStatus">订单状态</label>
 					<select class="form-control input-sm" name="orderStatus" id="orderStatus">
-						<option value="">-请选择-</option>
+						<option value="">-全部-</option>
 						<option value="1">已取消</option>
 						<option value="2">交易成功</option>
 						<option value="3">已删除</option>

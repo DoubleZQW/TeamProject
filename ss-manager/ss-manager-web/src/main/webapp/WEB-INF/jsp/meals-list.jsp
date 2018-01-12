@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="mealStatus">商品状态</label>
                     <select class="form-control input-sm" name="mealStatus" id="mealStatus">
-                        <option value="">-请选择-</option>
+                        <option value="">-全部-</option>
                         <option value="1">上架</option>
                         <option value="2">下架</option>
                         <option value="3">删除</option>
