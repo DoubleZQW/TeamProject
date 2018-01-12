@@ -26,7 +26,6 @@
 				<div class="form-group">
 					<label for="userStatus">状态</label>
 					<select class="form-control input-sm" id="userStatus" name="userStatus">
-						<option value="">-请选择-</option>
 						<option value="1">存在</option>
 						<option value="2">删除</option>
 					</select>
@@ -37,7 +36,6 @@
 				<div class="form-group">
 					<label for="userLevel">权限</label>
 					<select class="form-control input-sm" id="userLevel" name="userLevel">
-						<option value="">-请选择-</option>
 						<option value="1">用户</option>
 						<option value="2">管理员</option>
 					</select>
@@ -48,7 +46,6 @@
 				<div class="form-group">
 					<label for="userSex">性别</label>
 					<select class="form-control input-sm" id="userSex" name="userSex">
-						<option value="">-请选择-</option>
 						<option value="0">女</option>
 						<option value="1">男</option>
 					</select>

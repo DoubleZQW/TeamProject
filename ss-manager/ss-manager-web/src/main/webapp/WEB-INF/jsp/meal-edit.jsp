@@ -25,7 +25,6 @@
 				<div class="form-group">
 					<label for="mealStatus">上架状态</label>
 					<select class="form-control input-sm" id="mealStatus">
-						<option value="">-请选择-</option>
 						<option value="1">上架中</option>
 						<option value="2">已下架</option>
 						<option value="3">已删除</option>
@@ -62,7 +61,8 @@
 					$('#mealId').val("${meal.mealId}");
 					$('#mealName').val("${meal.mealName}");
 					$('#mealStatus').val("${meal.mealStatus}");
-					$('#mealPrice').val("${meal.mealPrice}");
+					const price = ${meal.mealPrice}/100;
+					$('#mealPrice').val(price);
 					$('#mealNum').val("${meal.mealNum}");
 					$('#mealIntro').val("${meal.mealIntro}");
 				}
@@ -99,7 +99,7 @@
 						mealId: $('#mealId').val(),
 						mealName: $('#mealName').val(),
 						mealStatus: $('#mealStatus').val(),
-						mealPrice: $('#mealPrice').val(),
+						mealPrice: $('#mealPrice').val()*100,
 						mealNum: $('#mealNum').val(),
 						mealIntro: $('#mealIntro').val(),
 					},

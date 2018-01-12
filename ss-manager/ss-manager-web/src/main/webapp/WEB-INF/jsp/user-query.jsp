@@ -157,11 +157,11 @@
                                 }
                             }},
 						{field:'userEmail',title:'电子邮件',sortable: true,visible: false},
-						{field:'userOthername',title:'昵称',sortable: true,width: 100},
+						{field:'userOthername',title:'昵称',sortable: true,width: 80},
 						{field:'address',title:'地址',sortable: true,visible: false},
-						{field:'created',title:'注册时间',sortable: true,visible: false,
+						{field:'created',title:'注册时间',sortable: true,align: 'center',visible: false,
 							formatter: function(value, row, index) {return  moment(value).format("YYYY-MM-DD HH:mm:SS");}},
-						{field:'updated',title:'更新时间',sortable: true,
+						{field:'updated',title:'更新时间',sortable: true,align: 'center',
 						formatter: function(value, row, index) {return  moment(value).format("YYYY-MM-DD HH:mm:SS");}}]
 				});
 
