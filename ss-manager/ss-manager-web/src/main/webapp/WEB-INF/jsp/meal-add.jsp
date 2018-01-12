@@ -111,11 +111,11 @@
 					},
 					success: function(data) {
 						if(data > 0) {
-							swal("修改成功!", {timer: 2000});
+							swal("添加成功!", {timer: 2000});
 							$('body').find("[tabclose='tab_seed_addMeal']")[0].click();
 							$('#meal-list-tab').bootstrapTable('refresh');
 						} else
-							swal("修改失败!", "稍后再试...", {timer: 2000});},
+							swal("添加失败!", "稍后再试...", {timer: 2000});},
 					dataType: 'json'
 				});
 			});

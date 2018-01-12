@@ -8,15 +8,15 @@
         <div class="col-xs-12 column">
             <div class="col-xs-6 column">
                 <div class="form-group">
-                    <label for="meal_name">商品名</label>
-                    <input type="text" id="meal_name" name="meal_name" class="form-control input-sm"/>
+                    <label for="mealName">商品名</label>
+                    <input type="text" id="mealName" name="mealName" class="form-control input-sm"/>
                 </div>
             </div>
 
             <div class="col-xs-6 column">
                 <div class="form-group">
-                    <label for="meal_status">商品状态</label>
-                    <select class="form-control input-sm" name="meal_status" id="meal_status">
+                    <label for="mealStatus">商品状态</label>
+                    <select class="form-control input-sm" name="mealStatus" id="mealStatus">
                         <option value="">-请选择-</option>
                         <option value="1">上架</option>
                         <option value="2">下架</option>
@@ -157,8 +157,8 @@
 
                 //注册查询按钮的点击事件
                 $('.meal-list-submit').click(function() {
-	                var mealName = $('#meal_name').val();
-	                var mealStatus = $('#meal_status').val();
+	                var mealName = $('#mealName').val();
+	                var mealStatus = $('#mealStatus').val();
                     $('#meal-list-tab').bootstrapTable('refreshOptions',{
                     	pageNumber: 1,
 						queryParams: function (params) {
@@ -192,8 +192,8 @@
 
                 //重置按钮的功能
                 function reset() {
-	                $('#meal_name').val('');
-	                $('#meal_status').val('');
+	                $('#mealName').val('');
+	                $('#mealStatus').val('');
 	                $('.meal-list-submit').click();
                 }
 
