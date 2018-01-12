@@ -21,4 +21,8 @@ public interface UserService {
 
 //    删除用户
     int deleteUserByIds(List ids);
+
+//   根据userId查询UserCustom
+    TbUserCustom getUserCustomById(Long userId);
+
 }

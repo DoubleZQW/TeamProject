@@ -12,6 +12,7 @@ import com.qf.service.MealService;
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
+import com.qf.vo.TbMealCustom;
 import com.qf.vo.TbMealQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -104,10 +105,9 @@ public class MealServiceImpl implements MealService {
         return i;
     }
 
-//    根据id查询商品
-
+//    根据mealId查询 TbMealCustom
     @Override
-    public TbMeal findById(long id) {
-        return mealMapper.selectByPrimaryKey(id);
+    public TbMealCustom getMealCustomById(Long mealId) {
+        return mealDao.findMealCustomById(mealId);
     }
 }

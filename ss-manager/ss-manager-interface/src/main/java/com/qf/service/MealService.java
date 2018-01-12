@@ -11,6 +11,7 @@ import java.util.List;
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
+import com.qf.vo.TbMealCustom;
 import com.qf.vo.TbMealQuery;
 
 public interface MealService {
@@ -27,5 +28,6 @@ public interface MealService {
 //    添加
     int saveMeals(TbMeal tbMeal);
 
-    TbMeal findById(long id);
+//  根据mealId查询 TbMealCustom
+    TbMealCustom getMealCustomById(Long mealId);
 }

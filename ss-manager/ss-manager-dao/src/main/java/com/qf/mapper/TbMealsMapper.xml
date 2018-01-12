@@ -35,7 +35,7 @@
                          separator="," item="item">
                     m.${item}
                 </foreach>-->
-                ORDER BY ${order.sort}  ${order.order}
+                ORDER BY ${order.sort} ${order.order}
             </when>
             <otherwise>
                 order by m.meal_id asc
@@ -46,9 +46,16 @@
     <select id="listCondition" resultType="_long">
         select
         count(*)
-        from tb_meal m
+        from tb_meal
         <include refid="Where_Clause"/>
     </select>
 
-
+    <!--根据mealId查询 TbMealCustom-->
+    <select id="findMealCustomById" resultType="com.qf.vo.TbMealCustom">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_meal m LEFT JOIN tb_meal_cat c
+        ON m.meal_id =c.id
+        where m.meal_id =#{mealId}
+    </select>
 </mapper>

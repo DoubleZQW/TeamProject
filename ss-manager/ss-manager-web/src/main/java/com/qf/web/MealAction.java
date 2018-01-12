@@ -5,11 +5,13 @@ import com.qf.dto.Page;
 import com.qf.dto.Result;
 import com.qf.pojo.TbMeal;
 import com.qf.service.MealService;
+import com.qf.vo.TbMealCustom;
 import com.qf.vo.TbMealQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -132,12 +134,12 @@ public class MealAction {
     }
 
     /**
-     * 根据id查询商品
+     * 转修改
      */
-    @ResponseBody
-    @RequestMapping(value = "/meal/{meaId}",method = RequestMethod.GET)
-    public TbMeal findMealById(@PathVariable("id") long id){
-        return mealService.findById(id);
+    @RequestMapping(value = "/meal/edit/{mealId}",method = RequestMethod.GET)
+    public String sendMealToModel(@PathVariable("mealId") Long mealId, Model model){
+        TbMealCustom meal=mealService.getMealCustomById(mealId);
+        model.addAttribute("meal",meal);
+        return "meal-edit";
     }
-
 }

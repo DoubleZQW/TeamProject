@@ -68,25 +68,7 @@ public class UserServiceImpl implements UserService{
             map.put("page",page);
             list = userCustomMapper.listUserByPage(map);
         }
-
-        //根据字段值，返回中文字。 --》可以在前端页面上判断！
-        /*List<TbUserCustom> list2 = new LinkedList<TbUserCustom>();
-        for (TbUserCustom u:list){
-            if (u.getUserLevel()==1){ u.setUlevel("用户"); }
-            else if (u.getUserLevel()==0){ u.setUlevel("管理员"); }
-
-            if (u.getUserStatus()==1){ u.setStatus("存在"); }
-            else if (u.getUserStatus()==2){ u.setStatus("删除"); }
-
-            if (u.getUserSex()==1){ u.setSex("男"); }
-            else if (u.getUserSex()==0){ u.setSex("女"); }
-
-            list2.add(u);
-        }
-        pageVo.setRows(list2);*/
-
         result.setRows(list);
-
         return result;
     }
 
@@ -107,5 +89,12 @@ public class UserServiceImpl implements UserService{
             i+=userMapper.updateByExample(u,example);
         }
         return i;
+    }
+
+//    根据userId查询UserCustom
+
+    @Override
+    public TbUserCustom getUserCustomById(Long userId) {
+        return userCustomMapper.findUserCustomById(userId);
     }
 }

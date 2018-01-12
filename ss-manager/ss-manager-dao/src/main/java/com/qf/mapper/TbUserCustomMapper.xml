@@ -55,4 +55,13 @@
         LIMIT #{page.offset},#{page.rows}
     </select>
 
+    <!--根据UserID查询UserCustom-->
+    <select id="findUserCustomById" resultType="com.qf.vo.TbUserCustom">
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM tb_user u
+        LEFT JOIN tb_address a ON u.addr_id = a.id
+        where u.user_id =#{userId}
+    </select>
+
 </mapper>

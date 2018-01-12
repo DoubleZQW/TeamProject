@@ -1,5 +1,6 @@
 package com.qf.web;
 
+
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -70,8 +72,8 @@ public class UserAction {
 
     //预修改,将要修改的user查出放入model中,渲染视图jsp给前端.
     @RequestMapping(value = "user/edit/{userId}", method = RequestMethod.GET)
-    public String sentUserIdToModel(@PathVariable("userId") Long userId, Model model) {
-    	TbUser user = userService.getById(userId);
+    public String sentUserToModel(@PathVariable("userId") Long userId, Model model) {
+    	TbUserCustom user = userService.getUserCustomById(userId);
         model.addAttribute("user", user);
         return "user-edit";
     }
