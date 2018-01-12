@@ -126,8 +126,8 @@
 					//搜索的严格匹配
 					strictSearch: true,
 					//选中/取消选中行时去设置按钮的禁用状态
-					onCheck: function() {setDisabled();},
-					onUncheck: function() {setDisabled();},
+					onCheck: function() {setDisabled('user');},
+					onUncheck: function() {setDisabled('user');},
 					columns:[{checkbox: true, align: true},
 						{field:'userId',title:'编号',sortable: true,width: 20},
 						{field:'userName',title:'用户名',sortable: true,width: 150},
@@ -183,22 +183,6 @@
 						}
 					})
 				})
-
-				//设置各个工具栏按钮的禁用规则
-				function setDisabled() {
-					var count = $('#user-query-tab').bootstrapTable('getSelections').length;
-					//编辑按钮
-					if (count === 1)
-						$(".btn-user-edit")[0].removeAttribute("disabled");
-					else
-						$(".btn-user-edit")[0].setAttribute("disabled", "disabled");
-					//删除按钮
-					if (count > 0)
-						$(".btn-user-remove")[0].removeAttribute("disabled");
-					else
-						$(".btn-user-remove")[0].setAttribute("disabled", "disabled");
-						return this;
-				}
 
 				//重置按钮的功能
 				function reset() {
@@ -276,7 +260,6 @@
 					});
 				}
 			</script>
-
 		</div>
 	</body>
 </html>

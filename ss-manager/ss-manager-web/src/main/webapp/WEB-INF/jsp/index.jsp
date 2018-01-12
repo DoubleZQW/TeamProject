@@ -22,8 +22,8 @@
 		<script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
 		<script src="resources/sweet-alert/sweetalert.min.js" rel="stylesheet"></script>
 		<%--<script src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>--%>
-		<%-- Hmodal --%>
-		<%--<script src="resources/hmodal/Hmodal.js"></script>--%>
+		<%-- 自定义扩展的js --%>
+		<script src="resources/js/commons.js"></script>
 
 	</head>
 
