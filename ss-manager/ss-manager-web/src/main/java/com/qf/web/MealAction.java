@@ -27,16 +27,16 @@ public class MealAction {
     /**
      * 商品分页查询
      * @param page
-     * @param tbquery
+     * @param query
      * @param order
      * @return
      */
     @ResponseBody
     @RequestMapping(value="/meal/query",method= RequestMethod.GET)
-    public Result<TbMeal> listMealsByPage(Page page, TbMealQuery tbquery, Order order){
+    public Result<TbMeal> listMealsByPage(Page page, TbMealQuery query, Order order){
       Result<TbMeal> result=null;
       try {
-          result=  mealService.ListMealsByPage(page,tbquery,order);
+          result=  mealService.ListMealsByPage(page,query,order);
       }catch (Exception e){
           logger.error(e.getMessage(),e);
           e.printStackTrace();
@@ -106,10 +106,10 @@ public class MealAction {
      */
     @ResponseBody
     @RequestMapping(value = "/meal/update",method = RequestMethod.POST)
-    public int updateMeal(TbMeal tbMeal){
+    public int updateMeal(TbMealCustom mealCustoml){
         int i=0;
         try {
-            i=mealService.updateMeal(tbMeal);
+            i=mealService.updateMeal(mealCustoml);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();

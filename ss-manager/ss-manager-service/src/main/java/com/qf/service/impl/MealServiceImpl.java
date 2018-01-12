@@ -5,7 +5,7 @@ package com.qf.service.impl;
  */
 
 import com.qf.mapper.TbMealMapper;
-import com.qf.mapper.TbMealsMapper;
+import com.qf.mapper.TbMealCustomMapper;
 import com.qf.pojo.TbMeal;
 import com.qf.pojo.TbMealExample;
 import com.qf.service.MealService;
@@ -31,7 +31,7 @@ public class MealServiceImpl implements MealService {
 
 //    引入商品扩展类
     @Autowired
-    private TbMealsMapper mealDao;
+    private TbMealCustomMapper mealDao;
 
 //    引入商品类
     @Autowired
@@ -39,12 +39,12 @@ public class MealServiceImpl implements MealService {
 
     //    商品查询分页（包含模糊查询、排序）
     @Override
-    public Result<TbMeal> ListMealsByPage(Page page, TbMealQuery tbquery ,Order order) {
+    public Result<TbMeal> ListMealsByPage(Page page, TbMealQuery query ,Order order) {
       Result<TbMeal> result=new Result<TbMeal>();
        try{
            Map<String,Object> map=new HashMap<String,Object>();
            map.put("page",page);
-           map.put("tbquery",tbquery);
+           map.put("query",query);
            map.put("order",order);
            //获取总数
           Long total= mealDao.listCondition(map);
@@ -79,10 +79,10 @@ public class MealServiceImpl implements MealService {
 
 //   更新商品
     @Override
-    public int updateMeal(TbMeal tbMeal) {
+    public int updateMeal(TbMealCustom mealCustom) {
         int i=0;
         try {
-            i = mealMapper.updateByPrimaryKeySelective(tbMeal);
+            i = mealDao.updateMealCustom(mealCustom);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();

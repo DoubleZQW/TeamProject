@@ -7,7 +7,7 @@ import com.qf.vo.TbMealCustom;
 import java.util.List;
 import java.util.Map;
 
-public interface TbMealsMapper {
+public interface TbMealCustomMapper {
 //    分页查询商品
     List<TbMeal> listItemsByPage(Map<String,Object> map);
 
@@ -17,4 +17,7 @@ public interface TbMealsMapper {
 
 //    根据mealId查询 TbMealCustom
     TbMealCustom findMealCustomById(Long mealId);
+
+//   更新商品
+    int updateMealCustom(TbMealCustom mealCustom);
 }

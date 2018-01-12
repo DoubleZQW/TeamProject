@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qf.mapper.TbMealsMapper">
+<mapper namespace="com.qf.mapper.TbMealCustomMapper">
     <sql id="Base_Column_List">
    m.meal_id as mealId ,m.meal_name as mealName, m.meal_price as mealPrice,
    m.meal_num as mealNum, m.meal_picture as mealPicture ,m.meal_status as mealStatus,
@@ -12,14 +12,14 @@
     <sql id="Where_Clause">
         <where>
             m.meal_status !=3
-            <if test="tbquery !=null and tbquery.mealName!=null and tbquery.mealName!= ''">
-                and m.meal_name like '%${tbquery.mealName}%'
+            <if test="query !=null and query.mealName!=null and query.mealName!= ''">
+                and m.meal_name like '%${query.mealName}%'
             </if>
-            <if test="tbquery !=null and tbquery.publisher !=null and tbquery.publisher != '' ">
-                and m.publisher like '%${tbquery.publisher}%'
+            <if test="query !=null and query.publisher !=null and query.publisher != '' ">
+                and m.publisher like '%${query.publisher}%'
             </if>
-            <if test="tbquery !=null and tbquery.status !=null and tbquery.status !=0">
-                and m.meal_status = #{tbquery.status}
+            <if test="query !=null and query.status !=null and query.status !=0">
+                and m.meal_status = #{query.status}
             </if>
         </where>
     </sql>
@@ -46,7 +46,7 @@
     <select id="listCondition" resultType="_long">
         select
         count(*)
-        from tb_meal
+        from tb_meal m
         <include refid="Where_Clause"/>
     </select>
 
@@ -58,4 +58,9 @@
         ON m.meal_id =c.id
         where m.meal_id =#{mealId}
     </select>
+
+    <!--更新商品-->
+    <update id="updateMealCustom">
+
+    </update>
 </mapper>
