@@ -13,15 +13,18 @@ import com.qf.vo.TbUserCustom;
 import java.util.List;
 
 public interface UserService {
-    //    根据id查询用户
+//    根据id查询用户
     TbUser getById(Long id);
 
-    //    分页查询用户
+//    分页查询用户
     Result<TbUserCustom> listUserByPage(TbUserCustom user, Page page, Order order);
 
-    //    删除用户
+//    删除用户
     int deleteUserByIds(List ids);
 
-    //    编辑用户
-    int updateuser(TbUser tbUser);
+//   根据userId查询UserCustom
+    TbUserCustom getUserCustomById(Long userId);
+
+//    更新用户
+    int updateUser(TbUser user);
 }

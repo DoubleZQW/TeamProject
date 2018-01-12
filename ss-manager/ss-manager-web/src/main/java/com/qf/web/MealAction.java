@@ -5,15 +5,14 @@ import com.qf.dto.Page;
 import com.qf.dto.Result;
 import com.qf.pojo.TbMeal;
 import com.qf.service.MealService;
+import com.qf.vo.TbMealCustom;
 import com.qf.vo.TbMealQuery;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,16 +27,16 @@ public class MealAction {
     /**
      * 商品分页查询
      * @param page
-     * @param tbquery
+     * @param query
      * @param order
      * @return
      */
     @ResponseBody
     @RequestMapping(value="/meal/query",method= RequestMethod.GET)
-    public Result<TbMeal> listMealsByPage(Page page, TbMealQuery tbquery, Order order){
+    public Result<TbMeal> listMealsByPage(Page page, TbMealQuery query, Order order){
       Result<TbMeal> result=null;
       try {
-          result=  mealService.ListMealsByPage(page,tbquery,order);
+          result=  mealService.ListMealsByPage(page,query,order);
       }catch (Exception e){
           logger.error(e.getMessage(),e);
           e.printStackTrace();
@@ -84,7 +83,7 @@ public class MealAction {
     }
 
     /**
-     * 商品批量上架
+     * 商品批量下架
      */
     @ResponseBody
     @RequestMapping(value = "/meal/down",method = RequestMethod.POST)
@@ -107,10 +106,10 @@ public class MealAction {
      */
     @ResponseBody
     @RequestMapping(value = "/meal/update",method = RequestMethod.POST)
-    public int updateMeal(TbMeal tbMeal){
+    public int updateMeal(TbMeal meal){
         int i=0;
         try {
-            i=mealService.updateMeal(tbMeal);
+            i=mealService.updateMeal(meal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();
@@ -132,5 +131,15 @@ public class MealAction {
             e.printStackTrace();
         }
         return i;
+    }
+
+    /**
+     * 转修改
+     */
+    @RequestMapping(value = "/meal/edit/{mealId}",method = RequestMethod.GET)
+    public String sendMealToModel(@PathVariable("mealId") Long mealId, Model model){
+        TbMealCustom meal=mealService.getMealCustomById(mealId);
+        model.addAttribute("meal",meal);
+        return "meal-edit";
     }
 }

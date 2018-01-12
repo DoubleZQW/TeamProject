@@ -4,8 +4,8 @@
 <mapper namespace="com.qf.mapper.TbOrderCustomMapper" >
     <sql id="Base_sql">
         /*order本身的字段*/
-        o.order_id as orderId,format(o.payment/100,2) as payment,o.order_status as orderStatus,
-        o.payment_type as paymentType,o.order_created as orderCreated,format(o.order_free/100,2) as orderFree,
+        o.order_id as orderId,o.payment as payment,o.order_status as orderStatus,
+        o.payment_type as paymentType,o.order_created as orderCreated,o.order_free as orderFree,
         o.order_finished as orderFinished,o.order_message as orderMessage,
         /*要关联的字段*/
         m.meal_name as mealName,m.meal_price as mealPrice,m.meal_picture as mealPicture,
@@ -16,12 +16,12 @@
 
     <sql id="Where_Clause">
         <where>
-            o.order_status !=4
-            <if test="query !=null and query.mealName !=null and query.mealName !=''">
-                and m.meal_name like '%${query.mealName}%'
+            o.order_status !=3
+            <if test="query !=null and query.orderId !=null and query.orderId !=''">
+                and o.order_id like '%${query.orderId}%'
             </if>
             <if test="query !=null and query.orderStatus !=null and query.orderStatus !=''">
-                and o.order_status like '%${query.orderStatus}%'
+                and o.order_status = #{query.orderStatus}
             </if>
         </where>
     </sql>

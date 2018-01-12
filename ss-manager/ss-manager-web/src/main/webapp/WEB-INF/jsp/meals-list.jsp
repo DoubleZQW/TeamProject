@@ -8,16 +8,16 @@
         <div class="col-xs-12 column">
             <div class="col-xs-6 column">
                 <div class="form-group">
-                    <label for="meal_name">商品名</label>
-                    <input type="text" id="meal_name" name="meal_name" class="form-control input-sm"/>
+                    <label for="mealName">商品名</label>
+                    <input type="text" id="mealName" name="mealName" class="form-control input-sm"/>
                 </div>
             </div>
 
             <div class="col-xs-6 column">
                 <div class="form-group">
-                    <label for="meal_status">商品状态</label>
-                    <select class="form-control input-sm" name="meal_status" id="meal_status">
-                        <option value="">-请选择-</option>
+                    <label for="mealStatus">商品状态</label>
+                    <select class="form-control input-sm" name="mealStatus" id="mealStatus">
+                        <option value="">-全部-</option>
                         <option value="1">上架</option>
                         <option value="2">下架</option>
                         <option value="3">删除</option>
@@ -48,21 +48,24 @@
         <br>
 
         <%--下方数据表格展示--%>
-
         <div class="panel panel-default">
 			<div id="meal-list-toolbar">&emsp;
 				<h3 style="display: inline">
 					<span class="label label-default"><em>商品查询列表</em></span>
 				</h3>
 				<div class="btn-group">
-					<a href="javascript:void(0);" class="btn btn-info btn-xs" onclick="askEdit()">
+					<button class="btn btn-success btn-xs" onclick="closableTab.addTab({id: 'addMeal',name: '添加商品',url: 'meal-add',closable: true});">
+						<span class="glyphicon glyphicon-plus"></span>
+						添加
+					</button>
+					<button class="btn btn-info btn-xs btn-meal-edit" disabled="disabled" onclick="tabToEditMeal();">
 						<span class="glyphicon glyphicon-edit"></span>
 						编辑
-					</a>
-					<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="askRemove()">
+					</button>
+					<button class="btn btn-danger btn-xs btn-meal-remove" disabled="disabled" onclick="askRemove();">
 						<span class="glyphicon glyphicon-remove"></span>
 						删除
-					</a>
+					</button>
 				</div>
 			</div>
 
@@ -127,27 +130,30 @@
                     search: false,
                     //搜索的严格匹配
                     strictSearch: true,
+					//选中/取消选中行时去设置按钮的禁用状态
+					onCheck: function() {setDisabled('meal');},
+					onUncheck: function() {setDisabled('meal');},
                     columns:[{checkbox: true, align: true},
                         {field:'mealId',title:'编号',sortable: true,width: 20},
                         {field:'mealName',title:'商品名',sortable: true,width: 150},
-                        {field:'mealStatus',title:'上架状态',sortable: true,width: 100,formatter: function(value, row, index) {
+                        {field:'mealStatus',title:'上架状态',sortable: true,width: 70,align: 'center',formatter: function(value, row, index) {
                         	switch (value) {
-								case 1: return "<span class='glyphicon glyphicon-ok-sign'></span> 上架中";
-								case 2: return "<span class='glyphicon  glyphicon-remove-sign'></span> 已下架";
-								case 3: return "<span class='glyphicon  glyphicon-trash'></span> 已删除";
-								default: return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
+								case 1: return "<button class='btn btn-success btn-xs'>上架中</button>";
+								case 2: return "<button class='btn btn-warning btn-xs'>已下架</button>";
+								case 3: return "<button class='btn btn-warning btn-xs'>已删除</button>";
+								default: return "<button class='btn btn-warning btn-xs'>未知</button>";
 	                        }
 							}},
-                        {field:'mealPrice',title:'商品价格',sortable: true,width: 50,formatter: function(value) {
-                        	return "<span class='glyphicon glyphicon-yen'></span> "+ value;
+                        {field:'mealPrice',title:'价格',sortable: true,width: 80,formatter: function(value) {
+                        	return "<span class='glyphicon glyphicon-yen'></span> "+ value/100;
 							}},
-                        {field:'mealNum',title:'商品库存',sortable: true,visible: false},
-                        {field:'mealIntro',title:'商品介绍',sortable: true,visible: false},
-                        {field:'createTme',title:'添加时间',sortable: true,visible: false,
+                        {field:'mealNum',title:'库存',sortable: true,width: 50,align: 'center',},
+                        {field:'mealIntro',title:'介绍',sortable: true,visible: false},
+                        {field:'createTme',title:'添加时间',sortable: true,visible: false,align: 'center',
                             formatter: function(value, row, index) {
                                 return  moment(value).format("YYYY-MM-DD HH:mm:SS");
                             }},
-                        {field:'updatTime',title:'更新时间',sortable: true,
+                        {field:'updatTime',title:'更新时间',sortable: true,align: 'center',
                             formatter: function(value, row, index) {
                                 return  moment(value).format("YYYY-MM-DD HH:mm:SS");
                             }}]
@@ -155,8 +161,8 @@
 
                 //注册查询按钮的点击事件
                 $('.meal-list-submit').click(function() {
-	                var mealName = $('#meal_name').val();
-	                var mealStatus = $('#meal_status').val();
+	                var mealName = $('#mealName').val();
+	                var mealStatus = $('#mealStatus').val();
                     $('#meal-list-tab').bootstrapTable('refreshOptions',{
                     	pageNumber: 1,
 						queryParams: function (params) {
@@ -171,31 +177,17 @@
 						}
 					})
                 })
-				//页面加载后立即查询一次
-					.click();
 
                 //重置按钮的功能
                 function reset() {
-	                $('#meal_name').val('');
-	                $('#meal_status').val('');
+	                $('#mealName').val('');
+	                $('#mealStatus').val('');
 	                $('.meal-list-submit').click();
                 }
 
                 //删除前的询问
                 function askRemove() {
 	                var selections = $('#meal-list-tab').bootstrapTable('getSelections');
-	                //没有选中任何数据报错
-	                if (selections.length < 1) {
-		                swal({
-			                title: "未选中!",
-			                text: '我找不到你的选择...',
-			                timer: 1500,
-			                buttons: false,
-			                icon: 'warning'
-		                });
-		                return;
-	                }
-
 	                var ids = [];
 	                var names = [];
 	                //遍历选中的记录，将记录的id存放到js数组中
@@ -246,36 +238,22 @@
                 }
 
 
-                //给出编辑的确认信息框
-				function askEdit() {
-					var selections = $('#meal-list-tab').bootstrapTable('getSelections');
-					//没有选中任何数据报错
-					if (selections.length < 1) {
-						swal({
-							icon: 'warning',
-							title: "未选中!",
-							text: '我找不到你的选择...',
-							timer: 1500,
-							buttons: false,
-						});
-						return;
-					}
-					if (selections.length > 1) {
-						swal({
-							icon: 'warning',
-							title: '无法编辑多种商品!',
-							text: '我只要唯一的选择~',
-							timer: 2500,
-							buttons: false,
-						});
-					}
-					editMeal(selections[0].userId);
-				}
-				function editMeal(mealId) {
-
-				}
+                //直接去编辑
+                function tabToEditMeal() {
+	                var mealId = $('#meal-list-tab').bootstrapTable('getSelections')[0].mealId;
+	                //非空检查
+	                if (! mealId) {
+		                swal("数据为空,请刷新!", {timer: 2000});
+		                return;
+	                }
+	                closableTab.addTab({
+		                id: 'editMeal',
+		                name: '编辑商品',
+		                url: 'meal/edit/'+ mealId,
+		                closable: true
+	                });
+                }
 			</script>
-
         </div>
     </body>
 </html>

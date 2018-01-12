@@ -10,4 +10,6 @@ public interface TbUserCustomMapper {
 
     List<TbUserCustom> listUserByPage(Map<String,Object> map);
 
+//    根据UserID查询UserCustom
+    TbUserCustom findUserCustomById(Long userId);
 }

@@ -17,7 +17,7 @@
 				<div class="form-group">
 					<label for="user_level">用户类型</label>
 					<select class="form-control input-sm" id="user_level" name="user_level" >
-						<option value="">-请选择-</option>
+						<option value="">-全部-</option>
 						<option value="1">普通用户</option>
 						<option value="2">管理员</option>
 					</select>
@@ -47,21 +47,20 @@
 		<br>
 
 		<%--下方数据表格展示--%>
-
 		<div class="panel panel-default">
 			<div id="user-query-toolbar">&emsp;
 				<h3 style="display: inline">
 					<span class="label label-default"><em>用户查询结果</em></span>
 				</h3>
 				<div class="btn-group">
-					<a href="javascript:void(0);" class="btn btn-info btn-xs" onclick="askEdit()">
+					<button class="btn btn-info btn-xs btn-user-edit" disabled="disabled" onclick="tabToEditUser();">
 						<span class="glyphicon glyphicon-edit"></span>
 						编辑
-					</a>
-					<a href="javascript:void(0);" class="btn btn-danger btn-xs" onclick="askRemove()">
+					</button>
+					<button class="btn btn-danger btn-xs btn-user-remove" disabled="disabled" onclick="askRemove();">
 						<span class="glyphicon glyphicon-remove"></span>
 						删除
-					</a>
+					</button>
 				</div>
 			</div>
 
@@ -126,61 +125,44 @@
 					search: false,
 					//搜索的严格匹配
 					strictSearch: true,
+					//选中/取消选中行时去设置按钮的禁用状态
+					onCheck: function() {setDisabled('user');},
+					onUncheck: function() {setDisabled('user');},
 					columns:[{checkbox: true, align: true},
 						{field:'userId',title:'编号',sortable: true,width: 20},
 						{field:'userName',title:'用户名',sortable: true,width: 150},
                         {field:'userLevel',title:'权限',sortable: true,width: 50,
                             formatter: function(value, row, index) {
                                 switch (value) {
-                                    case 1 :
-                                        return "用户";
-                                        break;
-                                    case 2:
-                                        return "管理员";
-                                        break;
-                                    default:
-                                        return "未知";
-                                        break;
+                                    case 1: return "用户";
+                                    case 2: return "管理员";
+                                    default: return "未知";
                                 }
                             }},
 						{field:'userStatus',title:'状态',sortable: true,width: 50,
                             formatter: function(value, row, index) {
                                 switch (value) {
-                                    case 1 :
-                                        return "<span class='glyphicon glyphicon-ok-sign'></span> 存在";
-									case 0:
-										//删除的在查询时已经被排除了
-                                        return "<span class='glyphicon glyphicon-remove-sign'></span> 删除";
-                                    default:
-                                        return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
+                                    case 1: return "<span class='glyphicon glyphicon-ok-sign'></span> 存在";
+									case 0:  return "<span class='glyphicon glyphicon-remove-sign'></span> 删除";
+                                    default:  return "<span class='glyphicon glyphicon-question-sign'></span> 未知";
                                 }
                             }},
 						{field:'userPhone',title:'手机号',sortable: true,visible: false},
 						{field:'userSex',title:'性别',sortable: true,visible: false,
                             formatter: function(value, row, index) {
                                 switch (value) {
-                                    case 1 :
-                                        return "男";
-                                        break;
-                                    case 0:
-                                        return "女";
-                                        break;
-                                    default:
-                                        return "未知";
-                                        break;
+                                    case 1: return "男";
+                                    case 0: return "女";
+                                    default: return "未知";
                                 }
                             }},
 						{field:'userEmail',title:'电子邮件',sortable: true,visible: false},
-						{field:'userOthername',title:'昵称',sortable: true,width: 100},
+						{field:'userOthername',title:'昵称',sortable: true,width: 80},
 						{field:'address',title:'地址',sortable: true,visible: false},
-						{field:'created',title:'注册时间',sortable: true,visible: false,
-							formatter: function(value, row, index) {
-								return  moment(value).format("YYYY-MM-DD HH:mm:SS");
-							}},
-						{field:'updated',title:'更新时间',sortable: true,
-						formatter: function(value, row, index) {
-							return  moment(value).format("YYYY-MM-DD HH:mm:SS");
-						}}]
+						{field:'created',title:'注册时间',sortable: true,align: 'center',visible: false,
+							formatter: function(value, row, index) {return  moment(value).format("YYYY-MM-DD HH:mm:SS");}},
+						{field:'updated',title:'更新时间',sortable: true,align: 'center',
+						formatter: function(value, row, index) {return  moment(value).format("YYYY-MM-DD HH:mm:SS");}}]
 				});
 
 				//注册查询按钮的点击事件
@@ -201,8 +183,6 @@
 						}
 					})
 				})
-				//页面加载后立即查询一次
-					.click();
 
 				//重置按钮的功能
 				function reset() {
@@ -214,18 +194,6 @@
 				//删除前的询问
                 function askRemove() {
 	                var selections = $('#user-query-tab').bootstrapTable('getSelections');
-	                //没有选中任何数据报错
-	                if (selections.length < 1) {
-		                swal({
-							title: "未选中!",
-							text: '我找不到你的选择...',
-							timer: 1500,
-							buttons: false,
-							icon: 'warning'
-		                });
-		                return;
-	                }
-
 	                var ids = [];
 	                var names = [];
 	                //遍历选中的记录，将记录的id存放到js数组中
@@ -276,41 +244,22 @@
                 }
 
 
-                //给出编辑的确认信息框
-				function askEdit() {
-					var selections = $('#user-query-tab').bootstrapTable('getSelections');
-					//没有选中任何数据报错
-					if (selections.length < 1) {
-						swal({
-							icon: 'warning',
-							title: "未选中!",
-							text: '我找不到你的选择...',
-							timer: 1500,
-							buttons: false,
-						});
+                //直接去编辑
+				function tabToEditUser() {
+					var userId = $('#user-query-tab').bootstrapTable('getSelections')[0].userId;
+					//非空检查
+					if (! userId) {
+						swal("数据为空,请刷新!", {timer: 2000});
 						return;
 					}
-					if (selections.length > 1) {
-						swal({
-							icon: 'warning',
-							title: '无法编辑多个用户!',
-							text: '我只要唯一的选择~',
-							timer: 2500,
-							buttons: false,
-						});
-					}
-					editUser(selections[0].userId);
-				}
-				function editUser(userId) {
 					closableTab.addTab({
 						id: 'editUser',
-						name: '修改用户',
-						url: 'user-edit',
+						name: '编辑用户',
+						url: 'user/edit/'+ userId,
 						closable: true
 					});
 				}
 			</script>
-
 		</div>
 	</body>
 </html>

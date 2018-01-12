@@ -1,5 +1,6 @@
 package com.qf.web;
 
+
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
@@ -10,7 +11,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @Controller
@@ -66,17 +69,26 @@ public class UserAction {
         }
         return i;
     }
+
+    //预修改,将要修改的user查出放入model中,渲染视图jsp给前端.
+    @RequestMapping(value = "user/edit/{userId}", method = RequestMethod.GET)
+    public String sentUserToModel(@PathVariable("userId") Long userId, Model model) {
+    	TbUserCustom user = userService.getUserCustomById(userId);
+        model.addAttribute("user", user);
+        return "user-edit";
+    }
+
     /**
-     * 编辑用户
+     * 更改用户
      */
     @ResponseBody
-    @RequestMapping(value = "user/update",method = RequestMethod.POST)
-    public int updateUser(TbUser tbUser) {
-        int i = 0;
+    @RequestMapping(value = "/user/update",method =RequestMethod.POST)
+    public int motifyUser(TbUser user){
+        int i=0;
         try {
-            i = userService.updateuser( tbUser);
-        } catch (Exception e) {
-            logger.error(e.getMessage(), e);
+            i=userService.updateUser(user);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
             e.printStackTrace();
         }
         return i;

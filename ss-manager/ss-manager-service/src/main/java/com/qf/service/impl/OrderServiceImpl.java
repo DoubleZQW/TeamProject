@@ -77,4 +77,11 @@ public class OrderServiceImpl implements OrderService{
         }
         return i;
     }
+
+//    根据id查询订单
+
+    @Override
+    public TbOrder findById(Long id) {
+        return orderMapper.selectByPrimaryKey(id);
+    }
 }

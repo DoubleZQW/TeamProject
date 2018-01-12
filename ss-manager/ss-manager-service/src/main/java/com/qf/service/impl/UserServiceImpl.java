@@ -13,6 +13,8 @@ import com.qf.pojo.TbUser;
 import com.qf.pojo.TbUserExample;
 import com.qf.service.UserService;
 import com.qf.vo.TbUserCustom;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,14 +25,12 @@ import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService{
+    private Logger logger= LoggerFactory.getLogger(this.getClass());
 
 //   引入dao层
     @Autowired
     private TbUserMapper userMapper;
 
-    /**
-     *
-     */
 //    引入dao层扩展
     @Autowired
     private TbUserCustomMapper userCustomMapper;
@@ -42,7 +42,6 @@ public class UserServiceImpl implements UserService{
      */
     @Override
     public TbUser getById(Long id) {
-        System.out.println(id);
         return userMapper.selectByPrimaryKey(id);
     }
 
@@ -72,25 +71,7 @@ public class UserServiceImpl implements UserService{
             map.put("page",page);
             list = userCustomMapper.listUserByPage(map);
         }
-
-        //根据字段值，返回中文字。 --》可以在前端页面上判断！
-        /*List<TbUserCustom> list2 = new LinkedList<TbUserCustom>();
-        for (TbUserCustom u:list){
-            if (u.getUserLevel()==1){ u.setUlevel("用户"); }
-            else if (u.getUserLevel()==0){ u.setUlevel("管理员"); }
-
-            if (u.getUserStatus()==1){ u.setStatus("存在"); }
-            else if (u.getUserStatus()==2){ u.setStatus("删除"); }
-
-            if (u.getUserSex()==1){ u.setSex("男"); }
-            else if (u.getUserSex()==0){ u.setSex("女"); }
-
-            list2.add(u);
-        }
-        pageVo.setRows(list2);*/
-
         result.setRows(list);
-
         return result;
     }
 
@@ -113,8 +94,25 @@ public class UserServiceImpl implements UserService{
         return i;
     }
 
+//    根据userId查询UserCustom
     @Override
-    public int updateuser(TbUser tbUser) {
-        return 0;
+    public TbUserCustom getUserCustomById(Long userId) {
+        return userCustomMapper.findUserCustomById(userId);
+    }
+
+//    更新用户
+
+    @Override
+    public int updateUser(TbUser user) {
+        int i=0;
+        try {
+            user.setUpdated(new Date());
+            i=userMapper.updateByPrimaryKeySelective(user);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
     }
 }
+

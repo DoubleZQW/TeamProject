@@ -3,7 +3,6 @@
     <head>
         <title>商品列表</title>
     </head>
-    <form method="post" action="meal/add">
     <%--上方查询条件--%>
         <div class="col-xs-12 column">
             <div class="col-xs-6 column">
@@ -16,7 +15,7 @@
             <div class="col-xs-6 column">
                 <div class="form-group">
                     <label for="meal_status">状态</label>
-                    <select class="form-control input-sm" name="meal_status" id="meal_status">
+                    <select class="form-control input-sm" id="meal_status" name="meal_status">
                         <option value="">-请选择-</option>
                         <option selected="selected" value="1">上架</option>
                         <option value="2">下架</option>
@@ -27,8 +26,8 @@
 
             <div class="col-xs-6 column">
                 <div class="form-group">
-                    <label for="meal_status">商品分类</label>
-                    <select class="form-control input-sm" name="meal_cat" id="meal_cat">
+                    <label for="meal_cat">商品分类</label>
+                    <select class="form-control input-sm" id="meal_cat" name="meal_cat">
                         <option value="">-请选择-</option>
                         <option value="1">分类名1</option>
                         <option value="2">分类名2</option>
@@ -39,28 +38,28 @@
 
 			<div class="col-xs-6 column">
 				<div class="form-group">
-					<label for="meal_name">价格</label>
+					<label for="meal_price">价格</label>
 					<input type="text" id="meal_price" name="meal_price" class="form-control input-sm"/>
 				</div>
 			</div>
 
 			<div class="col-xs-6 column">
 				<div class="form-group">
-					<label for="meal_name">库存</label>
+					<label for="meal_number">库存</label>
 					<input type="text" id="meal_number" name="meal_number" class="form-control input-sm"/>
 				</div>
 			</div>
 
 			<div class="col-xs-6 column">
 				<div class="form-group">
-					<label for="meal_name">发布者</label>
+					<label for="publisher">发布者</label>
 					<input type="text" id="publisher" name="publisher" class="form-control input-sm"/>
 				</div>
 			</div>
 
 			<div class="col-xs-6 column">
 				<div class="form-group">
-					<label for="meal_name">商品描述</label>
+					<label for="meal_intro">商品描述</label>
 					<input type="text" id="meal_intro" name="meal_intro" class="form-control input-sm"/>
 				</div>
 			</div>
@@ -73,7 +72,7 @@
             <div class="col-xs-4 column">
                 <div class="btn-group btn-group-justified" role="group">
                     <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-info btn-sm meal-list-submit" onclick="void(0);">
+                        <button type="button" class="btn btn-info btn-sm meal-add-submit" onclick="void(0);">
 							<span class="glyphicon glyphicon-send"></span> 新增
 						</button>
                     </div>
@@ -86,7 +85,6 @@
             </div>
         </div>
         <br>
-	</form>
 
 		<script type="text/javascript">
 			function reset(v) {
@@ -97,6 +95,30 @@
 				//同时还原一个新的标签页
 				closableTab.addTab({id: 'addMeal',name: '添加商品',url: 'meal-add',closable: true});
 			}
+
+			$('.meal-add-submit').click(function() {
+				$.ajax({
+					method: 'post',
+					url: 'meal/add',
+					data: {
+						mealName: $('#meal_name').val(),
+						mealStatus: $('#meal_status').val(),
+						mealCat: $('#meal_cat').val(),
+						mealPrice: $('#meal_price').val()*100,
+						mealNum: $('#meal_number').val(),
+						publisher: $('#publisher').val(),
+						mealIntro: $('#meal_intro').val(),
+					},
+					success: function(data) {
+						if(data > 0) {
+							swal("添加成功!", {timer: 2000});
+							$('body').find("[tabclose='tab_seed_addMeal']")[0].click();
+							$('#meal-list-tab').bootstrapTable('refresh');
+						} else
+							swal("添加失败!", "稍后再试...", {timer: 2000});},
+					dataType: 'json'
+				});
+			});
 		</script>
     </body>
 </html>

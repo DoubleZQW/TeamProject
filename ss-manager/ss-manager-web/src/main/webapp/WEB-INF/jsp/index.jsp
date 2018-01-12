@@ -22,8 +22,8 @@
 		<script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
 		<script src="resources/sweet-alert/sweetalert.min.js" rel="stylesheet"></script>
 		<%--<script src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>--%>
-		<%-- Hmodal --%>
-		<script src="resources/hmodal/Hmodal.js"></script>
+		<%-- 自定义扩展的js --%>
+		<script src="resources/js/commons.js"></script>
 
 	</head>
 
@@ -83,10 +83,6 @@
 								<li><a href="javascript:closableTab.addTab({id: 'queryOrder',name: '查询订单',url: 'order-list',closable: true});">
 									<span class="glyphicon glyphicon-search"></span> 查询
 								</a></li>
-								<li role="separator" class="divider"></li>
-								<li><a href="javascript:closableTab.addTab({id: 'updateOrder',name: '修改订单',url: 'order-update',closable: true});">
-									<span class="glyphicon glyphicon-pencil"></span> 修改
-								</a></li>
 							</ul>
 						</div>
 
@@ -113,7 +109,7 @@
 				<ul class="nav nav-tabs" role="tablist"></ul>
 				<div class="col-xs-12 well">
 					<%-- 高级选项卡内容 --%>
-					<div class="tab-content" style="height: 74%;width:100%;"></div>
+					<div class="tab-content" style="height: 10%;width:100%;"></div>
 				</div>
 			</div>
 
@@ -131,7 +127,6 @@
 				$('#myModal').modal();
 			});
 			$(closableTab.addTab(defaultTab));
-
 		</script>
 
 	</body>
