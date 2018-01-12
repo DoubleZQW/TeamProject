@@ -23,7 +23,7 @@ public interface MealService {
     int batchUpdateStatus(List<Long> ids,TbMeal tbMeal);
 
     //    更新
-    int updateMeal(TbMealCustom mealCustom);
+    int updateMeal(TbMeal meal);
 
 //    添加
     int saveMeals(TbMeal tbMeal);

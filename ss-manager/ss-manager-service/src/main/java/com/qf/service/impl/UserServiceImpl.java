@@ -13,6 +13,8 @@ import com.qf.pojo.TbUser;
 import com.qf.pojo.TbUserExample;
 import com.qf.service.UserService;
 import com.qf.vo.TbUserCustom;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,7 @@ import java.util.Map;
 
 @Service
 public class UserServiceImpl implements UserService{
+    private Logger logger= LoggerFactory.getLogger(this.getClass());
 
 //   引入dao层
     @Autowired
@@ -92,9 +95,24 @@ public class UserServiceImpl implements UserService{
     }
 
 //    根据userId查询UserCustom
-
     @Override
     public TbUserCustom getUserCustomById(Long userId) {
         return userCustomMapper.findUserCustomById(userId);
     }
+
+//    更新用户
+
+    @Override
+    public int updateUser(TbUser user) {
+        int i=0;
+        try {
+            user.setUpdated(new Date());
+            i=userMapper.updateByPrimaryKeySelective(user);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
 }
+

@@ -106,10 +106,10 @@ public class MealAction {
      */
     @ResponseBody
     @RequestMapping(value = "/meal/update",method = RequestMethod.POST)
-    public int updateMeal(TbMealCustom mealCustom){
+    public int updateMeal(TbMeal meal){
         int i=0;
         try {
-            i=mealService.updateMeal(mealCustom);
+            i=mealService.updateMeal(meal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();

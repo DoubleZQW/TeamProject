@@ -77,4 +77,20 @@ public class UserAction {
         model.addAttribute("user", user);
         return "user-edit";
     }
+
+    /**
+     * 更改用户
+     */
+    @ResponseBody
+    @RequestMapping(value = "/user/update",method =RequestMethod.POST)
+    public int motifyUser(TbUser user){
+        int i=0;
+        try {
+            i=userService.updateUser(user);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
+    }
 }

@@ -79,10 +79,11 @@ public class MealServiceImpl implements MealService {
 
 //   更新商品
     @Override
-    public int updateMeal(TbMealCustom mealCustom) {
+    public int updateMeal(TbMeal meal) {
         int i=0;
         try {
-            i = mealDao.updateMealCustom(mealCustom);
+            meal.setUpdatTime(new Date());
+            i =mealMapper.updateByPrimaryKeySelective(meal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             e.printStackTrace();

@@ -25,4 +25,6 @@ public interface UserService {
 //   根据userId查询UserCustom
     TbUserCustom getUserCustomById(Long userId);
 
+//    更新用户
+    int updateUser(TbUser user);
 }
