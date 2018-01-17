@@ -8,7 +8,8 @@
     <script>try {
         document.execCommand('BackgroundImageCache', false, true);
     } catch (e) {
-    }</script><![endif]-->
+    }</script>
+    <![endif]-->
     <!--[if IE 6]>
     <script type="text/javascript" src="js/evpng.js"></script>
     <script language="javascript" type="text/javascript">EvPNG.fix(".pngFix,.pngFix:hover");</script><![endif]-->
@@ -38,7 +39,7 @@
 </div>
 <div class="header">
     <div class="header_c">
-        <a href="http://www.meishij.net/" class="logo pngFix"></a>
+        <a href="/" class="logo pngFix"></a>
         <div class="main_search_top_w">
             <div class="suggestionsBox" id="suggestions" style="display:none;">
                 <ul class="suggestionList" id="autoSuggestionsList"></ul>
@@ -52,7 +53,10 @@
             </form>
         </div>
         <div class="loginitem_h">
-            <script src='js/loginheader_n2.js'></script>
+            <a href="http://i.meishi.cc/login.php?redirect=http%3A%2F%2Fwww.meishij.net%2F"
+               class="link header_login">登录</a><a
+                href="http://i.meishi.cc/r.php?redirect=http%3A%2F%2Fwww.meishij.net%2F"
+                class="link header_register">注册</a>
         </div>
     </div>
 </div>
@@ -145,86 +149,13 @@
                 </div>
             </div>
         </li>
-        <li class="hasmore"><a href="http://www.meishij.net/jiankang/" class="link pngFix"><strong>饮食健康</strong></a>
-            <div class="dw clearfix">
-                <div class="dww clearfix dww_ysjk">
-                    <div class="dwitem clearfix pngFix">
-                        <dl class="clearfix">
-                            <dt><a href="http://www.meishij.net/jiankang/">饮食健康</a></dt>
-                            <dd><a href="http://www.meishij.net/jiankang/changshi/">饮食小常识</a></dd>
-                            <dd><a href="http://www.meishij.net/jiankang/meirong/">美容瘦身</a></dd>
-                            <dd><a href="http://www.meishij.net/jiankang/shipinanquan/">食品安全</a></dd>
-                            <dd><a href="http://www.meishij.net/jiankang/yangsheng/">养生妙方</a></dd>
-                            <dd><a href="http://www.meishij.net/jiankang/jinji/">饮食禁忌</a></dd>
-                            <dd><a href="http://www.meishij.net/jiankang/zhongyi/">中医保健</a></dd>
-                            <dd><a href="http://www.meishij.net/jiankang/muying/">母婴健康饮食</a></dd>
-                            <dd><a href="http://www.meishij.net/jiankang/yinshixinwen/">饮食新闻</a></dd>
-                        </dl>
-                    </div>
-                    <div class="dwitem clearfix">
-                        <dl class="clearfix">
-                            <dt><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/">功能性调理</a></dt>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/qingrequhuo/">清热去火</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/jianfei/">减肥</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/qutan/">祛痰</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/wufa/">乌发</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/ziyinbushen/">滋阴补肾</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/jianpikaiwei/">健脾开胃</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/xiaohuabulang/">消化不良</a>
-                            </dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/qingrejiedu/">清热解毒</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/buyangzhuangyang/">补阳壮阳</a>
-                            </dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/gongnengxing/zengfei/">增肥</a></dd>
-                        </dl>
-                    </div>
-                    <br/>
-                    <div class="dwitem dwitem_half clearfix">
-                        <dl class="clearfix">
-                            <dt><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/">人群膳食</a></dt>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/yunfu/">孕妇</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/laoren/">老人</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/chanfu/">产妇</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/rumu/">哺乳期</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/qingshaonian/">青少年</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/rouer/">幼儿</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/renqunshanshi/xuelingqi/">学龄期儿童</a></dd>
-                        </dl>
-                    </div>
-                    <div class="dwitem dwitem_half clearfix">
-                        <dl class="clearfix">
-                            <dt><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/">疾病调理</a></dt>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/tangniaobing/">糖尿病</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/tongfeng/">痛风</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/weiyan/">胃炎</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/zhichuang/">痔疮</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/gengnianqi/">更年期</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/jibingtiaoli/jiakangxian/">甲状腺</a></dd>
-                        </dl>
-                    </div>
-                    <br/>
-                    <div class="dwitem clearfix">
-                        <dl class="clearfix">
-                            <dt><a href="http://www.meishij.net/yaoshanshiliao/zangfu/">脏腑调理</a></dt>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/zangfu/ganmao/">感冒</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/zangfu/shentiaoli/">补肾</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/zangfu/yangweizaoxie/">阳痿早泄</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/zangfu/buxue/">补血</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/zangfu/bianmi/">便秘</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/zangfu/fuxie/">腹泻</a></dd>
-                            <dd><a href="http://www.meishij.net/yaoshanshiliao/zangfu/houxuehuayu/">活血化瘀</a></dd>
-                        </dl>
-                    </div>
-                    <div class="bgitem"></div>
-                </div>
-            </div>
+        <li><a href="#" class="link pngFix"><strong>全部商家</strong></a>
         </li>
-        <li><a href="http://i.meishi.cc/recipe_list/" class="link pngFix"><strong>美食菜单</strong></a></li>
+        <li><a href="#" class="link pngFix"><strong>我的订单</strong></a></li>
         <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="http://i.meishi.cc/jiajuguan/"
-                                                      class="link pngFix"><strong>家居馆</strong>
+                                                      class="link pngFix"><strong>购物车</strong>
         </a></li>
-        <li><a href="http://i.meishi.cc/daren_task/daren.php" class="link"><strong>美食达人</strong><img
+        <li><a href="#" class="link"><strong>个人中心</strong><img
                 src="picture/20160909164810_443.png"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
     </ul>
@@ -441,11 +372,13 @@
             <div class="next_btn next_btn_1 pngFix" id="zzw_next_btn"></div>
             <div class="index_3meal_tab" id="index_timelinebox">
                 <div class="index_3meal_tab_w">
-                    <span class="timex timex_0" id="i_time4"><span>早餐时间</span></span><span class="timex timex_1"
-                                                                                           id="i_time10"><span>午餐时间</span></span><span
-                        class="timex timex_2" id="i_time14"><span>下午茶时间</span></span><span class="timex timex_3"
-                                                                                           id="i_time16"><span>晚餐时间</span></span><span
-                        class="timex timex_4 timex_current" id="i_time21"><span>夜宵时间</span></span>
+                    <span class="timex timex_0" id="i_time4"></span>早餐时间</span></span><span class="timex timex_1"
+                                                                                            id="i_time10"></span>午餐时间</span></span>
+                    <span
+                            class="timex timex_2" id="i_time14"><span>下午茶时间</span></span><span class="timex timex_3"
+                                                                                               id="i_time16"></span>晚餐时间</span></span>
+                    <span
+                            class="timex timex_4 timex_current" id="i_time21"></span>夜宵时间</span></span>
                 </div>
                 <div class="timeline_left"></div>
                 <div class="timeline_right"></div>
@@ -763,406 +696,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="ztlist_cur" id="ztlist_cur"><span></span><span class="current"></span><span></span></div>
-        <h3 class="bbtitles">一月，养肾防寒，饮食宜滋补<span class="paixu"><a href="http://www.meishij.net/shicai/">更多食材 ></a></span>
-        </h3>
-        <div class="index_sc_w">
-            <dl class="clearfix">
-                <dd class="index_sc_dd index_sc_dd_current"><a href="####" class="link">水果</a>
-                    <div class="index_sc_con">
-                        <div class="c">
-                            <a target="_blank" href="http://www.meishij.net/柚子"><img
-                                    src="picture/41f12e50219c6afdc4735e336a99f16f_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>柚子</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/猕猴桃"><img
-                                    src="picture/6a89f9eeb6eeec4427e5807b4ed0cb02_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>猕猴桃</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/梨"><img
-                                    src="picture/35af0f27e89091fb1126f81cdb6ad5c4_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>梨</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/柿子"><img
-                                    src="picture/b3bc092f622b66ed8d3c0d8595eb5d76_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>柿子</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/甘蔗"><img
-                                    src="picture/3df43238975c0d2e094fa8e763a41f36_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>甘蔗</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/火龙果"><img
-                                    src="picture/de2e19c25348fe9784c98878738596a3_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>火龙果</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/橘子"><img
-                                    src="picture/708c05cc3ea93a7bd9fc81653c5ff8ec_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>橘子</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/山楂"><img
-                                    src="picture/1c8c9bcf7198593b7da9b79ba82683fd_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>山楂</strong></span></a>
-                        </div>
-                    </div>
-                </dd>
-                <dd class="index_sc_dd"><a href="####" class="link">蔬菜</a>
-                    <div class="index_sc_con">
-                        <div class="c">
-                            <a target="_blank" href="http://www.meishij.net/藕"><img
-                                    src="picture/faa37fc1ad02dafb198a73bccf2c68c5_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>藕</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/白萝卜"><img
-                                    src="picture/dac8824c5a3d41a274b84331f0376468_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>白萝卜</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/土豆"><img
-                                    src="picture/5ff27eba123f27615b1c0f0c406a5c27_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>土豆</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/南瓜"><img
-                                    src="picture/62c149c64a4c9a7a02911650cc50b256_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>南瓜</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/四季豆"><img
-                                    src="picture/8be959de0500cb3effcab1719dc93d29_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>四季豆</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/山药"><img
-                                    src="picture/e5597e191e31e552ed240590fa2fb603_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>山药</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/大白菜"><img
-                                    src="picture/b46999f5830b40b82c2232d496f2b05c_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>大白菜</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/尖椒"><img
-                                    src="picture/94753d9e00352dfbc728480d65ecd28f_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>尖椒</strong></span></a>
-                        </div>
-                    </div>
-                </dd>
-                <dd class="index_sc_dd"><a href="####" class="link">五谷</a>
-                    <div class="index_sc_con">
-                        <div class="c">
-                            <a target="_blank" href="http://www.meishij.net/板栗"><img
-                                    src="picture/638aa109b78183ae2faeb738ebfce1b8_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>板栗</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/核桃(鲜)"><img
-                                    src="picture/shicai633_150x150.jpg"/><span class="name pngFix"><em
-                                    class="notz"></em><strong>核桃(鲜)</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/毛豆"><img
-                                    src="picture/064ee845c82df1cfd19e00b8e5aeaa0c_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>毛豆</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/花生"><img
-                                    src="picture/94b32e81e021d4a23d81fb0126fcf473_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>花生</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/玉米(鲜)"><img
-                                    src="picture/3eb346efc8d0a9fca2d26ae0a6715d8d_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>玉米(鲜)</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/冬枣"><img
-                                    src="picture/f22c038c8dbec35f4e8b79daa4234e5b_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>冬枣</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/薏米"><img
-                                    src="picture/1fc5bb018fadda5c7083d61e1a27ab2a_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>薏米</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/燕麦"><img
-                                    src="picture/5bb1dda5bfa20c2772d81781c4a23f31_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>燕麦</strong></span></a>
-                        </div>
-                    </div>
-                </dd>
-                <dd class="index_sc_dd"><a href="####" class="link">生鲜</a>
-                    <div class="index_sc_con">
-                        <div class="c">
-                            <a target="_blank" href="http://www.meishij.net/大闸蟹"><img
-                                    src="picture/1caad250e69a65e95f619e07eb55da46_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>大闸蟹</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/鲈鱼"><img
-                                    src="picture/ea9433aea0d9e2634f1f6ec593b9589d_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>鲈鱼</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/皮皮虾"><img
-                                    src="picture/a33af27d0cb180dfb0762fc1f5386819_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>皮皮虾</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/鸭"><img
-                                    src="picture/1af59099f56158ef054e6ee5888acedf_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>鸭</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/虾"><img
-                                    src="picture/23da49e7bb0dd02111b14d640c2a90eb_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>虾</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/扇贝"><img
-                                    src="picture/f07d734a3e755193ae59f25ce1a03e93_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>扇贝</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/海参"><img
-                                    src="picture/29113b2d636c6e6cb6b1308a674463f7_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>海参</strong></span></a>
-                            <a target="_blank" href="http://www.meishij.net/牛肉"><img
-                                    src="picture/a72016598763ceb63763b2f0efb75434_150x150.jpg"/><span
-                                    class="name pngFix"><em class="notz"></em><strong>牛肉</strong></span></a>
-                        </div>
-                    </div>
-                </dd>
-            </dl>
-        </div>
-        <div class="index_pxw_ww">
-            <div id="index_cp_leftarrow"></div>
-            <div id="index_cp_leftarrow_mask"></div>
-            <div id="index_cp_rightarrow"></div>
-            <div id="index_cp_rightarrow_mask"></div>
-            <div class="index_pxw_w" id="index_pxw_w">
-                <div class="index_pxw clearfix" id="index_pxw">
-                    <div class="index_pxi">
-                        <h3 class="bbtitles">每小时最热菜谱</h3>
-                        <div class="listtyle2_w clearfix" id="listtyle1_w">
-                            <div class="listtyle1_list clearfix" id="listtyle1_list">
-                                <div class="listtyle1 ml0">
-                                    <a target="_blank" href="http://www.meishij.net/zuofa/luzhuerzhutoupiwucan.html"
-                                       title="卤猪耳猪头皮#午餐#" class="big">
-                                        <img class="img" alt="卤猪耳猪头皮#午餐#" src="picture/a6174466_151503400994988.jpg">
-                                        <div class="i_w">
-                                            <div class="i" style="margin-top: 0px;">
-                                                <div class="c1">
-                                                    <strong>卤猪耳猪头皮#午餐#</strong><span>90 评论  3454 人气</span><em>心随彧动</em>
-                                                </div>
-                                                <div class="c2">
-                                                    <ul>
-                                                        <li class="li1">13步 / 大概60分钟</li>
-                                                        <li class="li2">卤 / 家常味</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="listtyle1">
-                                    <a target="_blank" href="http://www.meishij.net/zuofa/jiangyoufan_1.html"
-                                       title="酱油饭" class="big">
-                                        <img class="img" alt="酱油饭" src="picture/a5829416_150185690338936.jpg">
-                                        <div class="i_w">
-                                            <div class="i" style="margin-top: 0px;">
-                                                <div class="c1">
-                                                    <strong>酱油饭</strong><span>40 评论  16897 人气</span><em>童尐果</em></div>
-                                                <div class="c2">
-                                                    <ul>
-                                                        <li class="li1">8步 / 大概10分钟</li>
-                                                        <li class="li2">炒 / 家常味</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <strong class="gx"><span>高血压</span></strong></a>
-                                </div>
-                                <div class="listtyle1">
-                                    <a target="_blank" href="http://www.meishij.net/zuofa/xiandanhuangxiarendoufu.html"
-                                       title="咸蛋黄虾仁豆腐" class="big">
-                                        <img class="img" alt="咸蛋黄虾仁豆腐" src="picture/a3885624_150180911918252.jpg">
-                                        <div class="i_w">
-                                            <div class="i" style="margin-top: 0px;">
-                                                <div class="c1">
-                                                    <strong>咸蛋黄虾仁豆腐</strong><span>108 评论  22594 人气</span><em>开心果子365Q</em>
-                                                </div>
-                                                <div class="c2">
-                                                    <ul>
-                                                        <li class="li1">13步 / 大概5分钟</li>
-                                                        <li class="li2">其它工艺 / 家常味</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <strong class="gx"><span>清热解毒</span></strong></a>
-                                </div>
-                                <div class="listtyle1">
-                                    <a target="_blank" href="http://www.meishij.net/zuofa/jiangyanhuanggua_1.html"
-                                       title="酱腌黄瓜" class="big">
-                                        <img class="img" alt="酱腌黄瓜" src="picture/a6419256_150183759596997.jpg">
-                                        <div class="i_w">
-                                            <div class="i" style="margin-top: 0px;">
-                                                <div class="c1"><strong>酱腌黄瓜</strong><span>106 评论  18367 人气</span><em>花凝雨嫣</em>
-                                                </div>
-                                                <div class="c2">
-                                                    <ul>
-                                                        <li class="li1">13步 / 大概一天</li>
-                                                        <li class="li2">腌 / 酱香味</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <strong class="gx"><span>防癌</span></strong></a>
-                                </div>
-                                <div class="listtyle1 ml0">
-                                    <a target="_blank" href="http://www.meishij.net/zuofa/qiezhidoufu_22.html"
-                                       title="茄汁豆腐" class="big">
-                                        <img class="img" alt="茄汁豆腐" src="picture/a5458252_150184485716388.jpg">
-                                        <div class="i_w">
-                                            <div class="i" style="margin-top: 0px;">
-                                                <div class="c1">
-                                                    <strong>茄汁豆腐</strong><span>30 评论  14770 人气</span><em>美乐猪</em></div>
-                                                <div class="c2">
-                                                    <ul>
-                                                        <li class="li1">10步 / 大概5分钟</li>
-                                                        <li class="li2">炸 / 酸甜味</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <strong class="gx"><span>抵抗力</span></strong></a>
-                                </div>
-                                <div class="listtyle1">
-                                    <a target="_blank" href="http://www.meishij.net/zuofa/jiaoxiangwuhuarou_1.html"
-                                       title="椒香五花肉" class="big">
-                                        <img class="img" alt="椒香五花肉" src="picture/a1306355_150184286155280.jpg">
-                                        <div class="i_w">
-                                            <div class="i" style="margin-top: 0px;">
-                                                <div class="c1"><strong>椒香五花肉</strong><span>119 评论  22776 人气</span><em>孩妈@妮妮</em>
-                                                </div>
-                                                <div class="c2">
-                                                    <ul>
-                                                        <li class="li1">24步 / 大概15分钟</li>
-                                                        <li class="li2">煮 / 酸辣味</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="listtyle1">
-                                    <a target="_blank" href="http://www.meishij.net/zuofa/qinghongjiaochaoxiaren_1.html"
-                                       title="青红椒炒虾仁" class="big">
-                                        <img class="img" alt="青红椒炒虾仁" src="picture/a1025708_150183704357089.jpg">
-                                        <div class="i_w">
-                                            <div class="i" style="margin-top: 0px;">
-                                                <div class="c1"><strong>青红椒炒虾仁</strong><span>28 评论  14791 人气</span><em>美美家的厨房</em>
-                                                </div>
-                                                <div class="c2">
-                                                    <ul>
-                                                        <li class="li1">8步 / 大概15分钟</li>
-                                                        <li class="li2">炒 / 家常味</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="listtyle1 ">
-                                    <div class="index_cplist_more">
-                                        <h3>热门栏目推荐</h3>
-                                        <ul>
-                                            <li><a href="/chufang/diy/">最新菜谱</a></li>
-                                            <li><a href="/chufang/diy/jiangchangcaipu/">家常菜</a></li>
-                                            <li><a href="/chufang/diy/langcaipu/">凉菜</a></li>
-                                            <li><a href="/chufang/diy/sushi/">素食</a></li>
-                                            <li><a href="/chufang/diy/zaocan/">早餐</a></li>
-                                            <li><a href="/yaoshanshiliao/gongnengxing/wufa/">乌发</a></li>
-                                            <li><a href="/yaoshanshiliao/jibingtiaoli/gaoxueya/">高血压</a></li>
-                                            <li><a href="/hongpei/">烘焙</a></li>
-                                            <li><a href="/chufang/diy/guowaicaipu1/hanguo/">韩国料理</a></li>
-                                            <li><a href="/china-food/caixi/chuancai/">川菜</a></li>
-                                            <li><a href="/china-food/caixi/yuecai/">粤菜</a></li>
-                                            <li><a href="/china-food/caixi/xiangcai/">湘菜</a></li>
-                                            <li><a href="/chufang/diy/tianpindianxin/">甜点</a></li>
-                                            <li><a href="/chufang/diy/" class="hot">进入菜谱大全 >></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <span class="paixu"><a class="l_n l_n_5" po="5"
-                                       href="javascript:refresh_inews(5)">最新</a><span> | 最热：</span><a
-                        class="l_n l_n_1 current" po="1" href="javascript:refresh_inews(1)">一小时</a>  <a
-                        class="l_n l_n_2" po="2" href="javascript:refresh_inews(2)">今日</a>  <a class="l_n l_n_4" po="4"
-                                                                                               href="javascript:refresh_inews(4)">七天</a>  <a
-                        target="_blank" href="http://www.meishij.net/chufang/diy/">更多菜谱 &gt;</a></span>
-            </div>
-        </div>
-        <h3 class="bbtitles">健康新闻<span class="paixu"><a target="_blank"
-                                                        href="http://www.meishij.net/jiankang/">更多健康资讯 ></a></span></h3>
-        <div class="index_health clearfix">
-            <div class="left">
-                <div class="div1 mb20">
-                    <h2><a target="_blank" target="_blank" href="http://www.meishij.net/jiankang/shipinanquan/">食品安全</a><em
-                            class="arrow"></em></h2>
-                    <ul class="index_healthitem">
-                        <li class="current"><a target="_blank"
-                                               href="http://www.meishij.net/changshi/dongyubaoxianbaoyingyangma.html"
-                                               class="img"><img
-                                src="picture/b43be469069cab07d99b486cc326a6bf_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/changshi/dongyubaoxianbaoyingyangma.html">冻鱼保鲜保营养吗?</a>
-                            </h3></li>
-                        <li><a target="_blank" href="http://www.meishij.net/changshi/naxiepijiuyaoyanhuanzaifei.html"
-                               class="img"><img src="picture/c6073156c81757ec3a7757371242be19_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/changshi/naxiepijiuyaoyanhuanzaifei.html">哪些啤酒谣言还在飞?</a>
-                            </h3></li>
-                        <li><a target="_blank"
-                               href="http://www.meishij.net/changshi/liangbanhuoyouzhasijidouyizhongdu.html"
-                               class="img"><img src="picture/2345a423207f6ec91011ef9b71ada0c3_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/changshi/liangbanhuoyouzhasijidouyizhongdu.html">凉拌或油炸四季豆易中毒</a>
-                            </h3></li>
-                    </ul>
-                </div>
-                <div class="div1 mb20 mr0">
-                    <h2><a target="_blank" target="_blank" href="http://www.meishij.net/wenhua/">文化典故</a><em
-                            class="arrow"></em></h2>
-                    <ul class="index_healthitem">
-                        <li class="current"><a target="_blank"
-                                               href="http://www.meishij.net/diangu/nanfangchunjieshiwudeyuyi.html"
-                                               class="img"><img
-                                src="picture/0066c212db9fe02c82a1f3906ff0d40c_150x150.jpg"/></a>
-                            <h3><a target="_blank" href="http://www.meishij.net/diangu/nanfangchunjieshiwudeyuyi.html">南方春节食物的寓意</a>
-                            </h3></li>
-                        <li><a target="_blank" href="http://www.meishij.net/haiwai/qingshizhuyidaodishishimene.html"
-                               class="img"><img src="picture/127fc7851fb456fce224e948ae5d36ff_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/haiwai/qingshizhuyidaodishishimene.html">轻食主义到底是什么呢?</a>
-                            </h3></li>
-                        <li><a target="_blank"
-                               href="http://www.meishij.net/diangu/labachuliaochilabazhouhuanchishime.html" class="img"><img
-                                src="picture/41cc4e226b54d1f7d210b4c81229c70e_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/diangu/labachuliaochilabazhouhuanchishime.html">腊八除了吃腊八粥还吃什么？</a>
-                            </h3></li>
-                    </ul>
-                </div>
-                <div class="div1 mb0">
-                    <h2><a target="_blank" target="_blank" href="http://www.meishij.net/jiankang/">健康指南</a><em
-                            class="arrow"></em></h2>
-                    <ul class="index_healthitem">
-                        <li class="current"><a target="_blank"
-                                               href="http://www.meishij.net/meirong/weishimewanghongmenduaiqiubishalazhi.html"
-                                               class="img"><img
-                                src="picture/213df5fb8faa20d77cdc6f96798e17fc_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/meirong/weishimewanghongmenduaiqiubishalazhi.html">为什么网红们都爱丘比沙拉汁</a>
-                            </h3></li>
-                        <li><a target="_blank"
-                               href="http://www.meishij.net/changshi/kaoqianyinshisandajizhexiekengnibuyaocai.html"
-                               class="img"><img src="picture/54aad9503158cf80a783eb13657079ff_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/changshi/kaoqianyinshisandajizhexiekengnibuyaocai.html">考前饮食三大忌，这些坑你不要踩</a>
-                            </h3></li>
-                        <li><a target="_blank"
-                               href="http://www.meishij.net/changshi/nianmoyingchouduohejiuqianhouyinshiyoujiangjiu.html"
-                               class="img"><img src="picture/8e00d6a823a08798d3592bdb3597c49d_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/changshi/nianmoyingchouduohejiuqianhouyinshiyoujiangjiu.html">年末应酬多，喝酒前后饮食有讲究</a>
-                            </h3></li>
-                    </ul>
-                </div>
-                <div class="div1 mr0 mb0">
-                    <h2><a target="_blank" target="_blank" href="http://www.meishij.net/xinxianzixun/">新鲜资讯</a><em
-                            class="arrow"></em></h2>
-                    <ul class="index_healthitem">
-                        <li class="current"><a target="_blank"
-                                               href="http://www.meishij.net/xinwencaifang/2016nianshipinchoujianhegelv968.html"
-                                               class="img"><img
-                                src="picture/39ebc5c8da45601eb70dce1cc3bf1ec3_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/xinwencaifang/2016nianshipinchoujianhegelv968.html">2016年食品抽检合格率96.8%</a>
-                            </h3></li>
-                        <li><a target="_blank" href="http://www.meishij.net/xinwencaifang/tansuo.html" class="img"><img
-                                src="picture/d1447a05af4e8ee1f55250af50ee69f5_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/xinwencaifang/tansuo.html">【探索·发现】格鲁吉亚</a></h3></li>
-                        <li><a target="_blank"
-                               href="http://www.meishij.net/xinwencaifang/saomahuodedejianfeidaicanpinkaopuma.html"
-                               class="img"><img src="picture/17d854c44361daafe31651f67cd32b0a_150x150.jpg"/></a>
-                            <h3><a target="_blank"
-                                   href="http://www.meishij.net/xinwencaifang/saomahuodedejianfeidaicanpinkaopuma.html">扫码获得的减肥代餐品靠谱吗?</a>
-                            </h3></li>
-                    </ul>
                 </div>
             </div>
         </div>
