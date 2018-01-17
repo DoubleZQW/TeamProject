@@ -17,7 +17,7 @@
 				<div class="form-group">
 					<label for="orderStatus">订单状态</label>
 					<select class="form-control input-sm" name="orderStatus" id="orderStatus">
-						<option value="">-请选择-</option>
+						<option value="">-全部-</option>
 						<option value="1">已取消</option>
 						<option value="2">交易成功</option>
 						<option value="3">已删除</option>
@@ -122,8 +122,8 @@
 					//搜索的严格匹配
 					strictSearch: true,
 					//选中/取消选中行时去设置按钮的禁用状态
-					onCheck: function() {setDisabled();},
-					onUncheck: function() {setDisabled();},
+					onCheck: function() {setDisabled('order');},
+					onUncheck: function() {setDisabled('order');},
 					columns:[{checkbox: true, align: true},
 						{field:'orderId',title:'订单编号',sortable: true,width: 20},
 						{field:'mealName',title:'商品名称',sortable: true,width: 20},
@@ -179,17 +179,6 @@
 							}
 						})
 					})
-
-					//设置各个工具栏按钮的禁用规则
-					function setDisabled() {
-						var count = $('#order-list-tab').bootstrapTable('getSelections').length;
-						//删除按钮
-						if (count > 0)
-							$('.btn-order-remove')[0].removeAttribute("disabled");
-						else
-							$('.btn-order-remove')[0].setAttribute("disabled", "disabled");
-						return this;
-					}
 
 					//重置按钮的功能
 					function reset() {
