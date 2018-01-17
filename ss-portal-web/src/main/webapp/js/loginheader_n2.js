@@ -1,0 +1,1 @@
+document.writeln('<a href="http://i.meishi.cc/login.php?redirect=http%3A%2F%2Fwww.meishij.net%2F" class="link header_login">登录</a><a href="http://i.meishi.cc/r.php?redirect=http%3A%2F%2Fwww.meishij.net%2F" class="link header_register">注册</a>')
