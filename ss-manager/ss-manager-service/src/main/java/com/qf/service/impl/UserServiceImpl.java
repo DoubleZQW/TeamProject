@@ -1,6 +1,6 @@
 package com.qf.service.impl;
-
 /**
+ package com.qf.service.impl;
  * 用户的service实现层
  */
 
@@ -113,6 +113,41 @@ public class UserServiceImpl implements UserService{
             e.printStackTrace();
         }
         return i;
+    }
+
+
+
+    //用户登录
+
+
+    @Override
+    public int login(String TbName, String TbPassword) {
+      userMapper.findUserByNameAndPwd(TbName,TbPassword);
+      return 1;
+    }
+
+
+    //添加用户
+    @Override
+    public int addUser(TbUser tbUser) {
+
+        try{
+            userMapper.addUser(tbUser);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+        return 1;
+    }
+    //根据用户名查找用户
+    @Override
+    public TbUser findByName(TbUser tbUser) {
+
+        if(tbUser.getUserName()!=null){
+
+        }
+        return tbUser;
     }
 }
 

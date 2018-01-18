@@ -12,4 +12,7 @@ public interface TbUserCustomMapper {
 
 //    根据UserID查询UserCustom
     TbUserCustom findUserCustomById(Long userId);
+
+
+
 }

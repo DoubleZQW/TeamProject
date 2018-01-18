@@ -22,9 +22,21 @@ public interface UserService {
 //    删除用户
     int deleteUserByIds(List ids);
 
+   //添加用户
+     int addUser(TbUser tbUser);
+
+
 //   根据userId查询UserCustom
     TbUserCustom getUserCustomById(Long userId);
 
+// 根据用户名查找用户
+    TbUser findByName(TbUser tbUser);
+
+
 //    更新用户
-    int updateUser(TbUser user);
+    int  updateUser(TbUser user);
+
+// 用户登录
+    int login(String TbName,String TbPassword);
 }
+

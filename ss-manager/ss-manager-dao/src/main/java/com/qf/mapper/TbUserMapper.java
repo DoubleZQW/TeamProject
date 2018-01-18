@@ -28,6 +28,11 @@ public interface TbUserMapper {
 
     int updateByPrimaryKey(TbUser record);
 
+    TbUser selectByPrimaryKey(String userName);
+
+     void addUser(TbUser tbUser);
+
+     void findUserByNameAndPwd(@Param("name")String name, @Param("password")String password);
 
 
 }
