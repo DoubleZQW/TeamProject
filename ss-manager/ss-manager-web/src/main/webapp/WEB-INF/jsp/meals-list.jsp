@@ -133,13 +133,48 @@
 					//选中/取消选中行时去设置按钮的禁用状态
 					onCheck: function() {setDisabled('meal');},
 					onUncheck: function() {setDisabled('meal');},
+	                // onClickCell: function(field, value, row) {
+		             //    if ("mealStatus" === field && 1 === value) {
+			         //        console.log(row.mealId);
+			         //        //console.log('去下架');
+			         //        $.ajax({
+				     //            method: 'post',
+				     //            url: 'meal/down',
+				     //            data: {'ids[]': new Array(''+ row.mealId)},
+				     //            success: function(data) {
+					 //                if (data > 0) {
+						//                 swal('下架完成', {timer: 1000,buttons: false});
+						//                 $('#meal-list-tab').bootstrapTable('refresh');
+					 //                }
+				     //            }
+			         //        });
+		             //    }
+		             //    if ("mealStatus" === field && 2 === value) {
+			         //        console.log(row.mealId);
+			         //        //console.log('去上架');
+			         //        $.ajax({
+				     //            method: 'post',
+				     //            url: 'meal/up',
+				     //            data: {'ids[]': new Array(''+ row.mealId)},
+				     //            success: function(data) {
+					 //                if (data > 0) {
+						//                 swal('上架完成', {timer: 1000,buttons: false});
+						//                 $('#meal-list-tab').bootstrapTable('refresh');
+					 //                }
+				     //            }
+			         //        });
+		             //    }
+	                // },
+
                     columns:[{checkbox: true, align: true},
                         {field:'mealId',title:'编号',sortable: true,width: 20},
                         {field:'mealName',title:'商品名',sortable: true,width: 150},
                         {field:'mealStatus',title:'上架状态',sortable: true,width: 70,align: 'center',formatter: function(value, row, index) {
                         	switch (value) {
-								case 1: return "<button class='btn btn-success btn-xs'>上架中</button>";
-								case 2: return "<button class='btn btn-warning btn-xs'>已下架</button>";
+								// case 1: return "<button class='btn btn-success btn-xs'>上架中</button>";
+								case 1: return "<label class='label label-success' onclick='downMeal(this);'><h5 style='display: inline'>上架中</h5></label>";
+								// case 2: return "<button class='btn btn-warning btn-xs'>已下架</button>";
+								case 2: return "<label class='label label-warning'><h5 style='display: inline'>已下架</h5></label>";
 								case 3: return "<button class='btn btn-warning btn-xs'>已删除</button>";
 								default: return "<button class='btn btn-warning btn-xs'>未知</button>";
 	                        }
@@ -156,7 +191,7 @@
                         {field:'updatTime',title:'更新时间',sortable: true,align: 'center',
                             formatter: function(value, row, index) {
                                 return  moment(value).format("YYYY-MM-DD HH:mm:SS");
-                            }}]
+                            }}],
                 });
 
                 //注册查询按钮的点击事件
@@ -252,6 +287,12 @@
 		                url: 'meal/edit/'+ mealId,
 		                closable: true
 	                });
+                }
+
+                function downMeal(data) {
+	                console.log($(data).parent().prevObject);
+	                console.log($(data).parents('tr')[0]);
+	                console.log($(data).parents('tr'));
                 }
 			</script>
         </div>

@@ -33,7 +33,6 @@ html body div.container div.col-xs-10 div.col-xs-12.well div.tab-content div#tab
 }
 /*调整表格字体和行高*/
 tbody>tr>td {
-	font-size: 14px;
-	min-height: 30px;
-	height: 40px;
+	/*font-size: 14px;*/
+	/*height: 20px;*/
 }
