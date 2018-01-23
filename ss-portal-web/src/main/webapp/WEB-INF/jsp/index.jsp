@@ -1,9 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>外卖 - 美食网</title>
+    <title>身边的外卖</title>
 
     <script>try {
         document.execCommand('BackgroundImageCache', false, true);
@@ -18,10 +19,34 @@
     <link rel="stylesheet" type="text/css" media="all" href="css/index.css"/>
     <script type="text/javascript" src="js/j.m.js"></script>
     <script type="text/javascript" src="js/list.js"></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <meta http-equiv="X-UA-Compatible" content="IE=100">
     <meta http-equiv="Expires" content="Tue, 16 Jan 2018 13:40:02 GMT">
     <script type="text/javascript" src="js/m.js"></script>
+
+    <!-- Required Stylesheets -->
+    <link href="resources/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+    <link href="resources/css/commons.css" rel="stylesheet">
+    <%-- bootstrap-table --%>
+    <link href="resources/bootstrap-table/bootstrap-table.css" rel="stylesheet">
+
+    <!-- Required Javascript -->
+    <script src="resources/jquery/jquery-3.2.1.js"></script>
+    <script src="resources/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <%-- bootstrap-closable-tab.js --%>
+    <script src="resources/bootstrap-closable-tab/closable-tab-div.js"></script>
+    <%-- bootstrap-table --%>
+    <script src="resources/bootstrap-table/bootstrap-table.js" rel="stylesheet"></script>
+    <script src="resources/bootstrap-table/bootstrap-table-zh-CN.js" rel="stylesheet"></script>
+    <%-- moment.js --%>
+    <script src="resources/moment/moment.js" rel="stylesheet"></script>
+    <script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
+    <script src="resources/sweet-alert/sweetalert.min.js" rel="stylesheet"></script>
+    <%--<script src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>--%>
+    <%-- 自定义扩展的js --%>
+    <script src="resources/js/commons.js"></script>
+
     <script>var _hmt = _hmt || [];
     (function () {
         var hm = document.createElement("script");
@@ -32,11 +57,7 @@
     </script>
 </head>
 <body>
-<div class="adinheader">
-    <div class="adinheader_w">
-        <script type="text/javascript">BAIDU_CLB_fillSlot("206520");</script>
-    </div>
-</div>
+
 <div class="header">
     <div class="header_c">
         <a href="/" class="logo pngFix"></a>
@@ -44,27 +65,34 @@
             <div class="suggestionsBox" id="suggestions" style="display:none;">
                 <ul class="suggestionList" id="autoSuggestionsList"></ul>
             </div>
-            <form class="search" action="http://so.meishi.cc/">
+            <form class="search" action="#">
                 <input type="text" class="text" name="q" defaultval="请输入菜名/商家名" x-webkit-speech=""
                        value="请输入菜名/商家名" autocomplete="off"
                        onfocus="if(this.value=='请输入菜名/商家名'){this.value='';}$(this).css('color','#333');"
                        onblur="if(this.value==''){this.value='请输入菜名/商家名';$(this).css('color','#999');}"
-                       href="/ajax/ajaxtitle.php" id="inputString"><input type="submit" class="submit" value="搜 索">
+                       href="/ajax/ajaxtitle.php" id=""><input type="submit" class="submit" value="搜 索">
             </form>
         </div>
-        <div class="loginitem_h">
-            <a href="http://i.meishi.cc/login.php?redirect=http%3A%2F%2Fwww.meishij.net%2F"
-               class="link header_login">登录</a><a
-                href="http://i.meishi.cc/r.php?redirect=http%3A%2F%2Fwww.meishij.net%2F"
-                class="link header_register">注册</a>
+
+        <c:if test="${empty sess.userName}">
+            <div class="loginitem_h">
+                <a href="login" class="link header_login">登录</a>
+                <a href="register" class="link header_register">注册</a>
+                <a href="indes" class="link header_register">测试</a>
+            </div>
+        </c:if>
+        <div  class="loginitem_h">
+
+            <a href="register" class="link header_register">${sess.userName}</a>
         </div>
+
     </div>
 </div>
 <div class="nav">
     <ul id="main_nav">
-        <li class="current"><a href="http://www.meishij.net/" class="link pngFix"><strong>首页</strong></a></li>
-        <li class="hasmore">
-            <a href="http://www.meishij.net/chufang/diy/" class="link pngFix"><strong>美食</strong></a>
+        <li><a href="index" class="link pngFix"><strong>首页</strong></a></li>
+        <li>
+            <a href="#" class="link pngFix"><strong>美食</strong></a>
             <div class="dw clearfix">
                 <div class="dww clearfix dww_cpdq">
                     <div class="dwitem clearfix pngFix">
@@ -151,30 +179,18 @@
         </li>
         <li><a href="#" class="link pngFix"><strong>全部商家</strong></a>
         </li>
-        <li><a href="#" class="link pngFix"><strong>我的订单</strong></a></li>
-        <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="http://i.meishi.cc/jiajuguan/"
-                                                      class="link pngFix"><strong>购物车</strong>
+        <li><a href="javascript:toOrder();" class="link pngFix"><strong>我的订单</strong></a></li>
+        <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="cart" class="link pngFix"><strong>购物车</strong>
         </a></li>
         <li><a href="#" class="link"><strong>个人中心</strong><img
                 src="picture/20160909164810_443.png"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
     </ul>
 </div>
-<div class="main_search main_search_slideUp pngFix" slideUp="1" style="_display:none;" id="main_search">
-    <div class="main_search_w">
-        <div class="searchform_div">
-            <form action="http://so.meishi.cc/" target="_blank"><input type="text" class="text" name="q"
-                                                                       x-webkit-speech="" autocomplete="off"
-                                                                       id="inputString" placeholder="请输入菜名/商家名"><input
-                    type="submit" class="submit" value="搜 索"></form>
-        </div>
-        <span id="searchslideup_btn" class="pngFix" style="background-position:0px -48px;">自动收缩</span>
-    </div>
+<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top">
+    <a href="#" class="backtotop pngFix">回到顶部</a>
 </div>
-<div class="bottom_back_top_top bottom_back_top_top_slideUp" id="bottom_back_top_top"><a href="#"
-                                                                                         class="backtotop pngFix">回到顶部</a>
-</div>
-<div class="main_w clearfix">
+<div class="main_w clearfix" id="divbody">
     <div class="main clearfix">
         <div class="index_zzw" id="index_zzw">
             <div class="index_zzw_main" id="index_zzw_main">
@@ -372,13 +388,11 @@
             <div class="next_btn next_btn_1 pngFix" id="zzw_next_btn"></div>
             <div class="index_3meal_tab" id="index_timelinebox">
                 <div class="index_3meal_tab_w">
-                    <span class="timex timex_0" id="i_time4"></span>早餐时间</span></span><span class="timex timex_1"
-                                                                                            id="i_time10"></span>午餐时间</span></span>
-                    <span
-                            class="timex timex_2" id="i_time14"><span>下午茶时间</span></span><span class="timex timex_3"
-                                                                                               id="i_time16"></span>晚餐时间</span></span>
-                    <span
-                            class="timex timex_4 timex_current" id="i_time21"></span>夜宵时间</span></span>
+                    <span class="timex timex_0" id="#i_time4"><span>早餐时间</span></span>
+                    <span class="timex timex_1" id="#i_time10"><span>午餐时间</span></span>
+                    <span class="timex timex_2" id="#i_time14"><span>下午茶时间</span></span>
+                    <span class="timex timex_3" id="#i_time16"><span>晚餐时间</span></span>
+                    <span class="timex timex_4 timex_current" id="#i_time21"><span>夜宵时间</span></span>
                 </div>
                 <div class="timeline_left"></div>
                 <div class="timeline_right"></div>
@@ -700,11 +714,21 @@
             </div>
         </div>
     </div>
+    <div class="main_footer pngFix">
+    </div>
 </div>
 
-<div style="display:none;">
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script>
-</div>
+<script type="text/javascript">
+    function toOrder() {
+        $.ajax({
+            url: 'order-list',
+            method: 'get',
+            success: function (html) {
+                $('#divbody').html(html);
+            }
+        });
+    }
+
+</script>
 </body>
 </html>

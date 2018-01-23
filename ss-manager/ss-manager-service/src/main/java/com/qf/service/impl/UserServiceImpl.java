@@ -144,10 +144,16 @@ public class UserServiceImpl implements UserService{
     @Override
     public TbUser findByName(TbUser tbUser) {
 
+        TbUser user = null;
         if(tbUser.getUserName()!=null){
-
+            TbUserExample example = new TbUserExample();
+            TbUserExample.Criteria criteria = example.createCriteria();
+            criteria.andUserNameEqualTo(tbUser.getUserName());
+            List<TbUser> users = userMapper.selectByExample(example);
+            if (users.size() > 0)
+                user = users.get(0);
         }
-        return tbUser;
+        return user;
     }
 }
 
