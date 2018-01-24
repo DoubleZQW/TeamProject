@@ -4,6 +4,7 @@ package com.qf.service.impl;
  * 用户的service实现层
  */
 
+import com.qf.dto.NameRandom;
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
@@ -118,32 +119,15 @@ public class UserServiceImpl implements UserService{
 
 
     //用户登录
-
-
     @Override
     public int login(String TbName, String TbPassword) {
       userMapper.findUserByNameAndPwd(TbName,TbPassword);
       return 1;
     }
 
-
-    //添加用户
-    @Override
-    public int addUser(TbUser tbUser) {
-
-        try{
-            userMapper.addUser(tbUser);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-        return 1;
-    }
     //根据用户名查找用户
     @Override
     public TbUser findByName(TbUser tbUser) {
-
         TbUser user = null;
         if(tbUser.getUserName()!=null){
             TbUserExample example = new TbUserExample();
@@ -154,6 +138,23 @@ public class UserServiceImpl implements UserService{
                 user = users.get(0);
         }
         return user;
+    }
+
+//    添加用户
+    @Override
+    public int save(TbUser user) {
+        int i=0;
+        try {
+            String name = NameRandom.getName();
+            user.setUserOthername(name);
+            user.setCreated(new Date());
+            user.setUpdated(new Date());
+            i=userMapper.insertSelective(user);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return i;
     }
 }
 

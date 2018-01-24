@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>身边的外卖</title>
+    <title>美食达</title>
 
     <script>try {
         document.execCommand('BackgroundImageCache', false, true);
@@ -78,11 +78,9 @@
             <div class="loginitem_h">
                 <a href="login" class="link header_login">登录</a>
                 <a href="register" class="link header_register">注册</a>
-                <a href="indes" class="link header_register">测试</a>
             </div>
         </c:if>
         <div  class="loginitem_h">
-
             <a href="register" class="link header_register">${sess.userName}</a>
         </div>
 

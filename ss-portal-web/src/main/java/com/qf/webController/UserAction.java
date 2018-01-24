@@ -19,15 +19,6 @@ public class UserAction {
     @Autowired
     private UserService userService;
 
-
-    /*跳转到用户登录界面
-     *
-     */
-    @RequestMapping("/tologin.action")
-    public String toLogin(){
-        return "login";
-    }
-
     /**
      * 用户登录
      */
@@ -61,41 +52,46 @@ public class UserAction {
         return mess;
     }
 
-    //
-    @RequestMapping("/user/add")
-    public @ResponseBody String addUserAjax(TbUser tbUser) throws Exception{
-        String mess = "";
-        System.out.println("用户为"+tbUser);
-        if(tbUser!=null){
-            TbUser findByNameUser = userService.findByName(tbUser);//查看是否用户名是否已经被注册过
-            if(findByNameUser!=null){
-                mess = "110";//返回用户名注册重复
+    /**
+     * 验证用户名
+     * @return
+     * @throws Exception
+     */
+    @ResponseBody
+    @RequestMapping(value = "/user/checkName",method = RequestMethod.GET)
+    public String checkUserName(TbUser user){
+        try {
+            TbUser findUser = userService.findByName(user);
+            if(findUser!=null){
+                return "false";
             }else{
-                if(tbUser.getUserName().equals("")){
-                    mess="0";//返回用户名不能为空
-                }else if(tbUser.getUserPassword().equals("")){
-                    mess="1";//返回用户密码不能为空；
-                }else if(tbUser.getUserPhone().equals("")){
-                    mess = "2";//返回用户手机号码不能为空；
-                }else if(tbUser.getUserOthername().equals("")){
-                    mess = "3";//返回用户昵称不能为空
-                }else{
-                    int addUserInt=userService.addUser(tbUser);
-                    System.out.println("增加用户返回值为:"+addUserInt);
-
-
-                    if(addUserInt==1){
-                        mess = "4";//返回添加成功
-                    }else{
-                        mess="5";//返回添加失败
-                    }
-
-                }
+                return "true";
             }
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
         }
+        return "false";
+    }
 
-        System.out.println("最后mess为"+mess);
-        return mess;
+    /**
+     * 添加用户
+     */
+    @ResponseBody
+    @RequestMapping(value = "/user/add",method = RequestMethod.POST)
+    public String saveUser(TbUser user){
+        try {
+            int i=userService.save(user);
+            if (i>0){
+                return "true";
+            }else {
+                return "false";
+            }
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return "false";
     }
 
 

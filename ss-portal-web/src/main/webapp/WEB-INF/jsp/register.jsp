@@ -270,8 +270,22 @@
 		//  字母开头，允许5-16字节，允许字母数字下划线
 		var regexName=/^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
 		var name=$("#userName").val();
-		if(regexName.test(name))
-			lineState("userName","correct","");
+		if(regexName.test(name)){
+            lineState("userName","correct","");
+            $.ajax({
+				url:"user/checkName",
+				data:{"userName":name},
+				type:"get",
+				success:function (data) {
+					if(data=="true"){
+                        lineState("userName","correct","");
+					}else{
+                        lineState("userName","error","用户名已存在!");
+					}
+                }
+			});
+		}
+
 		else
 			lineState("userName","error","用户名格式错误!");
 	}
@@ -316,6 +330,29 @@
 		else
 			lineState('phone','correct','');
 	}
+	
+//	注册按钮事件
+	$("#reg-btn").click(function () {
+	    $.ajax({
+			url:"user/add",
+			data:
+				{
+				    "userName": $('#userName').val(),
+					'userPassword': $('#userPassword').val(),
+					'userEmail': $('#email').val(),
+					'userPhone': $('#phone').val()
+			},
+			method: 'post',
+			success: function(data) {
+			    if (data === 'true') {
+                    alert('注册成功！');
+                    window.location = "login";
+                }
+			    else
+			        alert('注册失败！');
+			}
+		})
+	});
 
 </script>
 </body>
