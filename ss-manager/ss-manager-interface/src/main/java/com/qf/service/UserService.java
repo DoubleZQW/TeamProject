@@ -28,9 +28,12 @@ public interface UserService {
 //    更新用户
     int updateUser(TbUser user);
 
+//    根据用户名，密码查询用户
     public int login(String TbName, String TbPassword);
 
-    public int addUser(TbUser tbUser);
-
+//    根据用户名查询用户
     public TbUser findByName(TbUser tbUser);
+
+//    添加用户
+    int save(TbUser user);
 }
