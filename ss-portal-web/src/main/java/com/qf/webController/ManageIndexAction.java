@@ -38,7 +38,7 @@ public class ManageIndexAction {
         List<Content> midnightlist = contentService.getContentListByCid(midnightcategoryId);
         model.addAttribute("midnightlist",midnightlist);
         List<Content> dinnerList = contentService.getContentListByCid(dinnercategoryId);
-        model.addAttribute("dinnercategoryId",dinnerList);
+        model.addAttribute("dinnerList",dinnerList);
         List<Content> breakfastList = contentService.getContentListByCid(breakfastcategoryId);
         model.addAttribute("breakfastList",breakfastList);
         List<Content> afternoonteaList= contentService.getContentListByCid(afternoonteacategoryId);

@@ -195,188 +195,89 @@
                 <div class="zzw_item zzw_item_3" po="3" c="5">
                     <h3 class="bbtitles bbtitles_zzw">今日夜宵推荐：夜宵，在家里吃更有温度！</h3>
                     <ul class="clearfix">
+                        <c:forEach items="${midnightlist}" var="node1">
                         <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/ganzhaliji_25.html" title="干炸里脊"
-                               class="img"><img alt="干炸里脊" src="picture/1c807df14218135f8dbb8fec9ffc15dd.jpg"/></a>
+                            <a target="_blank" href="${node1.href}" title="${node1.title}"
+                               class="img"><img alt="${node1.title}" src="${node1.src}"/></a>
                             <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/ganzhaliji_25.html"
-                                       title="干炸里脊">干炸里脊</a></h2>
-                                <strong>炸到里脊外皮酥脆、肉质鲜嫩是一门需要练习的手艺！</strong>
-                                <span><a href="####">优质蛋白</a><em class="arrow pngFix"></em></span>
+                                <h2><a target="_blank" href="${node1.href}"
+                                       title="${node1.title}">${node1.title}</a></h2>
+                                <strong>${node1.titledesc}</strong>
+                                <span><a href="####">${node1.effect}</a><em class="arrow pngFix"></em></span>
                             </div>
                         </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/zhishijukaohuojimian.html"
-                               title="芝士焗烤火鸡面" class="img"><img alt="芝士焗烤火鸡面"
-                                                                src="picture/6b22172ae05b673bab0e046e38341e50.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/zhishijukaohuojimian.html"
-                                       title="芝士焗烤火鸡面">芝士焗烤火鸡面</a></h2>
-                                <strong>换一种吃法，让网红火鸡面不平凡！</strong>
-                                <span><a href="####">提供能量</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/xiarenpisa_2.html" title="虾仁披萨"
-                               class="img"><img alt="虾仁披萨" src="picture/5866ef94ba97ce16847c0d88c38c27fd.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/xiarenpisa_2.html"
-                                       title="虾仁披萨">虾仁披萨</a></h2>
-                                <strong>想吃披萨的时候不一定都要买着来，自己做的更营养！</strong>
-                                <span><a href="####">优质供能</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
+                        </c:forEach>
                     </ul>
                 </div>
                 <div class="zzw_item zzw_item_2" po="2" c="4">
                     <h3 class="bbtitles bbtitles_zzw">今日晚餐推荐：今晚，吃点鲜的，猴头菇的鲜！</h3>
                     <ul class="clearfix">
+                        <c:forEach items="${dinnerList}" var="node2">
                         <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/houtouhongmenrou.html" title="红焖肉"
-                               class="img"><img alt="红焖肉" src="picture/1d683c2abb29b15c7b4dc6a46b29e9e5.jpg"/></a>
+                            <a target="_blank" href="${node2.href}" title="${node2.title}"
+                               class="img"><img alt="${node2.title}" src="${node2.src}"/></a>
                             <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/houtouhongmenrou.html"
-                                       title="红焖肉">红焖肉</a></h2>
-                                <strong>猴头菇与红烧肉搭配，菇肉吸足猪肉的汤汁，超级鲜美！</strong>
-                                <span><a href="####">优质供能</a><em class="arrow pngFix"></em></span>
+                                <h2><a target="_blank" href="${node2.href}"
+                                       title="${node2.title}">${node2.title}</a></h2>
+                                <strong>${node2.titledesc}</strong>
+                                <span><a href="####">${node2.effect}</a><em class="arrow pngFix"></em></span>
                             </div>
                         </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/houtougudunniuleipai.html"
-                               title="香炖牛排" class="img"><img alt="香炖牛排"
-                                                             src="picture/77cb84da48f75a98ad5a7d8561a63a6c.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/houtougudunniuleipai.html"
-                                       title="香炖牛排">香炖牛排</a></h2>
-                                <strong>营养价值都相当高的猴头菇和牛排搭配，冬季里的大补！</strong>
-                                <span><a href="####">优质蛋白</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank"
-                               href="http://www.meishij.net/zuofa/dongjijinbulaiyiwanhoutougubaojitang.html"
-                               title="猴头菇煲鸡汤" class="img"><img alt="猴头菇煲鸡汤"
-                                                               src="picture/6b1404ab60fa0ea4902dfe8ca4e8ce4e.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank"
-                                       href="http://www.meishij.net/zuofa/dongjijinbulaiyiwanhoutougubaojitang.html"
-                                       title="猴头菇煲鸡汤">猴头菇煲鸡汤</a></h2>
-                                <strong>鲜香美味，营养价值翻倍，四季都值得拥有的滋补汤！</strong>
-                                <span><a href="####">增强免疫力</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
+                        </c:forEach>
+
                     </ul>
                 </div>
                 <div class="zzw_item zzw_item_4" po="4" c="1">
                     <h3 class="bbtitles bbtitles_zzw">今日早餐推荐：清晨，走进厨房，惊喜的味道迎面而来！</h3>
                     <ul class="clearfix">
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/bannikedanzaocan.html" title="班尼克蛋"
-                               class="img"><img alt="班尼克蛋" src="picture/d662e353b30df2cbcbd070a3f9f68d92.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/bannikedanzaocan.html"
-                                       title="班尼克蛋">班尼克蛋</a></h2>
-                                <strong>在家里享用异国的美食味道，入口滋润爽滑的一颗蛋~</strong>
-                                <span><a href="####">优质供能</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank"
-                               href="http://www.meishij.net/zuofa/changzichuanbaozaizhuoxiangqierlai.html" title="肠仔船包"
-                               class="img"><img alt="肠仔船包" src="picture/6f167ea01aabebf54dacc43ba4b29dec.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank"
-                                       href="http://www.meishij.net/zuofa/changzichuanbaozaizhuoxiangqierlai.html"
-                                       title="肠仔船包">肠仔船包</a></h2>
-                                <strong>长得像船一样的面包，有着和大海一样咸咸的味道！</strong>
-                                <span><a href="####">提供能量</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/niunainanguaxianbing.html"
-                               title="南瓜馅饼" class="img"><img alt="南瓜馅饼"
-                                                             src="picture/964b5b4fc578cf044ef358fce2195704.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/niunainanguaxianbing.html"
-                                       title="南瓜馅饼">南瓜馅饼</a></h2>
-                                <strong>南瓜做法很多种，做成饼馅的你可吃过？</strong>
-                                <span><a href="####">保护视力</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
+                        <c:forEach items="${breakfastList}" var="node3">
+                            <li>
+                                <a target="_blank" href="${node3.href}" title="${node3.title}"
+                                   class="img"><img alt="${node3.title}" src="${node3.src}"/></a>
+                                <div class="c pngFix">
+                                    <h2><a target="_blank" href="${node3.href}"
+                                           title="${node3.title}">${node3.title}</a></h2>
+                                    <strong>${node3.titledesc}</strong>
+                                    <span><a href="####">${node3.effect}</a><em class="arrow pngFix"></em></span>
+                                </div>
+                            </li>
+                        </c:forEach>
+
                     </ul>
                 </div>
                 <div class="zzw_item zzw_item_1" po="1" c="3">
                     <h3 class="bbtitles bbtitles_zzw">今日下午茶推荐：一点点口味或形式的小改变，可以带来心情上的大不同！</h3>
                     <ul class="clearfix">
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/kekebeihaidaoqifeng.html"
-                               title="可可北海道戚风" class="img"><img alt="可可北海道戚风"
-                                                                src="picture/7d9a42056b80e002f2f31484e0a5a989.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/kekebeihaidaoqifeng.html"
-                                       title="可可北海道戚风">可可北海道戚风</a></h2>
-                                <strong>让蛋糕出炉的那一刻依然保持饱满湿润的绝招在这里！</strong>
-                                <span><a href="####">提供能量</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/jiaoyanqiancengsu.html" title="椒盐千层酥"
-                               class="img"><img alt="椒盐千层酥" src="picture/997f4e2138aa83193ded665c32c1fe95.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/jiaoyanqiancengsu.html"
-                                       title="椒盐千层酥">椒盐千层酥</a></h2>
-                                <strong>酥酥脆脆，咸香可口，美味的下午茶～</strong>
-                                <span><a href="####">提供能量</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/zhongshinuomici.html" title="中式糯米糍"
-                               class="img"><img alt="中式糯米糍" src="picture/a407562ef0fb2fde948026ab72a2123e.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/zhongshinuomici.html"
-                                       title="中式糯米糍">中式糯米糍</a></h2>
-                                <strong>简单易做，小小改变增添了更多中国风！</strong>
-                                <span><a href="####">提供能量</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
+                        <c:forEach items="${afternoonteaList}" var="node4">
+                            <li>
+                                <a target="_blank" href="${node4.href}" title="${node4.title}"
+                                   class="img"><img alt="${node4.title}" src="${node4.src}"/></a>
+                                <div class="c pngFix">
+                                    <h2><a target="_blank" href="${node4.href}"
+                                           title="${node4.title}">${node4.title}</a></h2>
+                                    <strong>${node4.titledesc}</strong>
+                                    <span><a href="####">${node4.effect}</a><em class="arrow pngFix"></em></span>
+                                </div>
+                            </li>
+                        </c:forEach>
+
                     </ul>
                 </div>
                 <div class="zzw_item zzw_item_5" po="5" c="2">
                     <h3 class="bbtitles bbtitles_zzw">今日午餐推荐：午餐，要吃的好一点！</h3>
                     <ul class="clearfix">
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/huixiangqiezhihuijiba.html"
-                               title="茄汁烩鸡扒" class="img"><img alt="茄汁烩鸡扒"
-                                                              src="picture/a1c39b3cd6814f946a531e4b1d348f58.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/huixiangqiezhihuijiba.html"
-                                       title="茄汁烩鸡扒">茄汁烩鸡扒</a></h2>
-                                <strong>酸酸甜甜的味道，让大块鸡排吃的更爽快！</strong>
-                                <span><a href="####">优质供能</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/jiandandexiangliaokaoyangpai.html"
-                               title="简易烤羊排" class="img"><img alt="简易烤羊排"
-                                                              src="picture/3c71e2538fbf611a77955853fa4d5d34.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank"
-                                       href="http://www.meishij.net/zuofa/jiandandexiangliaokaoyangpai.html"
-                                       title="简易烤羊排">简易烤羊排</a></h2>
-                                <strong>朋友聚会足以撑起整个餐桌的烤羊排！</strong>
-                                <span><a href="####">优质蛋白</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
-                        <li>
-                            <a target="_blank" href="http://www.meishij.net/zuofa/xianggumensunpian.html" title="香菇焖笋片"
-                               class="img"><img alt="香菇焖笋片" src="picture/b785ae0acdc95a3c984828149670170f.jpg"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="http://www.meishij.net/zuofa/xianggumensunpian.html"
-                                       title="香菇焖笋片">香菇焖笋片</a></h2>
-                                <strong>香菇、笋片争相释放鲜香，成就了这道菜的开胃下饭！</strong>
-                                <span><a href="####">增强免疫力</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
+                        <c:forEach items="${lunchList}" var="node5">
+                            <li>
+                                <a target="_blank" href="${node5.href}" title="${node5.title}"
+                                   class="img"><img alt="${node5.title}" src="${node5.src}"/></a>
+                                <div class="c pngFix">
+                                    <h2><a target="_blank" href="${node5.href}"
+                                           title="${node5.title}">${node5.title}</a></h2>
+                                    <strong>${node5.titledesc}</strong>
+                                    <span><a href="####">${node5.effect}</a><em class="arrow pngFix"></em></span>
+                                </div>
+                            </li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>
