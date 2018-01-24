@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>美食达</title>
+    <title>身边的外卖</title>
 
     <script>try {
         document.execCommand('BackgroundImageCache', false, true);
