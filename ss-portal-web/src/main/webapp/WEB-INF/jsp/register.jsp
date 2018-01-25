@@ -186,7 +186,7 @@
     }
     // 转到首页
     function toIndex(){
-        window.location="index";
+        window.location="/TeamProject";
     }
 
     //定义验证结果集

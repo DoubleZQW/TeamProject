@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>身边的外卖</title>
+    <title>美食达</title>
 
     <script>try {
         document.execCommand('BackgroundImageCache', false, true);
@@ -60,7 +60,7 @@
 
 <div class="header">
     <div class="header_c">
-        <a href="/" class="logo pngFix"></a>
+        <a href="/TeamProject" class="logo pngFix"></a>
         <div class="main_search_top_w">
             <div class="suggestionsBox" id="suggestions" style="display:none;">
                 <ul class="suggestionList" id="autoSuggestionsList"></ul>
@@ -70,25 +70,28 @@
                        value="请输入菜名/商家名" autocomplete="off"
                        onfocus="if(this.value=='请输入菜名/商家名'){this.value='';}$(this).css('color','#333');"
                        onblur="if(this.value==''){this.value='请输入菜名/商家名';$(this).css('color','#999');}"
-                       href="/ajax/ajaxtitle.php" id=""><input type="submit" class="submit" value="搜 索">
+                       href="/ajax/ajaxtitle.php" id=""><input type="submit" class="submit" value="搜 索" style="margin-left: -18px;">
             </form>
         </div>
 
-        <c:if test="${empty sess.userName}">
-            <div class="loginitem_h">
-                <a href="login" class="link header_login">登录</a>
-                <a href="register" class="link header_register">注册</a>
-            </div>
-        </c:if>
-        <div  class="loginitem_h">
-            <a href="register" class="link header_register">${sess.userName}</a>
-        </div>
-
+        <c:choose>
+            <c:when test="${empty sess.userName}">
+                <div class="loginitem_h">
+                    <a href="login" class="link header_login">登录</a>
+                    <a href="register" class="link header_register">注册</a>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div  class="loginitem_h">
+                    <a href="register" class="link header_register">${sess.userName}</a>
+                </div>
+            </c:otherwise>
+        </c:choose>
     </div>
 </div>
 <div class="nav">
     <ul id="main_nav">
-        <li><a href="index" class="link pngFix"><strong>首页</strong></a></li>
+        <li><a href="/TeamProject" class="link pngFix"><strong>首页</strong></a></li>
         <li>
             <a href="#" class="link pngFix"><strong>美食</strong></a>
             <div class="dw clearfix">

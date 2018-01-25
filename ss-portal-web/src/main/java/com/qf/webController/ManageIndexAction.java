@@ -48,6 +48,11 @@ public class ManageIndexAction {
         return "index";
     }
 
+    /**
+     * 跳转页面
+     * @param page
+     * @return
+     */
     @RequestMapping(value = "/{page}", method = RequestMethod.GET)
     public String page(@PathVariable("page") String page) {
         return page;

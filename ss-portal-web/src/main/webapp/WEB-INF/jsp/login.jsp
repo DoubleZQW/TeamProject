@@ -75,7 +75,7 @@
 
                 <div class="form-group">
                     <a href="register" style="margin-left:10px" class="">免费注册</a>
-                    <a href="index" style="margin-left: 70px" class="">返回首页</a>
+                    <a href="/TeamProject" style="margin-left: 70px" class="">返回首页</a>
                 </div>
             </div>
         </div>
