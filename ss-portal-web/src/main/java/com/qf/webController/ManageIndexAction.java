@@ -29,7 +29,7 @@ public class ManageIndexAction {
 
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String toIndex(Model model){
-        List<Integer> idList  = new ArrayList<Integer>();
+
         Integer midnightcategoryId = PropKit.use("picture.properties").getInt("midnightcategoryId");
         Integer dinnercategoryId = PropKit.use("picture.properties").getInt("dinnercategoryId");
         Integer breakfastcategoryId = PropKit.use("picture.properties").getInt("breakfastcategoryId");

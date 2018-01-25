@@ -1,5 +1,6 @@
 package com.qf.jedis;
 
+
 import redis.clients.jedis.JedisCluster;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.Set;
  * Version:V1.0
  */
 public class JedisClientCluster implements JedisClient {
+
 
     private JedisCluster jedisCluster;
 
