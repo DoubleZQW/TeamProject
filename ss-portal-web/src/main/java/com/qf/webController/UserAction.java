@@ -94,5 +94,13 @@ public class UserAction {
         return "false";
     }
 
+    /**
+     * 用户退出
+     */
+    @RequestMapping(value = "/user/logout",method = RequestMethod.POST)
+    public void clearSessUser(HttpSession session){
+        session.invalidate();
+    }
+
 
 }

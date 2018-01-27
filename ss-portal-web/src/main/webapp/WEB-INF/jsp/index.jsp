@@ -117,7 +117,7 @@
 
 					    $(function() {
 						    $('.cd-dropdown').find('li span').click(function() {
-                            show_div_proxy(this.innerHTML);
+						        show_div_proxy(this.innerHTML);
                             });
 					    });
                     </script>
