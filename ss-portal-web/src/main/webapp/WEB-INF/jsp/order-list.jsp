@@ -2,6 +2,28 @@
 <html>
 <head>
 	<title>商品列表</title>
+
+	<!-- Required Stylesheets -->
+	<link href="resources/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
+	<link href="resources/css/commons.css" rel="stylesheet">
+	<%-- bootstrap-table --%>
+	<link href="resources/bootstrap-table/bootstrap-table.css" rel="stylesheet">
+
+	<!-- Required Javascript -->
+	<script src="resources/jquery/jquery-3.2.1.js"></script>
+	<script src="resources/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+	<%-- bootstrap-closable-tab.js --%>
+	<%--<script src="resources/bootstrap-closable-tab/closable-tab-div.js"></script>--%>
+	<%-- bootstrap-table --%>
+	<script src="resources/bootstrap-table/bootstrap-table.js" rel="stylesheet"></script>
+	<script src="resources/bootstrap-table/bootstrap-table-zh-CN.js" rel="stylesheet"></script>
+	<%-- moment.js --%>
+	<script src="resources/moment/moment.js" rel="stylesheet"></script>
+	<script src="resources/moment/moment-with-locales.js" rel="stylesheet"></script>
+	<script src="resources/sweet-alert/sweetalert.min.js" rel="stylesheet"></script>
+	<%--<script src="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js"></script>--%>
+	<%-- 自定义扩展的js --%>
+	<script src="resources/js/commons.js"></script>
 </head>
 <body>
 <%--上方查询条件--%>
@@ -101,7 +123,7 @@
             //卡片视图
             cardView: false,
             //显示选择列按钮
-            showColumns: true,
+            showColumns: false,
             //搜索配置
             //这个接口需要处理bootstrap table传递的固定参数,并返回特定格式的json数据
             url: "order/query",

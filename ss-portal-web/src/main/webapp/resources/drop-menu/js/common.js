@@ -40,4 +40,5 @@ function show_div_proxy(text) {
 		show_div('user-info', 'div_main');
 	if (text === '退出登录')
 		//ajax退出...
+		alert('退出等张振伟写');
 }

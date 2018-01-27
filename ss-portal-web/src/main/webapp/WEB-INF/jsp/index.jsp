@@ -74,22 +74,60 @@
             </form>
         </div>
 
-        <c:choose>
-            <c:when test="${empty sess.userName}">
-                <div class="loginitem_h">
-                    <a href="login" class="link header_login">登录</a>
-                    <a href="register" class="link header_register">注册</a>
-                </div>
-            </c:when>
-            <c:otherwise>
-                <div  class="loginitem_h">
-                    <a href="register" class="link header_register">${sess.userName}</a>
-                </div>
-            </c:otherwise>
-        </c:choose>
+
+        <%--右上角的登录-注册按钮/下拉菜单部分--%>
+        <link rel="stylesheet" type="text/css" href="resources/drop-menu/css/style2.css" />
+        <script src="resources/drop-menu/js/modernizr.custom.63321.js"></script>
+        <%--<script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>--%>
+        <script type="text/javascript" src="resources/drop-menu/js/jquery.dropdown.js"></script>
+        <%--导入我的common.js--%>
+        <script type="text/javascript" src="resources/drop-menu/js/common.js"></script>
+        <div class="cd-dropdown-position">
+            <c:choose>
+                <c:when test="${empty sess.userName}">
+
+                    <div class="log-reg-box">
+                        <button class="col-xs-6" onclick="clean_index();show_login('div_main');">
+                            登录
+                        </button>
+                        <button class="col-xs-6" onclick="clean_index();show_register('div_main');">
+                            注册
+                        </button>
+                    </div>
+                </c:when>
+                <c:otherwise>
+
+                    <div class="cd-dropdown-position">
+                        <select id="cd-dropdown" class="cd-select" style="height: 30px;width: 50px">
+                            <option value="-1" selected>${sess.userName}</option>
+                            <option value="1" class="glyphicon glyphicon-shopping-cart">购物车</option>
+                            <option value="2" class="glyphicon glyphicon-list-alt">订单中心</option>
+                            <option value="3" class="glyphicon glyphicon-user">用户概览</option>
+                            <option value="4" class="glyphicon glyphicon-log-out">退出登录</option>
+                        </select>
+                    </div>
+                    <script type="text/javascript">
+					    $( function() {
+						    $( '#cd-dropdown' ).dropdown( {
+							    gutter : 5,
+							    delay : 100,
+							    random : true
+						    } );
+					    });
+
+					    $(function() {
+						    $('.cd-dropdown').find('li span').click(function() {
+                            show_div_proxy(this.innerHTML);
+                            });
+					    });
+                    </script>
+                </c:otherwise>
+            </c:choose>
+        </div>
+
     </div>
 </div>
-<div class="nav">
+<div id="div_main" class="nav">
     <ul id="main_nav">
         <li><a href="/TeamProject" class="link pngFix"><strong>首页</strong></a></li>
         <li>
