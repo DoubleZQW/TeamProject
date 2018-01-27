@@ -107,7 +107,7 @@
 }
 /*登录注册按钮*/
 .log-reg-box {
-	height: 45px;
+	height: 40px;
 	width: 200px;
 	margin: 25px 0 25px 0;
 	border-radius: 10px;
@@ -122,7 +122,7 @@
 	border-right: 1px #ddd solid;
 	/*内部字体及显示设置*/
 	text-align: center;
-	padding-top: 10px;
+	padding-top: 8px;
 	font-size: 18px;
 	font-weight: bold;
 }

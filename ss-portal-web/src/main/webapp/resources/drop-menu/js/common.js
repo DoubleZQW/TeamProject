@@ -39,7 +39,8 @@ function show_div_proxy(text) {
     if (text === '用户中心')
         show_div('user-info', 'div_main');
     if (text === '退出登录'){
-        $.post('user/logout',function() {
+        $.post('user/logout',function(data) {
+            console.log(data);
             window.location.href="/TeamProject";
         });
     }

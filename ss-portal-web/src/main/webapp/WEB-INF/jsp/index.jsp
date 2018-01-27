@@ -90,7 +90,8 @@
                         <button class="col-xs-6" onclick="clean_index();show_login('div_main');">
                             登录
                         </button>
-                        <button class="col-xs-6" onclick="clean_index();show_register('div_main');">
+                        <button class="col-xs-6" onclick
+                                ="clean_index();show_register('div_main');">
                             注册
                         </button>
                     </div>
@@ -102,7 +103,7 @@
                             <option value="-1" selected>${sess.userName}</option>
                             <option value="1" class="glyphicon glyphicon-shopping-cart">购物车</option>
                             <option value="2" class="glyphicon glyphicon-list-alt">订单中心</option>
-                            <option value="3" class="glyphicon glyphicon-user">用户概览</option>
+                            <option value="3" class="glyphicon glyphicon-user">用户中心</option>
                             <option value="4" class="glyphicon glyphicon-log-out">退出登录</option>
                         </select>
                     </div>
