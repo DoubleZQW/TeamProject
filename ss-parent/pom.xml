@@ -12,6 +12,7 @@
         <module>../ss-common</module>
         <module>../ss-manager</module>
         <module>../ss-portal-web</module>
+        <module>../ss-search-web</module>
     </modules>
 
     <!--版本号的统一管理-->
