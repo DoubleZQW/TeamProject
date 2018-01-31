@@ -1,11 +1,9 @@
 package com.qf.service;
 
-
-import com.qf.pojo.Content;
-
-import java.util.List;
+import com.qf.vo.TbSearchMealResult;
 
 public interface SearchIndexService {
+	void importAllMeals();
 
-	List<Content> searchByPage(String keyword, Integer page, Integer pageSize);
+	TbSearchMealResult searchIndex(String var1, Integer var2, Integer var3) throws Exception;
 }

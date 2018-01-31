@@ -3,21 +3,21 @@ package com.qf.mapper;
 import com.qf.pojo.TbMeal;
 import com.qf.pojo.TbMealExample;
 import com.qf.vo.TbMealCustom;
-
+import com.qf.vo.TbSearchMealCustom;
 import java.util.List;
 import java.util.Map;
 
 public interface TbMealCustomMapper {
-//    分页查询商品
-    List<TbMeal> listItemsByPage(Map<String,Object> map);
+    List<TbMeal> listItemsByPage(Map<String, Object> var1);
 
-    Long  listCondition(Map<String,Object> map);
+    Long listCondition(Map<String, Object> var1);
 
-    int updateByExampleSelective(TbMeal tbMeal, TbMealExample example);
+    int updateByExampleSelective(TbMeal var1, TbMealExample var2);
 
-//    根据mealId查询 TbMealCustom
-    TbMealCustom findMealCustomById(Long mealId);
+    TbMealCustom findMealCustomById(Long var1);
 
-//   更新商品
-    int updateMealCustom(TbMealCustom mealCustom);
+    int updateMealCustom(TbMealCustom var1);
+
+    List<TbSearchMealCustom> getSearchMealList();
 }
+

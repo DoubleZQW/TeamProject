@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -65,12 +65,14 @@
             <div class="suggestionsBox" id="suggestions" style="display:none;">
                 <ul class="suggestionList" id="autoSuggestionsList"></ul>
             </div>
-            <form class="search" action="#">
-                <input type="text" class="text" name="q" defaultval="请输入菜名/商家名" x-webkit-speech=""
+            <%-- 使用form表单的请求 --%>
+            <form class="search" method="get" action="http://localhost:8889/TeamProject/meals/query">
+                <input id="q-box" name="keyword" type="text" class="text" defaultval="请输入菜名/商家名" x-webkit-speech=""
                        value="请输入菜名/商家名" autocomplete="off"
                        onfocus="if(this.value=='请输入菜名/商家名'){this.value='';}$(this).css('color','#333');"
                        onblur="if(this.value==''){this.value='请输入菜名/商家名';$(this).css('color','#999');}"
-                       href="/ajax/ajaxtitle.php" id=""><input type="submit" class="submit" value="搜 索" style="margin-left: -18px;">
+                       />
+                <input type="submit" class="submit" value="搜 索" style="margin-left: -18px;">
             </form>
         </div>
 
@@ -654,10 +656,32 @@
                 </div>
             </div>
         </div>
+        <div class="ztlist_cur" id="ztlist_cur"><span></span><span class="current"></span><span></span></div>
+
+
+
+
     </div>
     <div class="main_footer pngFix">
     </div>
+    <div class="footer_con2">
+
+    </div>	<div class="footer_con3">
+    <ul class="clearfix">
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php" title="公司简介">公司简介</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#qywh" title="企业文化">企业文化</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#gsdt" title="公司动态">公司动态</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#mzsm" title="免责声明">免责声明</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/contact.php" title="联系我们">联系我们</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/hr.php" title="招贤纳士">招贤纳士</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/bd.php" title="商务合作">商务合作</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
+        <li><a target="_blank" href="http://www.meishij.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
+        <li><a target="_blank" href="http://sj.meishi.cc/" title="美食杰移动APP">美食杰移动APP</a></li>
+    </ul>
+    <p><a target="_blank" href="http://www.miibeian.gov.cn" class="gray_a">京ICP证150335号</a>/京公网安备11010802009977 Copyright © 2003-2018 MEISHIJ CO.,LTD.</p>
 </div>
+</div><div style="display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script></div></body></html>
 
 <script type="text/javascript">
     function toOrder() {

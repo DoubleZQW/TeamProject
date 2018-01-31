@@ -1,7 +1,7 @@
 package com.qf.web;
 
 import com.qf.dto.ResultMessage;
-import com.qf.service.SearchMealService;
+import com.qf.service.SearchIndexService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,21 +12,26 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SolrAction {
-
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@Autowired
-	private SearchMealService smService;
+	private SearchIndexService siService;
+
+	public SolrAction() {
+	}
 
 	@ResponseBody
-	@RequestMapping(value = "/meal/importSolr", method = RequestMethod.GET)
+	@RequestMapping(
+			value = {"/meal/importSolr"},
+			method = {RequestMethod.GET}
+	)
 	public ResultMessage importMealSolr() {
 		try {
-			smService.importAllMeals();
-		} catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			e.printStackTrace();
+			this.siService.importAllMeals();
+		} catch (Exception var2) {
+			this.logger.error(var2.getMessage(), var2);
+			var2.printStackTrace();
 		}
-		return new ResultMessage(true, "导入完成!", null);
+
+		return new ResultMessage(true, "导入完成!", (Object)null);
 	}
 }

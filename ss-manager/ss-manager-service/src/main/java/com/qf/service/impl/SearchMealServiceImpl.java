@@ -1,54 +1,42 @@
 package com.qf.service.impl;
 
-import com.qf.mapper.TbMealCustomMapper;
+import com.qf.jedis.JedisClient;
+import com.qf.mapper.ContentMapper;
+import com.qf.pojo.Content;
+import com.qf.pojo.ContentExample;
+import com.qf.pojo.ContentExample.Criteria;
 import com.qf.service.SearchMealService;
-import com.qf.vo.TbSearchMealCustom;
-import org.apache.solr.client.solrj.SolrServer;
-import org.apache.solr.common.SolrInputDocument;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
-public class SearchMealServiceImpl implements SearchMealService{
-
+public class SearchMealServiceImpl implements SearchMealService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
-
 	@Autowired
-	private TbMealCustomMapper mcMapper;
-
+	private ContentMapper contentMapper;
 	@Autowired
-	private SolrServer solrServer;
+	private JedisClient jedisClient;
 
-	@Override
-	public void importAllMeals() {
+	public SearchMealServiceImpl() {
+	}
+
+	public List<Content> searchByPage(String keyword, Integer page, Integer pageSize) {
+		List contents = null;
+
 		try {
-			//采集数据
-			List<TbSearchMealCustom> list = mcMapper.getSearchMealList();
-
-			//遍历数据
-			for (TbSearchMealCustom meal : list) {
-				//新建一个solr的文档域
-				SolrInputDocument document = new SolrInputDocument();
-				//向文档域中添加字段
-				document.addField("id", meal.getMealId());
-				document.addField("mealName", meal.getMealName());
-				document.addField("mealPrice", meal.getMealPrice());
-				document.addField("mealNum", meal.getMealNum());
-				document.addField("mealPic", meal.getMealPic());
-				document.addField("mealIntro", meal.getMealIntro());
-				document.addField("publisher", meal.getPublisher());
-				//写入索引库
-				solrServer.add(document);
-
-			}
-			solrServer.commit();
-		}  catch (Exception e) {
-			logger.error(e.getMessage(), e);
-			e.printStackTrace();
+			ContentExample example = new ContentExample();
+			Criteria criteria = example.createCriteria();
+			criteria.andCategoryIdEqualTo(10);
+			criteria.andTitleLike("%" + keyword + "%");
+			contents = this.contentMapper.selectByExample(example);
+		} catch (Exception var7) {
+			this.logger.error(var7.getMessage(), var7);
+			var7.printStackTrace();
 		}
+
+		return contents;
 	}
 }

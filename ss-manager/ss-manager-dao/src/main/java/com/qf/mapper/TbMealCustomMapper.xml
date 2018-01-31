@@ -63,4 +63,20 @@
     <update id="updateMealCustom">
 
     </update>
+
+    <!--查询meal到(TbSearchMealCustom)索引库-->
+    <select id="getSearchMealList" resultType="com.qf.vo.TbSearchMealCustom">
+        select
+        m.meal_id as mealId,
+        m.meal_name as mealName,
+        m.meal_price as mealPrice,
+        m.meal_num as mealNum,
+        m.meal_picture as mealPic,
+        m.meal_intro as mealIntro,
+        m.publisher as publisher
+        from tb_meal m
+        where
+        m.meal_status = 1
+        order by m.meal_id desc;
+    </select>
 </mapper>

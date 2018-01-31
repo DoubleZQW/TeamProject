@@ -1,7 +1,6 @@
 package com.qf.vo;
 
 public class TbSearchMealCustom {
-
 	private Integer mealId;
 	private String mealName;
 	private String mealPrice;
@@ -11,7 +10,6 @@ public class TbSearchMealCustom {
 	private String publisher;
 
 	public TbSearchMealCustom() {
-
 	}
 
 	public TbSearchMealCustom(Integer mealId, String mealName, String mealPrice, Integer mealNum, String mealPic, String mealIntro, String publisher) {
@@ -25,7 +23,7 @@ public class TbSearchMealCustom {
 	}
 
 	public Integer getMealId() {
-		return mealId;
+		return this.mealId;
 	}
 
 	public void setMealId(Integer mealId) {
@@ -33,7 +31,7 @@ public class TbSearchMealCustom {
 	}
 
 	public String getMealName() {
-		return mealName;
+		return this.mealName;
 	}
 
 	public void setMealName(String mealName) {
@@ -41,7 +39,7 @@ public class TbSearchMealCustom {
 	}
 
 	public String getMealPrice() {
-		return mealPrice;
+		return this.mealPrice;
 	}
 
 	public void setMealPrice(String mealPrice) {
@@ -49,7 +47,7 @@ public class TbSearchMealCustom {
 	}
 
 	public Integer getMealNum() {
-		return mealNum;
+		return this.mealNum;
 	}
 
 	public void setMealNum(Integer mealNum) {
@@ -57,7 +55,7 @@ public class TbSearchMealCustom {
 	}
 
 	public String getMealPic() {
-		return mealPic;
+		return this.mealPic;
 	}
 
 	public void setMealPic(String mealPic) {
@@ -65,7 +63,7 @@ public class TbSearchMealCustom {
 	}
 
 	public String getMealIntro() {
-		return mealIntro;
+		return this.mealIntro;
 	}
 
 	public void setMealIntro(String mealIntro) {
@@ -73,23 +71,14 @@ public class TbSearchMealCustom {
 	}
 
 	public String getPublisher() {
-		return publisher;
+		return this.publisher;
 	}
 
 	public void setPublisher(String publisher) {
 		this.publisher = publisher;
 	}
 
-	@Override
 	public String toString() {
-		return "TbSearchMealCustom{" +
-				"mealId=" + mealId +
-				", mealName='" + mealName + '\'' +
-				", mealPrice='" + mealPrice + '\'' +
-				", mealNum=" + mealNum +
-				", mealPic='" + mealPic + '\'' +
-				", mealIntro='" + mealIntro + '\'' +
-				", publisher='" + publisher + '\'' +
-				'}';
+		return "TbSearchMealCustom{mealId=" + this.mealId + ", mealName='" + this.mealName + '\'' + ", mealPrice='" + this.mealPrice + '\'' + ", mealNum=" + this.mealNum + ", mealPic='" + this.mealPic + '\'' + ", mealIntro='" + this.mealIntro + '\'' + ", publisher='" + this.publisher + '\'' + '}';
 	}
 }

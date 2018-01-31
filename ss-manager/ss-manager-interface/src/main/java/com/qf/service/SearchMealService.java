@@ -1,6 +1,8 @@
 package com.qf.service;
 
-public interface SearchMealService {
+import com.qf.pojo.Content;
+import java.util.List;
 
-	void importAllMeals();
+public interface SearchMealService {
+	List<Content> searchByPage(String var1, Integer var2, Integer var3);
 }

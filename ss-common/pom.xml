@@ -108,6 +108,26 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
+
+        <!--全文检索的相关jar，Lucene，Solr-->
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-queryparser</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.lucene</groupId>
+            <artifactId>lucene-analyzers-common</artifactId>
+        </dependency>
+
+        <!-- solr客户端 -->
+        <dependency>
+            <groupId>org.apache.solr</groupId>
+            <artifactId>solr-solrj</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
