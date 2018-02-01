@@ -7,8 +7,6 @@ package com.qf.service;
 import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
-import com.qf.pojo.TbOrder;
-import com.qf.vo.TbMealQuery;
 import com.qf.vo.TbOrderCustom;
 import com.qf.vo.TbOrderQuery;
 
@@ -22,5 +20,7 @@ public interface OrderService {
     //    批量删除
     int batchUpdate(List<Long> ids);
 
-    TbOrder findById(Long id);
+    //    根据用户id查询订单
+    Result<TbOrderCustom> listOrdersById(Page page,TbOrderQuery query);
+
 }

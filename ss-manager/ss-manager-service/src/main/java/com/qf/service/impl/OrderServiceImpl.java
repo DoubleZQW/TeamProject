@@ -12,7 +12,6 @@ import com.qf.mapper.TbOrderMapper;
 import com.qf.pojo.TbOrder;
 import com.qf.pojo.TbOrderExample;
 import com.qf.service.OrderService;
-import com.qf.vo.TbMealQuery;
 import com.qf.vo.TbOrderCustom;
 import com.qf.vo.TbOrderQuery;
 import org.slf4j.Logger;
@@ -78,10 +77,31 @@ public class OrderServiceImpl implements OrderService{
         return i;
     }
 
-//    根据id查询订单
-
+    //    根据id查询订单
     @Override
-    public TbOrder findById(Long id) {
-        return orderMapper.selectByPrimaryKey(id);
+    public Result<TbOrderCustom> listOrdersById(Page page, TbOrderQuery query) {
+        Result<TbOrderCustom> result=new Result<TbOrderCustom>();
+//        如果是第一次，就设置当前页码为1
+        if (page.getPage()==null || page.getPage()==0){
+            page.setPage(1);
+        }
+        if (page.getRows()==null ||page.getRows()==0){
+            page.setRows(5);
+        }
+        try {
+            Map<String,Object> map=new HashMap<String,Object>();
+            map.put("page",page);
+            map.put("query",query);
+//            获取总数
+            Long total=orderCustomMapper.listCondition(map);
+//            获取id查询订单的集合
+            List<TbOrderCustom> orderCustoms = orderCustomMapper.listOrdersById(map);
+            result.setRows(orderCustoms);
+            result.setTotal(total);
+        }catch (Exception e){
+            logger.error(e.getMessage(),e);
+            e.printStackTrace();
+        }
+        return result;
     }
 }

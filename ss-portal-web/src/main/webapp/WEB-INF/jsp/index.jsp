@@ -224,7 +224,7 @@
         <li><a href="javascript:toOrder();" class="link pngFix"><strong>我的订单</strong></a></li>
         <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="cart" class="link pngFix"><strong>购物车</strong>
         </a></li>
-        <li><a href="#" class="link"><strong>个人中心</strong><img
+        <li><a href="order/query" class="link"><strong>个人中心</strong><img
                 src="picture/20160909164810_443.png"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
     </ul>
@@ -657,14 +657,11 @@
             </div>
         </div>
         <div class="ztlist_cur" id="ztlist_cur"><span></span><span class="current"></span><span></span></div>
-
-
-
-
     </div>
     <div class="main_footer pngFix">
     </div>
     <div class="footer_con2">
+
 
     </div>	<div class="footer_con3">
     <ul class="clearfix">
@@ -686,7 +683,7 @@
 <script type="text/javascript">
     function toOrder() {
         $.ajax({
-            url: 'order-list',
+            url: 'order/query',
             method: 'get',
             success: function (html) {
                 $('#divbody').html(html);

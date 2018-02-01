@@ -1,8 +1,8 @@
 package com.qf.webController;
 
-import com.qf.dto.Order;
 import com.qf.dto.Page;
 import com.qf.dto.Result;
+import com.qf.pojo.TbUser;
 import com.qf.service.OrderService;
 import com.qf.vo.TbOrderCustom;
 import com.qf.vo.TbOrderQuery;
@@ -12,26 +12,39 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class OrderManageAction {
-    private Logger logger= LoggerFactory.getLogger(this.getClass());
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private OrderService orderService;
 
-    //订单查询
-    @ResponseBody
-    @RequestMapping(value = "/order/query",method = RequestMethod.GET)
-    public Result<TbOrderCustom> findAllOrder(Page page, TbOrderQuery query, Order order){
-        Result<TbOrderCustom> result=null;
+    /**
+     * 订单分页查询
+     * @param session
+     * @param page
+     * @param query
+     * @return
+     */
+    @RequestMapping(value = "/order/query", method = RequestMethod.GET)
+    public ModelAndView findOrderByUser(HttpSession session, Page page, TbOrderQuery query) {
+        ModelAndView mav=new ModelAndView("order");
+//        获取用户
+        TbUser user = (TbUser) session.getAttribute("sess");
+        Result<TbOrderCustom> result = null;
         try {
-            result=orderService.listOrdersByPage(page,query,order);
-        }catch (Exception e){
-            logger.error(e.getMessage(),e);
+//           根据用户id查询订单
+            query.setUid(user.getUserId());
+            result = orderService.listOrdersById(page, query);
+            mav.addObject("result",result);
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
             e.printStackTrace();
         }
-        return result;
+        return mav;
     }
 }
