@@ -58,15 +58,4 @@ public class OrderAction {
         }
         return i;
     }
-
-    /**
-     * 根据id查询订单
-     */
-    @ResponseBody
-    @RequestMapping(value = "/order/{orderId}",method = RequestMethod.GET)
-    public TbOrder findOrderById(@PathVariable("id") Long id){
-        return orderService.findById(id);
-    }
-
-
 }
