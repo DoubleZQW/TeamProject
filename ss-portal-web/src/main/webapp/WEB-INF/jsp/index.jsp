@@ -78,8 +78,7 @@
             <script type="text/javascript">
 				$('.submit').click(function toSearch() {
 					var keyword = $('#q-box').val();
-					if (keyword === "请输入菜名/商家名")
-						return;
+					if (keyword === "请输入菜名/商家名" || keyword === "") return;
 					$.ajax({
 						url: 'http://localhost:8887/TeamProject/meals/query',
 						method: 'get',

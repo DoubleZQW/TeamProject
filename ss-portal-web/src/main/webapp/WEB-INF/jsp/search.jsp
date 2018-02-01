@@ -13,7 +13,7 @@
 				<div style="font-size: 16px;font-weight: bold">${item.mealName}</div>
 				<div style="font-size: 16px;font-weight: bolder">
 					<i class="glyphicon glyphicon-yen"></i>
-					${item.mealPrice/100}
+						${item.mealPrice/100}
 				</div>
 			</div>
 			<div style="display: flex;justify-content: space-between">
@@ -24,16 +24,23 @@
 	</c:forEach>
 
 	<c:choose>
-		<c:when test="${recordCount > 1}">
+		<c:when test="${recordCount == 0}">
+			<%-- 不显示分页按钮 --%>
+			<h3 style="font-style: italic;color: #9c9c9c">没有找到你要的商品~</h3>
+		</c:when>
+		<c:when test="${recordCount <= 5}">
+			<h3 style="font-style: italic;color: #9c9c9c">结果较少, 尝试调整关键字~</h3>
+		</c:when>
+		<c:when test="${recordCount > 0}">
 			<%-- 展示分页按钮 --%>
 			<div>
-			<div id="btns-page" class="btn-group">
-				<button id="btn-prev" class="btn btn-default" onclick="toPage('${query}', '${page}', 'prev');">&lt;</button>
-				<c:forEach var="i" begin="1" end="${totalPages}">
-					<button class="btn btn-default" onclick="searchIndex('${query}', ${i});">${i}</button>
-				</c:forEach>
-				<button id="btn-next" class="btn btn-default" onclick="toPage('${query}', '${page}', 'next');">&gt;</button>
-			</div>
+				<div id="btns-page" class="btn-group">
+					<button id="btn-prev" class="btn btn-default" onclick="toPage('${query}', '${page}', 'prev');">&lt;</button>
+					<c:forEach var="i" begin="1" end="${totalPages}">
+						<button class="btn btn-default" onclick="searchIndex('${query}', ${i});">${i}</button>
+					</c:forEach>
+					<button id="btn-next" class="btn btn-default" onclick="toPage('${query}', '${page}', 'next');">&gt;</button>
+				</div>
 			</div>
 
 			<%-- 初始化分页按钮组 --%>
