@@ -98,6 +98,19 @@
 								</a></li>
 							</ul>
 						</div>
+
+						<div class="btn-group" role="group">
+							<button type="button" class="btn dropdown-toggle" style="background-color: #999999;color: white"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="glyphicon glyphicon-th"></span> Solr管理
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:closableTab.addTab({id: 'meals-solr',name: '商品Solr',url: 'meals-solr',closable: true});">
+									<span class="glyphicon glyphicon-search"></span> 商品Solr
+								</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
 

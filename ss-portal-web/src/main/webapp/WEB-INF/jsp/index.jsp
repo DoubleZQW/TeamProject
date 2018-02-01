@@ -32,7 +32,7 @@
     <link href="resources/bootstrap-table/bootstrap-table.css" rel="stylesheet">
 
     <!-- Required Javascript -->
-    <script src="resources/jquery/jquery-3.2.1.js"></script>
+	<script src="resources/jquery/jquery-3.2.1.js"></script>
     <script src="resources/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
     <%-- bootstrap-closable-tab.js --%>
     <script src="resources/bootstrap-closable-tab/closable-tab-div.js"></script>
@@ -65,15 +65,31 @@
             <div class="suggestionsBox" id="suggestions" style="display:none;">
                 <ul class="suggestionList" id="autoSuggestionsList"></ul>
             </div>
+
             <%-- 使用form表单的请求 --%>
-            <form class="search" method="get" action="http://localhost:8889/TeamProject/meals/query">
-                <input id="q-box" name="keyword" type="text" class="text" defaultval="请输入菜名/商家名" x-webkit-speech=""
+            <form class="search">
+                <input id="q-box" type="text" class="text" defaultval="请输入菜名/商家名" x-webkit-speech=""
                        value="请输入菜名/商家名" autocomplete="off"
                        onfocus="if(this.value=='请输入菜名/商家名'){this.value='';}$(this).css('color','#333');"
                        onblur="if(this.value==''){this.value='请输入菜名/商家名';$(this).css('color','#999');}"
                        />
-                <input type="submit" class="submit" value="搜 索" style="margin-left: -18px;">
+                <input type="button" class="submit" value="搜 索" style="margin-left: -18px;">
             </form>
+            <script type="text/javascript">
+				$('.submit').click(function() {
+					$.ajax({
+						url: 'http://localhost:8887/TeamProject/meals/query',
+						method: 'get',
+						data: {
+							keyword: $('#q-box').val(),
+						},
+						success: function(data) {
+							clean_index();
+							$("#div_main").html(data);
+						}
+					});
+				});
+			</script>
         </div>
 
 

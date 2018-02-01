@@ -1,4 +1,4 @@
-package com.qf.web;
+package com.qf.webController;
 
 import com.qf.pojo.Content;
 import com.qf.service.SearchIndexService;

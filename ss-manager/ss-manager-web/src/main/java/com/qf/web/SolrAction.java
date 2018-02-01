@@ -20,10 +20,7 @@ public class SolrAction {
 	}
 
 	@ResponseBody
-	@RequestMapping(
-			value = {"/meal/importSolr"},
-			method = {RequestMethod.GET}
-	)
+	@RequestMapping(value = "/meal/importSolr", method = RequestMethod.GET)
 	public ResultMessage importMealSolr() {
 		try {
 			this.siService.importAllMeals();
@@ -31,7 +28,6 @@ public class SolrAction {
 			this.logger.error(var2.getMessage(), var2);
 			var2.printStackTrace();
 		}
-
-		return new ResultMessage(true, "导入完成!", (Object)null);
+		return new ResultMessage(true, "导入完成!", null);
 	}
 }

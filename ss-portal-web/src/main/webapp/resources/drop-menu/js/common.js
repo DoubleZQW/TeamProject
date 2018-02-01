@@ -19,7 +19,7 @@ function show_register(div_id) {
 }
 
 function clean_index() {
-    $('#div_main').removeClass('nav');
+    $('#div_main').removeClass('nav').empty();
 
     var a = $('#bottom_back_top_top');
     var b = $('#divbody');
