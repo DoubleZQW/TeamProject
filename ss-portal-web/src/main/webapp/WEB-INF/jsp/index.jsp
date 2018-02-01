@@ -67,21 +67,25 @@
             </div>
 
             <%-- 使用form表单的请求 --%>
-            <form class="search">
+            <form class="search" action="javascript:toSearch();">
                 <input id="q-box" type="text" class="text" defaultval="请输入菜名/商家名" x-webkit-speech=""
                        value="请输入菜名/商家名" autocomplete="off"
                        onfocus="if(this.value=='请输入菜名/商家名'){this.value='';}$(this).css('color','#333');"
                        onblur="if(this.value==''){this.value='请输入菜名/商家名';$(this).css('color','#999');}"
                        />
-                <input type="button" class="submit" value="搜 索" style="margin-left: -18px;">
+                <input type="submit" class="submit" value="搜 索" style="margin-left: -18px;">
             </form>
             <script type="text/javascript">
-				$('.submit').click(function() {
+				$('.submit').click(function toSearch() {
+					var keyword = $('#q-box').val();
+					if (keyword === "请输入菜名/商家名")
+						return;
 					$.ajax({
 						url: 'http://localhost:8887/TeamProject/meals/query',
 						method: 'get',
 						data: {
-							keyword: $('#q-box').val(),
+							keyword: keyword,
+							page: 1
 						},
 						success: function(data) {
 							clean_index();
