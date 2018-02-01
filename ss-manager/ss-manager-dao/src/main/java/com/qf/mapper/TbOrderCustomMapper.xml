@@ -53,4 +53,25 @@
         limit #{page.offset},#{page.rows}
     </select>
 
+
+    <!--根据用户id查询订单-->
+    <select id="listOrdersById" resultType="com.qf.vo.TbOrderCustom">
+        select
+        <include refid="Base_sql"/>
+        from tb_order o left join tb_meal m on o.m_id = m.meal_id
+        left join tb_meal_order mo on o.order_id = mo.order_id
+        left join tb_address a on o.addr_id = a.id
+        left join postman p on o.p_id = p.id
+        left join tb_user u on o.u_id = u.user_id
+        <where>
+            o.order_status !=3 and o.u_id =#{query.uid}
+            <if test="query !=null and query.orderId !=null and query.orderId !=''">
+                and o.order_id like '%${query.orderId}%'
+            </if>
+            <if test="query !=null and query.orderStatus !=null and query.orderStatus !=''">
+                and o.order_status = #{query.orderStatus}
+            </if>
+        </where>
+        limit #{page.offset},#{page.rows}
+    </select>
 </mapper>

@@ -87,6 +87,7 @@
         $.ajax({
             url: 'user/login',
             method: 'post',
+            async:true,
             data: {
                 userName: $('#userName').val(),
                 userPassword: $('#userPassword').val(),
