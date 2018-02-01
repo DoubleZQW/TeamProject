@@ -1,0 +1,19 @@
+/*search.jsp的css样式*/
+
+/*每个item的浮动效果*/
+.item-float {
+	/*box-shadow: 0px 0px 15px 3px #999999;*/
+	transform: scale(1);
+	box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.5s, transform 0.5s;
+}
+.item-float:hover {
+	transform: scale(1.2);
+	box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.3);
+	transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.item-size {
+	width: 150px;
+	height: 150px;
+}

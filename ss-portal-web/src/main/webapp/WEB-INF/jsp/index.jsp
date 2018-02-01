@@ -67,7 +67,7 @@
             </div>
 
             <%-- 使用form表单的请求 --%>
-            <form class="search" action="javascript:toSearch();">
+            <form class="search" action="javascript:void(0);">
                 <input id="q-box" type="text" class="text" defaultval="请输入菜名/商家名" x-webkit-speech=""
                        value="请输入菜名/商家名" autocomplete="off"
                        onfocus="if(this.value=='请输入菜名/商家名'){this.value='';}$(this).css('color','#333');"
@@ -76,7 +76,7 @@
                 <input type="submit" class="submit" value="搜 索" style="margin-left: -18px;">
             </form>
             <script type="text/javascript">
-				$('.submit').click(function toSearch() {
+				$('.submit').click(function () {
 					var keyword = $('#q-box').val();
 					if (keyword === "请输入菜名/商家名" || keyword === "") return;
 					$.ajax({
