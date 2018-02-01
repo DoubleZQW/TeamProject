@@ -24,7 +24,7 @@ public class OrderManageAction {
     private OrderService orderService;
 
     /**
-     * 订单分页查询
+     * 用户订单分页查询
      * @param session
      * @param page
      * @param query
