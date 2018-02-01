@@ -1,7 +1,7 @@
 package com.qf.web;
 
 import com.qf.dto.ResultMessage;
-import com.qf.service.SearchIndexService;
+import com.qf.service.SolrIndexService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +12,25 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SolrAction {
-	private Logger logger = LoggerFactory.getLogger(this.getClass());
-	@Autowired
-	private SearchIndexService siService;
 
-	public SolrAction() {
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
+
+	@Autowired
+	private SolrIndexService siService;
+
+	@ResponseBody
+	@RequestMapping(value = "/meals/importSolr", method = RequestMethod.GET)
+	public ResultMessage importMealSolr() {
+		if (siService.importAllMeals())
+			return new ResultMessage(true, "导入完成!", null);
+		return new ResultMessage(false, "导入失败!", null);
 	}
 
 	@ResponseBody
-	@RequestMapping(value = "/meal/importSolr", method = RequestMethod.GET)
-	public ResultMessage importMealSolr() {
-		try {
-			this.siService.importAllMeals();
-		} catch (Exception var2) {
-			this.logger.error(var2.getMessage(), var2);
-			var2.printStackTrace();
-		}
-		return new ResultMessage(true, "导入完成!", null);
+	@RequestMapping(value = "/meals/cleanSolr", method = RequestMethod.GET)
+	public ResultMessage cleanAllMeals() {
+		if (siService.cleanAllMeals())
+			return new ResultMessage(true, "清空完成!", null);
+		return new ResultMessage(false, "清空失败!", null);
 	}
 }
