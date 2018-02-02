@@ -13,6 +13,8 @@
         <module>../ss-manager</module>
         <module>../ss-portal-web</module>
         <module>../ss-search-web</module>
+        <module>../ss-dubbo-provider</module>
+	    <module>../ss-dubbo-consumer</module>
     </modules>
 
     <!--版本号的统一管理-->
