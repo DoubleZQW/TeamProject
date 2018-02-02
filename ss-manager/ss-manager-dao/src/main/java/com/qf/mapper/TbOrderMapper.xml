@@ -11,8 +11,6 @@
     <result column="order_status" property="orderStatus" jdbcType="TINYINT" />
     <result column="order_created" property="orderCreated" jdbcType="TIMESTAMP" />
     <result column="order_finished" property="orderFinished" jdbcType="TIMESTAMP" />
-    <result column="addr_id" property="addrId" jdbcType="INTEGER" />
-    <result column="p_id" property="pId" jdbcType="BIGINT" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.qf.pojo.TbOrder" extends="BaseResultMap" >
     <result column="order_message" property="orderMessage" jdbcType="LONGVARCHAR" />
@@ -77,7 +75,7 @@
   </sql>
   <sql id="Base_Column_List" >
     order_id, u_id, m_id, payment, payment_type, order_free, order_status, order_created, 
-    order_finished, addr_id, p_id
+    order_finished
   </sql>
   <sql id="Blob_Column_List" >
     order_message
@@ -134,13 +132,11 @@
     insert into tb_order (order_id, u_id, m_id, 
       payment, payment_type, order_free, 
       order_status, order_created, order_finished, 
-      addr_id, p_id, order_message
-      )
+      order_message)
     values (#{orderId,jdbcType=BIGINT}, #{uId,jdbcType=BIGINT}, #{mId,jdbcType=BIGINT}, 
       #{payment,jdbcType=INTEGER}, #{paymentType,jdbcType=TINYINT}, #{orderFree,jdbcType=INTEGER}, 
       #{orderStatus,jdbcType=TINYINT}, #{orderCreated,jdbcType=TIMESTAMP}, #{orderFinished,jdbcType=TIMESTAMP}, 
-      #{addrId,jdbcType=INTEGER}, #{pId,jdbcType=BIGINT}, #{orderMessage,jdbcType=LONGVARCHAR}
-      )
+      #{orderMessage,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.qf.pojo.TbOrder" >
     insert into tb_order
@@ -171,12 +167,6 @@
       </if>
       <if test="orderFinished != null" >
         order_finished,
-      </if>
-      <if test="addrId != null" >
-        addr_id,
-      </if>
-      <if test="pId != null" >
-        p_id,
       </if>
       <if test="orderMessage != null" >
         order_message,
@@ -209,12 +199,6 @@
       </if>
       <if test="orderFinished != null" >
         #{orderFinished,jdbcType=TIMESTAMP},
-      </if>
-      <if test="addrId != null" >
-        #{addrId,jdbcType=INTEGER},
-      </if>
-      <if test="pId != null" >
-        #{pId,jdbcType=BIGINT},
       </if>
       <if test="orderMessage != null" >
         #{orderMessage,jdbcType=LONGVARCHAR},
@@ -257,12 +241,6 @@
       <if test="record.orderFinished != null" >
         order_finished = #{record.orderFinished,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.addrId != null" >
-        addr_id = #{record.addrId,jdbcType=INTEGER},
-      </if>
-      <if test="record.pId != null" >
-        p_id = #{record.pId,jdbcType=BIGINT},
-      </if>
       <if test="record.orderMessage != null" >
         order_message = #{record.orderMessage,jdbcType=LONGVARCHAR},
       </if>
@@ -282,8 +260,6 @@
       order_status = #{record.orderStatus,jdbcType=TINYINT},
       order_created = #{record.orderCreated,jdbcType=TIMESTAMP},
       order_finished = #{record.orderFinished,jdbcType=TIMESTAMP},
-      addr_id = #{record.addrId,jdbcType=INTEGER},
-      p_id = #{record.pId,jdbcType=BIGINT},
       order_message = #{record.orderMessage,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -299,9 +275,7 @@
       order_free = #{record.orderFree,jdbcType=INTEGER},
       order_status = #{record.orderStatus,jdbcType=TINYINT},
       order_created = #{record.orderCreated,jdbcType=TIMESTAMP},
-      order_finished = #{record.orderFinished,jdbcType=TIMESTAMP},
-      addr_id = #{record.addrId,jdbcType=INTEGER},
-      p_id = #{record.pId,jdbcType=BIGINT}
+      order_finished = #{record.orderFinished,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -333,12 +307,6 @@
       <if test="orderFinished != null" >
         order_finished = #{orderFinished,jdbcType=TIMESTAMP},
       </if>
-      <if test="addrId != null" >
-        addr_id = #{addrId,jdbcType=INTEGER},
-      </if>
-      <if test="pId != null" >
-        p_id = #{pId,jdbcType=BIGINT},
-      </if>
       <if test="orderMessage != null" >
         order_message = #{orderMessage,jdbcType=LONGVARCHAR},
       </if>
@@ -355,8 +323,6 @@
       order_status = #{orderStatus,jdbcType=TINYINT},
       order_created = #{orderCreated,jdbcType=TIMESTAMP},
       order_finished = #{orderFinished,jdbcType=TIMESTAMP},
-      addr_id = #{addrId,jdbcType=INTEGER},
-      p_id = #{pId,jdbcType=BIGINT},
       order_message = #{orderMessage,jdbcType=LONGVARCHAR}
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
@@ -369,9 +335,7 @@
       order_free = #{orderFree,jdbcType=INTEGER},
       order_status = #{orderStatus,jdbcType=TINYINT},
       order_created = #{orderCreated,jdbcType=TIMESTAMP},
-      order_finished = #{orderFinished,jdbcType=TIMESTAMP},
-      addr_id = #{addrId,jdbcType=INTEGER},
-      p_id = #{pId,jdbcType=BIGINT}
+      order_finished = #{orderFinished,jdbcType=TIMESTAMP}
     where order_id = #{orderId,jdbcType=BIGINT}
   </update>
 </mapper>

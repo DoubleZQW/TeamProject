@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qf.mapper.PostmanMapper" >
-  <resultMap id="BaseResultMap" type="com.qf.pojo.Postman" >
+<mapper namespace="com.qf.mapper.TbPostMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.pojo.TbPost" >
     <id column="id" property="id" jdbcType="BIGINT" />
     <result column="p_name" property="pName" jdbcType="VARCHAR" />
     <result column="p_mobie" property="pMobie" jdbcType="VARCHAR" />
@@ -69,13 +69,13 @@
   <sql id="Base_Column_List" >
     id, p_name, p_mobie, gender, age
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.PostmanExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbPostExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from postman
+    from tb_post
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -86,27 +86,27 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from postman
+    from tb_post
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from postman
+    delete from tb_post
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qf.pojo.PostmanExample" >
-    delete from postman
+  <delete id="deleteByExample" parameterType="com.qf.pojo.TbPostExample" >
+    delete from tb_post
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qf.pojo.Postman" >
-    insert into postman (id, p_name, p_mobie, 
+  <insert id="insert" parameterType="com.qf.pojo.TbPost" >
+    insert into tb_post (id, p_name, p_mobie, 
       gender, age)
     values (#{id,jdbcType=BIGINT}, #{pName,jdbcType=VARCHAR}, #{pMobie,jdbcType=VARCHAR}, 
       #{gender,jdbcType=TINYINT}, #{age,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.qf.pojo.Postman" >
-    insert into postman
+  <insert id="insertSelective" parameterType="com.qf.pojo.TbPost" >
+    insert into tb_post
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -142,14 +142,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qf.pojo.PostmanExample" resultType="java.lang.Integer" >
-    select count(*) from postman
+  <select id="countByExample" parameterType="com.qf.pojo.TbPostExample" resultType="java.lang.Integer" >
+    select count(*) from tb_post
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update postman
+    update tb_post
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
@@ -172,7 +172,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update postman
+    update tb_post
     set id = #{record.id,jdbcType=BIGINT},
       p_name = #{record.pName,jdbcType=VARCHAR},
       p_mobie = #{record.pMobie,jdbcType=VARCHAR},
@@ -182,8 +182,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.Postman" >
-    update postman
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbPost" >
+    update tb_post
     <set >
       <if test="pName != null" >
         p_name = #{pName,jdbcType=VARCHAR},
@@ -200,8 +200,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.Postman" >
-    update postman
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbPost" >
+    update tb_post
     set p_name = #{pName,jdbcType=VARCHAR},
       p_mobie = #{pMobie,jdbcType=VARCHAR},
       gender = #{gender,jdbcType=TINYINT},

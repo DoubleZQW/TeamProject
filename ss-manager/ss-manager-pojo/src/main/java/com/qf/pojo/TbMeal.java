@@ -9,23 +9,21 @@ public class TbMeal {
 
     private Integer mealPrice;
 
+    private Integer amount;
+
     private Integer mealNum;
 
     private String mealPicture;
 
     private Byte mealStatus;
 
-    private String publisher;
-
     private String mealIntro;
 
     private String category;
 
-    private Date createTme;
+    private Date createTime;
 
-    private Date updatTime;
-
-    private Long catId;
+    private Date updateTime;
 
     public Long getMealId() {
         return mealId;
@@ -49,6 +47,14 @@ public class TbMeal {
 
     public void setMealPrice(Integer mealPrice) {
         this.mealPrice = mealPrice;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 
     public Integer getMealNum() {
@@ -75,14 +81,6 @@ public class TbMeal {
         this.mealStatus = mealStatus;
     }
 
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher == null ? null : publisher.trim();
-    }
-
     public String getMealIntro() {
         return mealIntro;
     }
@@ -99,27 +97,19 @@ public class TbMeal {
         this.category = category == null ? null : category.trim();
     }
 
-    public Date getCreateTme() {
-        return createTme;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setCreateTme(Date createTme) {
-        this.createTme = createTme;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
-    public Date getUpdatTime() {
-        return updatTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpdatTime(Date updatTime) {
-        this.updatTime = updatTime;
-    }
-
-    public Long getCatId() {
-        return catId;
-    }
-
-    public void setCatId(Long catId) {
-        this.catId = catId;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

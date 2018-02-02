@@ -82,7 +82,7 @@ public class MealServiceImpl implements MealService {
     public int updateMeal(TbMeal meal) {
         int i=0;
         try {
-            meal.setUpdatTime(new Date());
+            meal.setUpdateTime(new Date());
             i =mealMapper.updateByPrimaryKeySelective(meal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
@@ -97,8 +97,8 @@ public class MealServiceImpl implements MealService {
     public int saveMeals(TbMeal tbMeal) {
         int i=0;
         try {
-            tbMeal.setCreateTme(new Date());
-            tbMeal.setUpdatTime(tbMeal.getCreateTme());
+            tbMeal.setCreateTime(new Date());
+            tbMeal.setUpdateTime(tbMeal.getCreateTime());
             i=mealMapper.insertSelective(tbMeal);
         }catch (Exception e){
             logger.error(e.getMessage(),e);
