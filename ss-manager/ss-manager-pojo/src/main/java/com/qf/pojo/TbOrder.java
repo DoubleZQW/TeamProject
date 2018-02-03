@@ -21,10 +21,6 @@ public class TbOrder {
 
     private Date orderFinished;
 
-    private Integer addrId;
-
-    private Long pId;
-
     private String orderMessage;
 
     public Long getOrderId() {
@@ -97,22 +93,6 @@ public class TbOrder {
 
     public void setOrderFinished(Date orderFinished) {
         this.orderFinished = orderFinished;
-    }
-
-    public Integer getAddrId() {
-        return addrId;
-    }
-
-    public void setAddrId(Integer addrId) {
-        this.addrId = addrId;
-    }
-
-    public Long getpId() {
-        return pId;
-    }
-
-    public void setpId(Long pId) {
-        this.pId = pId;
     }
 
     public String getOrderMessage() {

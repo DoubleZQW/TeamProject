@@ -1,39 +1,44 @@
 /* 美化选项卡外观 */
-.nav-tabs li a{
-	line-height:2;
-	font-weight: bold;
-	background: #dddddd;
+.nav-tabs li a {
+    line-height: 2;
+    font-weight: bold;
+    background: #dddddd;
 }
-.nav-tabs .active a{
-	border-top: solid 4px #3498db !important;
+
+.nav-tabs .active a {
+    border-top: solid 4px #3498db !important;
 }
 
 /* 选项卡间实体化效果 */
-.nav-tabs li a{
-	line-height:2;
-	border:1px #ddd solid;
-	margin-right: 2px;
-	color: #999;
+.nav-tabs li a {
+    line-height: 2;
+    border: 1px #ddd solid;
+    margin-right: 2px;
+    color: #999;
 }
+
 /*.nav-tabs{*/
-	/*background: #fafafa;*/
+/*background: #fafafa;*/
 /*}*/
 
 /*修复user-query.jsp中数据表格的按钮对齐*/
 html body div div.col-xs-10 div.col-xs-12.well div.tab-content div#tab_container_queryUser.tab-pane.active div.panel.panel-default div.bootstrap-table div.fixed-table-toolbar div.columns.columns-right.btn-group.pull-right div.keep-open.btn-group button.btn.btn-default.dropdown-toggle {
-	height: 28px;
+    height: 28px;
 }
+
 /*修复meal-list.jsp中数据表格的按钮对齐*/
 html body div.container div.col-xs-10 div.col-xs-12.well div.tab-content div#tab_container_queryMeals.tab-pane.active div.bootstrap-table div.fixed-table-toolbar div.columns.columns-right.btn-group.pull-right div.keep-open.btn-group button.btn.btn-default.dropdown-toggle {
-	height: 28px;
+    height: 28px;
 }
+
 /*修复order-list.jsp中数据表格按钮对齐*/
 html.js.no-touch.csstransitions body div#div_main div.panel.panel-default div.bootstrap-table div.fixed-table-toolbar div.columns.columns-right.btn-group.pull-right div.keep-open.btn-group button.btn.btn-default.dropdown-toggle i.glyphicon.glyphicon-th.icon-th {
-	height: 28px;
+    height: 28px;
 }
+
 /*调整表格字体和行高*/
-tbody>tr>td {
-	font-size: 14px;
-	min-height: 30px;
-	height: 40px;
+tbody > tr > td {
+    font-size: 14px;
+    min-height: 30px;
+    height: 40px;
 }

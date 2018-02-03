@@ -32,7 +32,7 @@
     <link href="resources/bootstrap-table/bootstrap-table.css" rel="stylesheet">
 
     <!-- Required Javascript -->
-	<script src="resources/jquery/jquery-3.2.1.js"></script>
+    <script src="resources/jquery/jquery-3.2.1.js"></script>
     <script src="resources/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
     <%-- bootstrap-closable-tab.js --%>
     <script src="resources/bootstrap-closable-tab/closable-tab-div.js"></script>
@@ -67,37 +67,37 @@
             </div>
 
             <%-- 使用form表单的请求 --%>
-            <form class="search" action="javascript:void(0);">
+            <form class="search" action="javascript:toSearch();">
                 <input id="q-box" type="text" class="text" defaultval="请输入菜名/商家名" x-webkit-speech=""
                        value="请输入菜名/商家名" autocomplete="off"
                        onfocus="if(this.value=='请输入菜名/商家名'){this.value='';}$(this).css('color','#333');"
                        onblur="if(this.value==''){this.value='请输入菜名/商家名';$(this).css('color','#999');}"
-                       />
+                />
                 <input type="submit" class="submit" value="搜 索" style="margin-left: -18px;">
             </form>
             <script type="text/javascript">
-				$('.submit').click(function () {
-					var keyword = $('#q-box').val();
-					if (keyword === "请输入菜名/商家名" || keyword === "") return;
-					$.ajax({
-						url: 'http://localhost:8887/TeamProject/meals/query',
-						method: 'get',
-						data: {
-							keyword: keyword,
-							page: 1
-						},
-						success: function(data) {
-							clean_index();
-							$("#div_main").html(data);
-						}
-					});
-				});
-			</script>
+                $('.submit').click(function toSearch() {
+                    var keyword = $('#q-box').val();
+                    if (keyword === "请输入菜名/商家名" || keyword === "") return;
+                    $.ajax({
+                        url: 'http://localhost:8887/TeamProject/meals/query',
+                        method: 'get',
+                        data: {
+                            keyword: keyword,
+                            page: 1
+                        },
+                        success: function (data) {
+                            clean_index();
+                            $("#div_main").html(data);
+                        }
+                    });
+                });
+            </script>
         </div>
 
 
         <%--右上角的登录-注册按钮/下拉菜单部分--%>
-        <link rel="stylesheet" type="text/css" href="resources/drop-menu/css/style2.css" />
+        <link rel="stylesheet" type="text/css" href="resources/drop-menu/css/style2.css"/>
         <script src="resources/drop-menu/js/modernizr.custom.63321.js"></script>
         <%--<script src="http://www.jq22.com/jquery/1.8.3/jquery.min.js"></script>--%>
         <script type="text/javascript" src="resources/drop-menu/js/jquery.dropdown.js"></script>
@@ -129,19 +129,19 @@
                         </select>
                     </div>
                     <script type="text/javascript">
-					    $( function() {
-						    $( '#cd-dropdown' ).dropdown( {
-							    gutter : 5,
-							    delay : 100,
-							    random : true
-						    } );
-					    });
-
-					    $(function() {
-						    $('.cd-dropdown').find('li span').click(function() {
-						        show_div_proxy(this.innerHTML);
+                        $(function () {
+                            $('#cd-dropdown').dropdown({
+                                gutter: 5,
+                                delay: 100,
+                                random: true
                             });
-					    });
+                        });
+
+                        $(function () {
+                            $('.cd-dropdown').find('li span').click(function () {
+                                show_div_proxy(this.innerHTML);
+                            });
+                        });
                     </script>
                 </c:otherwise>
             </c:choose>
@@ -240,9 +240,6 @@
         </li>
         <li><a href="#" class="link pngFix"><strong>全部商家</strong></a>
         </li>
-        <li><a href="javascript:toOrder();" class="link pngFix"><strong>我的订单</strong></a></li>
-        <li style="position:relative;z-index:100;"><a style="padding:0 11px;" href="cart" class="link pngFix"><strong>购物车</strong>
-        </a></li>
         <li><a href="order/query" class="link"><strong>个人中心</strong><img
                 src="picture/20160909164810_443.png"
                 style="display:inline-block;margin-left:-7px;vertical-align:top;margin-top:8px;"></a></li>
@@ -259,16 +256,16 @@
                     <h3 class="bbtitles bbtitles_zzw">今日夜宵推荐：夜宵，在家里吃更有温度！</h3>
                     <ul class="clearfix">
                         <c:forEach items="${midnightlist}" var="node1">
-                        <li>
-                            <a target="_blank" href="${node1.href}" title="${node1.title}"
-                               class="img"><img alt="${node1.title}" src="${node1.src}"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="${node1.href}"
-                                       title="${node1.title}">${node1.title}</a></h2>
-                                <strong>${node1.titledesc}</strong>
-                                <span><a href="####">${node1.effect}</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
+                            <li>
+                                <a target="_blank" href="${node1.href}" title="${node1.title}"
+                                   class="img"><img alt="${node1.title}" src="${node1.src}"/></a>
+                                <div class="c pngFix">
+                                    <h2><a target="_blank" href="${node1.href}"
+                                           title="${node1.title}">${node1.title}</a></h2>
+                                    <strong>${node1.titledesc}</strong>
+                                    <span><a href="####">${node1.effect}</a><em class="arrow pngFix"></em></span>
+                                </div>
+                            </li>
                         </c:forEach>
                     </ul>
                 </div>
@@ -276,16 +273,16 @@
                     <h3 class="bbtitles bbtitles_zzw">今日晚餐推荐：今晚，吃点鲜的，猴头菇的鲜！</h3>
                     <ul class="clearfix">
                         <c:forEach items="${dinnerList}" var="node2">
-                        <li>
-                            <a target="_blank" href="${node2.href}" title="${node2.title}"
-                               class="img"><img alt="${node2.title}" src="${node2.src}"/></a>
-                            <div class="c pngFix">
-                                <h2><a target="_blank" href="${node2.href}"
-                                       title="${node2.title}">${node2.title}</a></h2>
-                                <strong>${node2.titledesc}</strong>
-                                <span><a href="####">${node2.effect}</a><em class="arrow pngFix"></em></span>
-                            </div>
-                        </li>
+                            <li>
+                                <a target="_blank" href="${node2.href}" title="${node2.title}"
+                                   class="img"><img alt="${node2.title}" src="${node2.src}"/></a>
+                                <div class="c pngFix">
+                                    <h2><a target="_blank" href="${node2.href}"
+                                           title="${node2.title}">${node2.title}</a></h2>
+                                    <strong>${node2.titledesc}</strong>
+                                    <span><a href="####">${node2.effect}</a><em class="arrow pngFix"></em></span>
+                                </div>
+                            </li>
                         </c:forEach>
 
                     </ul>
@@ -682,34 +679,32 @@
     <div class="footer_con2">
 
 
-    </div>	<div class="footer_con3">
-    <ul class="clearfix">
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php" title="公司简介">公司简介</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#qywh" title="企业文化">企业文化</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#gsdt" title="公司动态">公司动态</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#mzsm" title="免责声明">免责声明</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/contact.php" title="联系我们">联系我们</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/hr.php" title="招贤纳士">招贤纳士</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/bd.php" title="商务合作">商务合作</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
-        <li><a target="_blank" href="http://www.meishij.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
-        <li><a target="_blank" href="http://sj.meishi.cc/" title="美食杰移动APP">美食杰移动APP</a></li>
-    </ul>
-    <p><a target="_blank" href="http://www.miibeian.gov.cn" class="gray_a">京ICP证150335号</a>/京公网安备11010802009977 Copyright © 2003-2018 MEISHIJ CO.,LTD.</p>
+    </div>
+    <div class="footer_con3">
+        <ul class="clearfix">
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php" title="公司简介">公司简介</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#qywh" title="企业文化">企业文化</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#gsdt" title="公司动态">公司动态</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/index.php#mzsm" title="免责声明">免责声明</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/contact.php" title="联系我们">联系我们</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/hr.php" title="招贤纳士">招贤纳士</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/bd.php" title="商务合作">商务合作</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/maps.php" title="网站地图">网站地图</a></li>
+            <li><a target="_blank" href="http://www.meishij.net/siteinfo/links.php" title="友情链接">友情链接</a></li>
+            <li><a target="_blank" href="http://sj.meishi.cc/" title="美食杰移动APP">美食杰移动APP</a></li>
+        </ul>
+        <p><a target="_blank" href="http://www.miibeian.gov.cn" class="gray_a">京ICP证150335号</a>/京公网安备11010802009977
+            Copyright © 2003-2018 MEISHIJ CO.,LTD.</p>
+    </div>
 </div>
-</div><div style="display:none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544' type='text/javascript'%3E%3C/script%3E"));</script></div></body></html>
-
-<script type="text/javascript">
-    function toOrder() {
-        $.ajax({
-            url: 'order/query',
-            method: 'get',
-            success: function (html) {
-                $('#divbody').html(html);
-            }
-        });
-    }
-
-</script>
+<div style="display:none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " " +
+        "https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1259001544'%3E%3C/span%3E%3Cscript " +
+        "src='" + cnzz_protocol + "s95.cnzz.com/stat.php%3Fid%3D1259001544'" +
+        " type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+</body>
+</html>
 </body>
 </html>

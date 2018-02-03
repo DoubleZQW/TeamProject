@@ -3,11 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.qf.mapper.TbMealCustomMapper">
     <sql id="Base_Column_List">
-   m.meal_id as mealId ,m.meal_name as mealName, m.meal_price as mealPrice,
+     m.meal_id as mealId ,m.meal_name as mealName, m.meal_price as mealPrice,m.amount as amount,
    m.meal_num as mealNum, m.meal_picture as mealPicture ,m.meal_status as mealStatus,
-   s.name as publisher ,m.meal_intro as mealIntro ,m.category as category,
-   m.create_tme as createTme ,m.updat_time as updatTime, m.cat_id as catId,
-   c.cat_name as catName
+   m.meal_intro as mealIntro ,m.category as category,
+   m.create_time as createTime ,m.update_time as updateTime,
+   s.name as publisher
     </sql>
     <sql id="Where_Clause">
         <where>
@@ -24,14 +24,13 @@
         </where>
     </sql>
 
-
+    <!--商品分页-->
     <select id="listItemsByPage" resultType="com.qf.pojo.TbMeal">
         select
         <include refid="Base_Column_List"/>
-        from tb_meal m LEFT JOIN tb_meal_cat c
-        ON m.meal_id =c.id
-        left join tb_seller s
-        on m.meal_id = s.mid
+        from tb_meal m
+	      left join tb_seller s on m.meal_id = s.mid
+
         <include refid="Where_Clause"/>
         <choose>
             <when test="order != null and order.sort != null and order.order != null">
@@ -48,7 +47,7 @@
         limit #{page.offset},#{page.rows}
     </select>
 
-
+<!--查询商品总数-->
     <select id="listCondition" resultType="_long">
         select
         count(*)
@@ -60,10 +59,10 @@
     <select id="findMealCustomById" resultType="com.qf.vo.TbMealCustom">
         select
         <include refid="Base_Column_List"/>
-        from tb_meal m LEFT JOIN tb_meal_cat c
-        ON m.meal_id =c.id
-        left join tb_seller s
-        on m.meal_id = s.mid
+        from tb_meal m
+        from tb_meal m
+          left join tb_seller s on m.meal_id = s.mid
+
         where m.meal_id =#{mealId}
     </select>
 
@@ -80,10 +79,12 @@
         m.meal_price as mealPrice,
         m.meal_num as mealNum,
         m.meal_picture as mealPic,
-        m.meal_intro as mealIntro,
+        m.meal_intro as mealIntro
         s.name as publisher
-        from tb_meal m left join tb_seller s
-            on m.meal_id = s.mid
+
+        from tb_meal m
+	        left join tb_seller s on m.meal_id = s.mid
+
         where
         m.meal_status = 1
         order by m.meal_id desc;

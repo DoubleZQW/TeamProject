@@ -2,9 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.TbMeal;
 import com.qf.pojo.TbMealExample;
-import java.util.List;
-
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbMealMapper {
     int countByExample(TbMealExample example);
@@ -28,5 +28,4 @@ public interface TbMealMapper {
     int updateByPrimaryKeySelective(TbMeal record);
 
     int updateByPrimaryKey(TbMeal record);
-
 }

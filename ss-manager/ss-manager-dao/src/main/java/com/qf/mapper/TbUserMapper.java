@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.TbUser;
 import com.qf.pojo.TbUserExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TbUserMapper {
     int countByExample(TbUserExample example);
@@ -27,12 +28,4 @@ public interface TbUserMapper {
     int updateByPrimaryKeySelective(TbUser record);
 
     int updateByPrimaryKey(TbUser record);
-
-    TbUser selectByPrimaryKey(String userName);
-
-     void addUser(TbUser tbUser);
-
-     void findUserByNameAndPwd(@Param("name")String name, @Param("password")String password);
-
-
 }

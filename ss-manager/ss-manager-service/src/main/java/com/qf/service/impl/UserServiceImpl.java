@@ -116,15 +116,6 @@ public class UserServiceImpl implements UserService{
         return i;
     }
 
-
-
-    //用户登录
-    @Override
-    public int login(String TbName, String TbPassword) {
-      userMapper.findUserByNameAndPwd(TbName,TbPassword);
-      return 1;
-    }
-
     //根据用户名查找用户
     @Override
     public TbUser findByName(TbUser tbUser) {

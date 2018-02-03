@@ -5,15 +5,14 @@
     <id column="meal_id" property="mealId" jdbcType="BIGINT" />
     <result column="meal_name" property="mealName" jdbcType="VARCHAR" />
     <result column="meal_price" property="mealPrice" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="INTEGER" />
     <result column="meal_num" property="mealNum" jdbcType="INTEGER" />
     <result column="meal_picture" property="mealPicture" jdbcType="VARCHAR" />
     <result column="meal_status" property="mealStatus" jdbcType="TINYINT" />
-    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
     <result column="meal_intro" property="mealIntro" jdbcType="VARCHAR" />
     <result column="category" property="category" jdbcType="VARCHAR" />
-    <result column="create_tme" property="createTme" jdbcType="TIMESTAMP" />
-    <result column="updat_time" property="updatTime" jdbcType="TIMESTAMP" />
-    <result column="cat_id" property="catId" jdbcType="BIGINT" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -74,8 +73,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    meal_id, meal_name, meal_price, meal_num, meal_picture, meal_status, publisher, meal_intro, 
-    category, create_tme, updat_time, cat_id
+    meal_id, meal_name, meal_price, amount, meal_num, meal_picture, meal_status, meal_intro, 
+    category, create_time, update_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbMealExample" >
     select
@@ -109,15 +108,13 @@
   </delete>
   <insert id="insert" parameterType="com.qf.pojo.TbMeal" >
     insert into tb_meal (meal_id, meal_name, meal_price, 
-      meal_num, meal_picture, meal_status, 
-      publisher, meal_intro, category, 
-      create_tme, updat_time, cat_id
-      )
+      amount, meal_num, meal_picture, 
+      meal_status, meal_intro, category, 
+      create_time, update_time)
     values (#{mealId,jdbcType=BIGINT}, #{mealName,jdbcType=VARCHAR}, #{mealPrice,jdbcType=INTEGER}, 
-      #{mealNum,jdbcType=INTEGER}, #{mealPicture,jdbcType=VARCHAR}, #{mealStatus,jdbcType=TINYINT}, 
-      #{publisher,jdbcType=VARCHAR}, #{mealIntro,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
-      #{createTme,jdbcType=TIMESTAMP}, #{updatTime,jdbcType=TIMESTAMP}, #{catId,jdbcType=BIGINT}
-      )
+      #{amount,jdbcType=INTEGER}, #{mealNum,jdbcType=INTEGER}, #{mealPicture,jdbcType=VARCHAR}, 
+      #{mealStatus,jdbcType=TINYINT}, #{mealIntro,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.qf.pojo.TbMeal" >
     insert into tb_meal
@@ -131,6 +128,9 @@
       <if test="mealPrice != null" >
         meal_price,
       </if>
+      <if test="amount != null" >
+        amount,
+      </if>
       <if test="mealNum != null" >
         meal_num,
       </if>
@@ -140,23 +140,17 @@
       <if test="mealStatus != null" >
         meal_status,
       </if>
-      <if test="publisher != null" >
-        publisher,
-      </if>
       <if test="mealIntro != null" >
         meal_intro,
       </if>
       <if test="category != null" >
         category,
       </if>
-      <if test="createTme != null" >
-        create_tme,
+      <if test="createTime != null" >
+        create_time,
       </if>
-      <if test="updatTime != null" >
-        updat_time,
-      </if>
-      <if test="catId != null" >
-        cat_id,
+      <if test="updateTime != null" >
+        update_time,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -169,6 +163,9 @@
       <if test="mealPrice != null" >
         #{mealPrice,jdbcType=INTEGER},
       </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
       <if test="mealNum != null" >
         #{mealNum,jdbcType=INTEGER},
       </if>
@@ -178,23 +175,17 @@
       <if test="mealStatus != null" >
         #{mealStatus,jdbcType=TINYINT},
       </if>
-      <if test="publisher != null" >
-        #{publisher,jdbcType=VARCHAR},
-      </if>
       <if test="mealIntro != null" >
         #{mealIntro,jdbcType=VARCHAR},
       </if>
       <if test="category != null" >
         #{category,jdbcType=VARCHAR},
       </if>
-      <if test="createTme != null" >
-        #{createTme,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatTime != null" >
-        #{updatTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="catId != null" >
-        #{catId,jdbcType=BIGINT},
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -216,6 +207,9 @@
       <if test="record.mealPrice != null" >
         meal_price = #{record.mealPrice,jdbcType=INTEGER},
       </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=INTEGER},
+      </if>
       <if test="record.mealNum != null" >
         meal_num = #{record.mealNum,jdbcType=INTEGER},
       </if>
@@ -225,23 +219,17 @@
       <if test="record.mealStatus != null" >
         meal_status = #{record.mealStatus,jdbcType=TINYINT},
       </if>
-      <if test="record.publisher != null" >
-        publisher = #{record.publisher,jdbcType=VARCHAR},
-      </if>
       <if test="record.mealIntro != null" >
         meal_intro = #{record.mealIntro,jdbcType=VARCHAR},
       </if>
       <if test="record.category != null" >
         category = #{record.category,jdbcType=VARCHAR},
       </if>
-      <if test="record.createTme != null" >
-        create_tme = #{record.createTme,jdbcType=TIMESTAMP},
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.updatTime != null" >
-        updat_time = #{record.updatTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.catId != null" >
-        cat_id = #{record.catId,jdbcType=BIGINT},
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -253,15 +241,14 @@
     set meal_id = #{record.mealId,jdbcType=BIGINT},
       meal_name = #{record.mealName,jdbcType=VARCHAR},
       meal_price = #{record.mealPrice,jdbcType=INTEGER},
+      amount = #{record.amount,jdbcType=INTEGER},
       meal_num = #{record.mealNum,jdbcType=INTEGER},
       meal_picture = #{record.mealPicture,jdbcType=VARCHAR},
       meal_status = #{record.mealStatus,jdbcType=TINYINT},
-      publisher = #{record.publisher,jdbcType=VARCHAR},
       meal_intro = #{record.mealIntro,jdbcType=VARCHAR},
       category = #{record.category,jdbcType=VARCHAR},
-      create_tme = #{record.createTme,jdbcType=TIMESTAMP},
-      updat_time = #{record.updatTime,jdbcType=TIMESTAMP},
-      cat_id = #{record.catId,jdbcType=BIGINT}
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -275,6 +262,9 @@
       <if test="mealPrice != null" >
         meal_price = #{mealPrice,jdbcType=INTEGER},
       </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
       <if test="mealNum != null" >
         meal_num = #{mealNum,jdbcType=INTEGER},
       </if>
@@ -284,23 +274,17 @@
       <if test="mealStatus != null" >
         meal_status = #{mealStatus,jdbcType=TINYINT},
       </if>
-      <if test="publisher != null" >
-        publisher = #{publisher,jdbcType=VARCHAR},
-      </if>
       <if test="mealIntro != null" >
         meal_intro = #{mealIntro,jdbcType=VARCHAR},
       </if>
       <if test="category != null" >
         category = #{category,jdbcType=VARCHAR},
       </if>
-      <if test="createTme != null" >
-        create_tme = #{createTme,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="updatTime != null" >
-        updat_time = #{updatTime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="catId != null" >
-        cat_id = #{catId,jdbcType=BIGINT},
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where meal_id = #{mealId,jdbcType=BIGINT}
@@ -309,15 +293,14 @@
     update tb_meal
     set meal_name = #{mealName,jdbcType=VARCHAR},
       meal_price = #{mealPrice,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
       meal_num = #{mealNum,jdbcType=INTEGER},
       meal_picture = #{mealPicture,jdbcType=VARCHAR},
       meal_status = #{mealStatus,jdbcType=TINYINT},
-      publisher = #{publisher,jdbcType=VARCHAR},
       meal_intro = #{mealIntro,jdbcType=VARCHAR},
       category = #{category,jdbcType=VARCHAR},
-      create_tme = #{createTme,jdbcType=TIMESTAMP},
-      updat_time = #{updatTime,jdbcType=TIMESTAMP},
-      cat_id = #{catId,jdbcType=BIGINT}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where meal_id = #{mealId,jdbcType=BIGINT}
   </update>
 </mapper>

@@ -13,6 +13,24 @@ public class TbOrderCustom extends TbOrder{
     private String userName;
     private Integer amount;
     private String userPhone;
+    private String sname;
+    private String stelephone;
+
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
+
+    public String getStelephone() {
+        return stelephone;
+    }
+
+    public void setStelephone(String stelephone) {
+        this.stelephone = stelephone;
+    }
 
     public Integer getAmount() {
         return amount;

@@ -1,6 +1,6 @@
 package com.qf.pojo;
 
-public class Postman {
+public class TbPost {
     private Long id;
 
     private String pName;

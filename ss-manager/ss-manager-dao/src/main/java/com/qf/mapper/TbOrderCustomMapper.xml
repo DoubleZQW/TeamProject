@@ -4,14 +4,14 @@
 <mapper namespace="com.qf.mapper.TbOrderCustomMapper" >
     <sql id="Base_sql">
         /*order本身的字段*/
-        o.order_id as orderId,o.payment as payment,o.order_status as orderStatus,
-        o.payment_type as paymentType,o.order_created as orderCreated,o.order_free as orderFree,
-        o.order_finished as orderFinished,o.order_message as orderMessage,
+        o.order_id as orderId,o.payment as payment, o.payment_type as paymentType,o.order_free as orderFree,
+        o.order_status as orderStatus,o.order_created as orderCreated, o.order_finished as orderFinished,
+        o.order_message as orderMessage,
         /*要关联的字段*/
-        m.meal_name as mealName,m.meal_price as mealPrice,m.meal_picture as mealPicture,
-        m.meal_num as mealNum,mo.amount,
+        m.meal_name as mealName,m.meal_price as mealPrice,m.meal_num as mealNum,m.amount as amount,
         a.addr_name as addrName,p.p_name as pName,p.p_mobie as pMobie,
-        u.user_name as userName,u.user_phone as userPhone
+        u.user_name as userName,u.user_phone as userPhone,
+        s.name as sname,s.telephone as stelephone
     </sql>
 
     <sql id="Where_Clause">
@@ -37,10 +37,10 @@
         select
         <include refid="Base_sql"/>
         from tb_order o left join tb_meal m on o.m_id = m.meal_id
-        left join tb_meal_order mo on o.order_id = mo.order_id
-        left join tb_address a on o.addr_id = a.id
-        left join postman p on o.p_id = p.id
         left join tb_user u on o.u_id = u.user_id
+        left join tb_seller s on s.oid=o.order_id
+        left join tb_address a on a.id=s.oid
+        left join tb_post p on p.id=s.pid
         <include refid="Where_Clause"/>
         <choose>
             <when test="order != null and order.sort != null and order.order != null">
@@ -59,10 +59,10 @@
         select
         <include refid="Base_sql"/>
         from tb_order o left join tb_meal m on o.m_id = m.meal_id
-        left join tb_meal_order mo on o.order_id = mo.order_id
-        left join tb_address a on o.addr_id = a.id
-        left join postman p on o.p_id = p.id
         left join tb_user u on o.u_id = u.user_id
+        left join tb_seller s on s.oid=o.order_id
+        left join tb_address a on a.id=s.oid
+        left join tb_post p on p.id=s.pid
         <where>
             o.order_status !=3 and o.u_id =#{query.uid}
             <if test="query !=null and query.orderId !=null and query.orderId !=''">

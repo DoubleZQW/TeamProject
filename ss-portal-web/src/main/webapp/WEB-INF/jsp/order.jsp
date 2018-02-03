@@ -9,6 +9,22 @@
     <link rel="stylesheet" href="css/carts.css">
     <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
     <script src="resources/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script type="text/javascript">
+        $.ajax({
+            url: "order/query",
+            method: "get",
+            success: function (result) {
+                var objs = result.rows;
+                for(var i=0; i<objs.length; i++){
+                    $("#li_meal").append(objs[i].mealName);
+                }
+                alert($("#li_meal").val());
+                // $.each(objs, function () {
+                //     $("#li_meal").append("<span>" + this.mealName + "</span><span>"+this.amount+"</span>");
+                // });
+            }
+        })
+    </script>
 </head>
 <body>
 <div>
@@ -33,52 +49,52 @@
                 </div>
             </div>
         </div>
-        <div class="">
-            <table class="table_a">
-                <thead>
-                <tr class="text-center">
-                    <td class="td_a" style="width: 200px">店家</td>
-                    <td class="td_a">商品</td>
-                    <td class="td_a">交易状态</td>
-                    <td class="td_a">实付款</td>
-                    <td class="td_a">商品操作</td>
-                    <td class="td_a">交易操作</td>
-                </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${result.rows}" var="item">
-                        <tr>
-                            <td>${item.pName}</td>
-                            <td>${item.mealName}</td>
-                            <td>${item.orderStatus}</td>
-                            <td>${item.payment}</td>
-                            <td>
-                                <button class="btn btn-sm btn-info">查看</button>
-                                <button class="btn btn-sm btn-danger">删除</button>
-                            </td>
-                            <td>
-                                <button class="btn btn-sm btn-default">退款</button>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <div>
-        <div class="div_c">
-            <span>订单时间</span>
-            <span>订单编号</span>
-            <span>商家名</span>
-        </div>
-        <div class="div_c">商品名     数量</div>
-        <div class="div_c">商品状态</div>
-        <div class="div_c">付款金额</div>
-        <div class="div_c">操作</div>
+
+        <c:choose>
+            <c:when test="${sessionScope.sess.userId > 0}">
+                <div style="background: rgba(157,157,157,0.28)">
+                    <div>
+                        <ul style="margin-left: 55px">
+                            <li class="li_a">店家信息</li>
+                            <li class="li_a">商品信息</li>
+                            <li class="li_a">订单状态</li>
+                            <li class="li_a">订单操作</li>
+                        </ul>
+                    </div>
+                    <div class="div_d">
+                            <%--放订单时间和查看详情--%>
+                        <div class="div_e">2018-02-02</div>
+                        <div class="div_f">
+                            <ul  style="margin-left: 65px;">
+                                    <%--商家图片--%>
+                                <img src="images/1.png" alt="" style="width: 80px;height: 80px">
+                                    <%--商家名称--%>
+                                <li class="li_b" id="li_name">淮南牛肉汤</li>
+                                    <%--商品名称+商品数量--%>
+                                <li class="li_b" id="li_meal"></li>
+                                <li class="li_b" id="li_amount">1</li>
+                                    <%--订单状态--%>
+                                <li  class="li_b" id="li_status">未付款</li>
+                                    <%--订单操作--%>
+                                <li  class="li_b" id="li_op">删除</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="text-center" style="font-size: 24px;font-weight: bolder;font-style: italic;color: gray">
+                    用户未登录！
+                </div>
+            </c:otherwise>
+        </c:choose>
+
     </div>
 </div>
-</div>
+
+<script type="text/javascript">
 
 
+</script>
 </body>
 </html>

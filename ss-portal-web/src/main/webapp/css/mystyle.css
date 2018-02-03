@@ -55,7 +55,52 @@ body {
 .div_c{
     display: inline;
     background-color: #f5f5f5;
-    margin-left: 100px;
+    margin-left: 50px;
     font-size: x-large;
     width: 200px;
+}
+
+.li_a{
+    display: inline;
+    padding: 100px;
+    font-size: larger;
+    font-family: '微软雅黑', 'Times New Roman', Times, serif;
+}
+
+.div_d{
+
+}
+
+.div_e{
+    margin-top: 45px;
+    background: #2aabd2;
+    height: 35px;
+    line-height: 35px;
+    padding-left: 100px;
+}
+
+.div_f{
+    background: #9c9c9c;
+    padding-top: 10px;
+}
+
+.li_b{
+    display: inline;
+}
+
+#li_name{
+    margin-left: 50px;
+}
+
+#li_meal{
+    margin-left: 150px;
+}
+#li_amount{
+    margin-left: 30px;
+}
+#li_status{
+    margin-left: 200px;
+}
+#li_op{
+    margin-left: 220px;
 }

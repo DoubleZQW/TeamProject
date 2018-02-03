@@ -92,7 +92,7 @@ public class OrderServiceImpl implements OrderService{
             Map<String,Object> map=new HashMap<String,Object>();
             map.put("page",page);
             map.put("query",query);
-//            获取总数
+//          获取总数
             Long total=orderCustomMapper.listCondition(map);
 //            获取id查询订单的集合
             List<TbOrderCustom> orderCustoms = orderCustomMapper.listOrdersById(map);

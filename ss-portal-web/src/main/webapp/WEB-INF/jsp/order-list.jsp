@@ -30,7 +30,6 @@
 <div class="col-xs-12 column">
 	<div class="col-xs-6 column">
 		<div class="form-group">
-			<label for="orderId">订单号(模糊查)</label>
 			<input type="text" id="orderId" name="orderId" class="form-control input-sm"/>
 		</div>
 	</div>

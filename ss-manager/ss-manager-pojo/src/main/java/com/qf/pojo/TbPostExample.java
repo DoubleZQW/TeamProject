@@ -3,14 +3,14 @@ package com.qf.pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostmanExample {
+public class TbPostExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public PostmanExample() {
+    public TbPostExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

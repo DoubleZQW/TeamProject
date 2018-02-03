@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.qf.mapper.TbMealCatMapper" >
-  <resultMap id="BaseResultMap" type="com.qf.pojo.TbMealCat" >
+<mapper namespace="com.qf.mapper.TbPostMapper" >
+  <resultMap id="BaseResultMap" type="com.qf.pojo.TbPost" >
     <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="cat_name" property="catName" jdbcType="VARCHAR" />
+    <result column="p_name" property="pName" jdbcType="VARCHAR" />
+    <result column="p_mobie" property="pMobie" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="TINYINT" />
+    <result column="age" property="age" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -64,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, cat_name
+    id, p_name, p_mobie, gender, age
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbMealCatExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.qf.pojo.TbPostExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from tb_meal_cat
+    from tb_post
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -83,56 +86,85 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
-    from tb_meal_cat
+    from tb_post
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from tb_meal_cat
+    delete from tb_post
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.qf.pojo.TbMealCatExample" >
-    delete from tb_meal_cat
+  <delete id="deleteByExample" parameterType="com.qf.pojo.TbPostExample" >
+    delete from tb_post
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.qf.pojo.TbMealCat" >
-    insert into tb_meal_cat (id, cat_name)
-    values (#{id,jdbcType=BIGINT}, #{catName,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.qf.pojo.TbPost" >
+    insert into tb_post (id, p_name, p_mobie, 
+      gender, age)
+    values (#{id,jdbcType=BIGINT}, #{pName,jdbcType=VARCHAR}, #{pMobie,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=TINYINT}, #{age,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.qf.pojo.TbMealCat" >
-    insert into tb_meal_cat
+  <insert id="insertSelective" parameterType="com.qf.pojo.TbPost" >
+    insert into tb_post
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="catName != null" >
-        cat_name,
+      <if test="pName != null" >
+        p_name,
+      </if>
+      <if test="pMobie != null" >
+        p_mobie,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="age != null" >
+        age,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=BIGINT},
       </if>
-      <if test="catName != null" >
-        #{catName,jdbcType=VARCHAR},
+      <if test="pName != null" >
+        #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pMobie != null" >
+        #{pMobie,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.qf.pojo.TbMealCatExample" resultType="java.lang.Integer" >
-    select count(*) from tb_meal_cat
+  <select id="countByExample" parameterType="com.qf.pojo.TbPostExample" resultType="java.lang.Integer" >
+    select count(*) from tb_post
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update tb_meal_cat
+    update tb_post
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=BIGINT},
       </if>
-      <if test="record.catName != null" >
-        cat_name = #{record.catName,jdbcType=VARCHAR},
+      <if test="record.pName != null" >
+        p_name = #{record.pName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pMobie != null" >
+        p_mobie = #{record.pMobie,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=TINYINT},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -140,25 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update tb_meal_cat
+    update tb_post
     set id = #{record.id,jdbcType=BIGINT},
-      cat_name = #{record.catName,jdbcType=VARCHAR}
+      p_name = #{record.pName,jdbcType=VARCHAR},
+      p_mobie = #{record.pMobie,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=TINYINT},
+      age = #{record.age,jdbcType=INTEGER}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbMealCat" >
-    update tb_meal_cat
+  <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.TbPost" >
+    update tb_post
     <set >
-      <if test="catName != null" >
-        cat_name = #{catName,jdbcType=VARCHAR},
+      <if test="pName != null" >
+        p_name = #{pName,jdbcType=VARCHAR},
+      </if>
+      <if test="pMobie != null" >
+        p_mobie = #{pMobie,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbMealCat" >
-    update tb_meal_cat
-    set cat_name = #{catName,jdbcType=VARCHAR}
+  <update id="updateByPrimaryKey" parameterType="com.qf.pojo.TbPost" >
+    update tb_post
+    set p_name = #{pName,jdbcType=VARCHAR},
+      p_mobie = #{pMobie,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      age = #{age,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>
