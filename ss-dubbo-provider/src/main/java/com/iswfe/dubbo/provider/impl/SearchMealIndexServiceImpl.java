@@ -1,8 +1,8 @@
-package com.qf.service.impl;
+package com.iswfe.dubbo.provider.impl;
 
+import com.iswfe.dubbo.provider.SearchMealIndexService;
 import com.qf.mapper.SearchMealDao;
 import com.qf.mapper.TbMealCustomMapper;
-import com.qf.service.SearchIndexService;
 import com.qf.vo.TbSearchMealResult;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SearchIndexServiceImpl implements SearchIndexService {
+public class SearchMealIndexServiceImpl implements SearchMealIndexService {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 

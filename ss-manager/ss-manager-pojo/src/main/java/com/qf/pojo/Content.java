@@ -1,6 +1,8 @@
 package com.qf.pojo;
 
-public class Content {
+import java.io.Serializable;
+
+public class Content implements Serializable {
     private Integer id;
 
     private Integer categoryId;

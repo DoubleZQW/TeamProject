@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd
             http://code.alibabatech.com/schema/dubbo
-            http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+            http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
 	<!-- 提供方应用信息，用于计算依赖关系,即应用名 -->
 	<dubbo:application name="iswfe_provider"  />
 	<!-- 使用multicast广播注册中心暴露服务地址
@@ -15,7 +15,18 @@
 	<dubbo:protocol name="dubbo" port="20880" />
 
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="com.iswfe.dubbo.service.HelloService" ref="demoService" />
+	<!-- SolrIndexService -->
+	<dubbo:service interface="com.iswfe.dubbo.provider.SolrIndexService" ref="solrIndexService" />
 	<!-- 具体的实现bean -->
-	<bean id="demoService" class="com.iswfe.dubbo.service.provider.HelloServiceImpl" />
+	<bean id="solrIndexService" class="com.iswfe.dubbo.provider.impl.SolrIndexServiceImpl" />
+
+	<!-- SearchMealIndexService -->
+	<dubbo:service interface="com.iswfe.dubbo.provider.SearchMealIndexService" ref="searchMealIndexService" />
+	<!-- 具体的实现bean -->
+	<bean id="searchMealIndexService" class="com.iswfe.dubbo.provider.impl.SearchMealIndexServiceImpl" />
+
+	<!-- SearchMealService -->
+	<dubbo:service interface="com.iswfe.dubbo.provider.SearchMealService" ref="searchMealService" />
+	<!-- 具体的实现bean -->
+	<bean id="searchMealService" class="com.iswfe.dubbo.provider.impl.SearchMealServiceImpl" />
 </beans>

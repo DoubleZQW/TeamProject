@@ -22,7 +22,7 @@ import java.util.List;
 
  */
 @Controller
-public class ManageIndexAction {
+public class PortalAction {
 
     @Autowired
     private ContentService contentService;

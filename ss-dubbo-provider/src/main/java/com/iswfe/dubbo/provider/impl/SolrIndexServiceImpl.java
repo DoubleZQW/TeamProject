@@ -1,7 +1,7 @@
-package com.qf.service.impl;
+package com.iswfe.dubbo.provider.impl;
 
+import com.iswfe.dubbo.provider.SolrIndexService;
 import com.qf.mapper.TbMealCustomMapper;
-import com.qf.service.SolrIndexService;
 import com.qf.vo.TbSearchMealCustom;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.common.SolrInputDocument;

@@ -12,6 +12,9 @@
 
     <!--1 扫描SERVICE层下注解类,可以扫描到base-package的当前包以及子包的所有注解类-->
 
+
+    <!-- 扫描provider提供的接口的包 -->
+    <context:component-scan base-package="com.iswfe.dubbo.provider"/>
     <!--** 麻烦改下**-->
     <context:component-scan base-package="com.qf.service.impl"/>
     <!--2 事务管理器-->

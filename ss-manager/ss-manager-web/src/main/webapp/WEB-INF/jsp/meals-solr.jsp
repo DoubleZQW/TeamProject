@@ -12,8 +12,7 @@
 			<%-- 导入meals的Solr索引库 --%>
 			function importMealsSolr() {
 				$.get('meals/importSolr', null, function(rm) {
-					if (rm.bool)
-						swal(rm.message, {buttons: false, timer: 1500});
+					swal(rm.message, {buttons: false, timer: 1500});
 				});
 			}
 

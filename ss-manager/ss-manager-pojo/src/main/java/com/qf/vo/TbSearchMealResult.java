@@ -1,8 +1,9 @@
 package com.qf.vo;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class TbSearchMealResult {
+public class TbSearchMealResult implements Serializable {
 	private Long recordCount;
 	private Long totalPages;
 	private List<TbSearchMealCustom> mealList;

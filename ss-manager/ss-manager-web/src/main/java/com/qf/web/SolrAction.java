@@ -1,7 +1,7 @@
 package com.qf.web;
 
+import com.iswfe.dubbo.provider.SolrIndexService;
 import com.qf.dto.ResultMessage;
-import com.qf.service.SolrIndexService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

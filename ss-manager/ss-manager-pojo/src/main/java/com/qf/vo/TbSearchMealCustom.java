@@ -1,6 +1,8 @@
 package com.qf.vo;
 
-public class TbSearchMealCustom {
+import java.io.Serializable;
+
+public class TbSearchMealCustom implements Serializable {
 	private Integer mealId;
 	private String mealName;
 	private String mealPrice;
