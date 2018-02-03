@@ -79,7 +79,7 @@
         m.meal_price as mealPrice,
         m.meal_num as mealNum,
         m.meal_picture as mealPic,
-        m.meal_intro as mealIntro
+        m.meal_intro as mealIntro,
         s.name as publisher
 
         from tb_meal m
