@@ -8,7 +8,7 @@
 	<!--httpSolr服务器位置-->
 	<bean id="httpSolrServer"
 	      class="org.apache.solr.client.solrj.impl.HttpSolrServer">
-		<constructor-arg index="0" value="http://iswfe.xyz:8080/solr/collection1" />
+		<constructor-arg index="0" value="http://solr.iswfe.xyz/collection1" />
 	</bean>
 
 </beans>

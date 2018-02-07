@@ -13,14 +13,15 @@
 	<!-- 使用zookeeper注册中心找到发布的服务 -->
 	<dubbo:registry  protocol="zookeeper" address="zookeeper://iswfe.xyz:2181" />
 
+
 	<!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
-	<!-- SolrIndexService -->
+	<!-- solrIndexService -->
 	<dubbo:reference id="solrIndexService" interface="com.iswfe.dubbo.provider.SolrIndexService" />
 
-	<!-- SolrIndexService -->
+	<!-- searchMealIndexService -->
 	<dubbo:reference id="searchMealIndexService" interface="com.iswfe.dubbo.provider.SearchMealIndexService" />
 
-	<!-- SolrIndexService -->
+	<!-- searchMealService -->
 	<dubbo:reference id="searchMealService" interface="com.iswfe.dubbo.provider.SearchMealService" />
 
 </beans>
