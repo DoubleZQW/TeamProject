@@ -183,6 +183,7 @@
                         	return "<span class='glyphicon glyphicon-yen'></span> "+ value/100;
 							}},
                         {field:'mealNum',title:'库存',sortable: true,width: 50,align: 'center',},
+	                    // {field:'publisher',title:'商家(发布者)',sortable: true,width: 150},
                         {field:'mealIntro',title:'介绍',sortable: true,visible: false},
                         {field:'createTme',title:'添加时间',sortable: true,visible: false,align: 'center',
                             formatter: function(value, row, index) {
